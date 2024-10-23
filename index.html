@@ -329,6 +329,9 @@
       <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="left"></a-entity>
       <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="right"></a-entity>
 
+      <!--Creacion de la entidad del jugador, con algunos atributos iniciales y el componente creado-->
+      <a-entity id="player" camera look-controls wasd-controls="acceleration: 65" run-controls position="0 1.6 0"></a-entity>
+
     </a-scene>
 
     <script src="main.js"></script>
