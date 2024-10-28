@@ -69,3 +69,17 @@ AFRAME.registerComponent('jump-controls', {
         }
     }
 });
+
+const loader = new THREE.GLTFLoader();
+loader.load('models/genshin_impact_-_furina.glb', function (gltf) {
+    scene.add(gltf.scene);
+    renderer.render(scene, camera);
+});
+
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();

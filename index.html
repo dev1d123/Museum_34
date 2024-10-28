@@ -3,9 +3,9 @@
 <head>
 	<!-- Meta -->
     <meta charset="utf-8">
-    <title>Virtual Reality Museum in A-Frame</title>
+    <title>Virtual Reality Museum34</title>
 
-    <meta property="og:title" content="Virtual Reality Museum in A-Frame" />
+    <meta property="og:title" content="Virtual Reality Museum34" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://blog.r23.de/museum/" />
     <meta property="og:image" content="https://blog.r23.de/museum/screenshots/thehall1.jpg" />
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
 
-    <script src="js/aframe.0.7.0.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="js/aframe-extras.min.js"></script>
 
     <script src="js/lzma.js"></script>
@@ -47,6 +47,8 @@
     <script src="js/envMapMaterial.js"></script>
     <script src="js/ctm_component.js"></script>
     <script src="js/mobile_component.js"></script>
+
+
 
   </head>
 
@@ -71,7 +73,14 @@
 
     <a-scene>
 
+      
+
+
       <a-entity mobile></a-entity>
+
+      <a-entity gltf-model="#genshin_impact_-_furina" position="0 0 0" rotation="0 0 0" scale="1 1 1"></a-entity>
+
+
 
       <a-entity light="type: directional; color: #FFF; intensity: 0.5" position="2 20 0"></a-entity>
       <a-entity light="type: ambient; color: #FFF"></a-entity>
@@ -220,6 +229,8 @@
         <a-asset-item id="david_bike_hall_3-ctm" src="models/david_bike_hall_3.ctm"></a-asset-item>
         <!--<img id="david_bike_hall_3-texture" src="textures/david_bike_hall_3.jpg">-->
         <!-- - david_bike_hall_3 -->
+
+        <a-asset-item id="genshin_impact_-_furina" src="models/genshin_impact_-_furina.glb"></a-asset-item>
 
 
         <!-- mocaps -->
