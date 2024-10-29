@@ -1,16 +1,25 @@
 var startExperienteBtn = document.getElementById('start_experience');
+var bottomNav = document.getElementById('bottom-menu');
+
 
 startExperienteBtn.onclick = function(){
     document.getElementById('container').outerHTML = '';
+        // Muestra el menú inferior con una animación
+    bottomNav.style.display = 'flex'; // Cambia el display para que sea visible
+    setTimeout(function() {
+        bottomNav.classList.add('show'); // Activa la animación de aparición
+    }, 10); // Espera breve para asegurar que la transición ocurra
+        
     document.getElementsByTagName('a-scene')[0].style.zIndex = 'auto';
-};
+}
+
 
 //funcion para que el personaje corra con la tecla shift
 AFRAME.registerComponent('run-controls', {
     //definir propiedades del componente
     schema: {
-        normalSpeed: { type: 'number', default: 65 },
-        runSpeed: { type: 'number', default: 100 }
+        normalSpeed: { type: 'number', default: 40 },
+        runSpeed: { type: 'number', default: 80 }
     },
 
     init: function () {
