@@ -119,3 +119,34 @@ a:link, a:hover, a:visited, a:active {
 #bottom-menu button:hover {
     background-color: #4aa383;
 }
+
+#main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+    color: white; /* Color del texto */
+    position: absolute; /* Posición absoluta para centrarlo */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+button {
+    margin: 10px; /* Espaciado entre los botones */
+    padding: 15px 30px; /* Espaciado interno */
+    font-size: 18px; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color al pasar el ratón */
+}

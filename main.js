@@ -1,9 +1,11 @@
 var startExperienteBtn = document.getElementById('start_experience');
 var bottomNav = document.getElementById('bottom-menu');
 
+var exitBtn = document.getElementById('exit');
+
 
 startExperienteBtn.onclick = function(){
-    document.getElementById('container').outerHTML = '';
+    document.getElementById('main-menu').style.display = 'none';
         // Muestra el menú inferior con una animación
     bottomNav.style.display = 'flex'; // Cambia el display para que sea visible
     setTimeout(function() {
@@ -11,6 +13,10 @@ startExperienteBtn.onclick = function(){
     }, 10); // Espera breve para asegurar que la transición ocurra
         
     document.getElementsByTagName('a-scene')[0].style.zIndex = 'auto';
+}
+
+exitBtn.onclick = function() {
+    window.close(); // Cierra la ventana (en la mayoría de los navegadores)
 }
 
 

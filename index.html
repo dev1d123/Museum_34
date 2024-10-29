@@ -54,21 +54,6 @@
 
   <body>
 
-
-    <div id="container" class="container">
-      <div class="info">
-        <div class="company"><a href="http://www.cecropiasolutions.com" target="_blank">cecropiasolutions.com</a></div>
-        <div class="title">The Hall</div>
-        <div class="logo"><a href="http://www.cecropiasolutions.com" target="_blank"><img src="img/cec_logo.png"></a></div>
-        <a class="button" id="start_experience" href="#">start experience</a>
-        <div class="instructions">
-          <div><strong>VR</strong>: Hand controllers and teleport with trigger.</div>
-          <div><strong>Desktop</strong>: Keyboard (WASD/arrows) and mouse.</div>
-          <div><strong>Mobile</strong>: Gaze cursor and teleportation.</div>
-        </div>
-      </div>
-    </div>
-
     <!--<a-scene stats>-->
 
     <a-scene>
@@ -353,6 +338,12 @@
       <button onclick="visorMode()">Modo visor</button>
       <button onclick="showInfo()">Mas información</button>
       <button onclick="settings()">Ajustes</button>
+    </div>
+
+    <div id="main-menu">
+      <h1>Bienvenido al Museo de Arequipa</h1>
+      <button id="start_experience">Iniciar Experiencia</button>
+      <button id="exit">Salir</button>
     </div>
   
     <script src="main.js"></script>
