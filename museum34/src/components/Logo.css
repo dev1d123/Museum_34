@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Aubrey&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.logo-container {
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.logo-container img:hover {
+    transform: scale(1.2) rotate(15deg);
+}
+
+.logo {
+    font-family: 'Aubrey', 'Montserrat', sans-serif;
+    font-weight: 1000;
+    font-size: 3.5rem;
+    color: #4b0082;
+    display: flex;
+    gap: 5px;
+    animation: fadeInBounce 1.2s ease-out forwards;
+    cursor: pointer;
+}
+
+.logo-letter {
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo-letter:hover {
+    color: #ff6347;
+    transform: scale(1.2) rotate(-15deg);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-15px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
+    }
+}
