@@ -1,0 +1,116 @@
+.alice-carousel {
+    width: 100%;
+    max-width: 50%;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.alice-carousel__stage {
+    width: 100%;
+    height: 30rem;
+    padding: 0; 
+    background-color: #fff;
+}
+
+.alice-carousel__stage-item {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.alice-carousel__stage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 0;
+    box-shadow: none; 
+}
+
+.alice-carousel__prev-btn, .alice-carousel__next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+}
+
+.alice-carousel__prev-btn:hover, .alice-carousel__next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.alice-carousel__prev-btn {
+    left: 10px;
+}
+
+.alice-carousel__next-btn {
+    right: 10px;
+}
+
+.alice-carousel__prev-btn-item, .alice-carousel__next-btn-item {
+    font-size: 20px;
+}
+
+.alice-carousel__play-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.alice-carousel__play-btn-item {
+    font-size: 16px;
+}
+
+.alice-carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+.alice-carousel__dots-item {
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.alice-carousel__dots-item.__active {
+    background-color: #333;
+}
+
+.alice-carousel__slide-info {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: #333;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.alice-carousel__slide-info-item {
+    font-weight: bold;
+}
