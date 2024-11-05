@@ -4,6 +4,7 @@ import Logo from './components/Logo';
 import NavMenu from './components/NavMenu';
 import ImgCar from './components/ImgCar';
 import FooterPage from './components/FooterPage';
+import Blog from './components/Blog';
 function App() {
   return (
 
@@ -12,6 +13,8 @@ function App() {
       <NavMenu/>
       <br></br>
       <ImgCar/>
+      <br></br>
+      <Blog/>
       <FooterPage/>
     </div>
     
