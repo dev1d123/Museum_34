@@ -192,7 +192,7 @@ export default function Latest() {
   return (
     <div>
       <Typography variant="h2" gutterBottom>
-        Latest
+        Articulos e informes sobre el museo
       </Typography>
       <Grid container spacing={8} columns={12} sx={{ my: 4 }}>
         {articleInfo.map((article, index) => (
