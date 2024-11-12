@@ -3,11 +3,11 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import './ImgCar.css';
 
-import g1 from '../images/gif/g1.gif';
-import g2 from '../images/gif/g2.gif';
-import g3 from '../images/gif/g3.gif';
-import g4 from '../images/gif/g4.gif';
-import g5 from '../images/gif/g5.gif';
+import g1 from '../../images/gif/g1.gif'
+import g2 from '../../images/gif/g2.gif';
+import g3 from '../../images/gif/g3.gif';
+import g4 from '../../images/gif/g4.gif';
+import g5 from '../../images/gif/g5.gif';
 
 const handleDragStart = (e) => e.preventDefault();
 

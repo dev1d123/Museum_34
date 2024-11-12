@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 .logo-container {
+    background-color: greenyellow;
+    width: 500px;
     user-select: none;
     display: flex;
     flex-direction: row;
@@ -34,6 +36,7 @@
     font-size: 3.5rem;
     color: #4b0082;
     display: flex;
+    margin: auto;
     gap: 5px;
     animation: fadeInBounce 1.2s ease-out forwards;
     cursor: pointer;
