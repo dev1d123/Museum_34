@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import donations from '../images/icons/donations.png'
 import education from '../images/icons/education.png'
 import investigation from '../images/icons/investigation.png'
@@ -34,12 +37,13 @@ const NavMenu = () => {
           &#9776; {/* Icono de hamburguesa */}
         </button>
       </div>
+
       <ul className={`nav-links ${isOpen ? 'show' : ''}`}>
         <li>
-            <a href="#colecciones">
+            <Link to="/colecciones">
                 <img className = "iconImg" src={museum}></img> <br></br>
                 Colecciones Destacadas
-            </a>
+            </Link>
         </li>
         <li>
             <a href="#educacion">
