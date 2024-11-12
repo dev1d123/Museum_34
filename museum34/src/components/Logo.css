@@ -5,14 +5,13 @@
     box-sizing: border-box;
 }
 .logo-container {
-    background-color: greenyellow;
+    background-color: #c7c7bc;
     width: 500px;
     user-select: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 40px;
-    margin: 20px;
     padding: 20px;
     border-radius: 15px;
 }

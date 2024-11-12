@@ -1,8 +1,8 @@
 /* Background.css */
 html {
     --s: 150px; /* control the size */
-    --c1: #C3CCAF;
-    --c2: #67434F;
+    --c1: #8ca965;
+    --c2: #2c3120;
     
     --_s: calc(2 * var(--s)) calc(2 * var(--s));
     --_g: var(--_s) conic-gradient(at 40% 40%, #0000 75%, var(--c1) 0);
