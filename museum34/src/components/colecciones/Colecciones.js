@@ -3,6 +3,7 @@ import Logo from '../Logo'
 import './Colecciones.css';
 import NavMenu from '../NavMenu'
 import FooterPage from '../FooterPage';
+import MainContent from '../components/MainContent';
 function Colecciones() {
   return (
 
@@ -13,8 +14,10 @@ function Colecciones() {
         <Logo></Logo>
         <NavMenu></NavMenu>
       </div>
-      <div>
-        Esta es la seccion de colecciones!!!
+      <div className='main-content'>
+        <div className='container-main'>
+            <MainContent></MainContent>
+        </div>
       </div>
       <FooterPage></FooterPage>
 
