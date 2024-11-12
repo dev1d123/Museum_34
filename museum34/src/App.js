@@ -5,6 +5,8 @@ import NavMenu from './components/NavMenu';
 import ImgCar from './components/ImgCar';
 import FooterPage from './components/FooterPage';
 import Blog from './components/Blog';
+
+import Background from './components/Background';
 function App() {
   return (
 
@@ -13,6 +15,10 @@ function App() {
       <NavMenu/>
       <br></br>
       <ImgCar/>
+
+      <br></br>
+      <Background></Background>
+
       <br></br>
       <Blog/>
       <FooterPage/>
