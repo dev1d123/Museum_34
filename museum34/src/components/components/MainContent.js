@@ -17,8 +17,11 @@ import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 import ImgAqp from '../../images/image/AqpImage.jpg';
-import ImgSistemas from '../../images/image/UNSAImage.jpg'
-
+import ImgSistemas from '../../images/image/UNSAImage.jpg';
+import DisImage from '../..//images/image/DisImage.jpg'
+import ImnImage from '../../images/image/ImnImage.jpg';
+import UniImage from '../../images/image/UniImage.jpg';
+import MunImage from '../../images/image/MunImage.jpg';
 
 
 const cardData = [
@@ -28,8 +31,8 @@ const cardData = [
     title: 'Tradiccion e innovacion, una vista a la ciudad de Arequipa',
     description: 'Explora el corazón cultural de la Ciudad Blanca desde casa. El Museo Virtual de Arequipa te lleva por sus tesoros históricos y artísticos. Una ventana digital al alma de Arequipa, donde el pasado y el presente se encuentran.',
     authors: [
-      { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
-      { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
+      { name: 'William Choquehuanca', avatar: '/static/images/avatar/1.jpg' },
+      { name: 'Wilson Carlos', avatar: '/static/images/avatar/2.jpg' },
     ],
   },
   {
@@ -38,42 +41,42 @@ const cardData = [
     title: 'Visita a la Escuela Profesional de Ingenieria de Sistemas',
     description:
     'Explora a detalle la infraestructura de nuestra escuela, conoce los lugares importantes para que no te pierdas!',
-    authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
+    authors: [{ name: 'Julio Chura', avatar: '/static/images/avatar/6.jpg' }],
   },
   {
-    img: 'https://picsum.photos/800/450?random=3',
+    img: DisImage,
     tag: 'Diseño',
-    title: 'Designing for the future: trends and insights',
+    title: 'Explora de manera detallada diseños 3D innovadores',
     description:
-      'Stay ahead of the curve with the latest design trends and insights. Our design team shares their expertise on creating intuitive and visually stunning user experiences.',
-    authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
+      'Adentrate en un mundo interactivo para apreciar los detalles de un determinado modelo 3D de alta calidad',
+    authors: [{ name: 'Alfredo Huamaní', avatar: '/static/images/avatar/7.jpg' }],
   },
   {
-    img: 'https://picsum.photos/800/450?random=4',
+    img: ImnImage,
     tag: 'Experiencias inmersivas',
-    title: "Our company's journey: milestones and achievements",
+    title: "Relajate con la musica inmersiva, mezcla sensaciones y sentimientosc",
     description:
-      "Take a look at our company's journey and the milestones we've achieved along the way. From humble beginnings to industry leader, discover our story of growth and success.",
-    authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
-  },
+      "Se recomienda usar audifonos, en esta seccion puedes disfrutar de la musica inmersiva donde se combinan percepciones como la vision, audicion y mucho más!",
+    authors: [{ name: 'Alfredo Huamani', avatar: '/static/images/avatar/3.jpg' }],
+    },
   {
-    img: 'https://picsum.photos/800/450?random=45',
+    img: UniImage,
     tag: 'Historia y cultura',
-    title: 'Pioneering sustainable engineering solutions',
+    title: 'Museo de arte universal',
     description:
-      "Learn about our commitment to sustainability and the innovative engineering solutions we're implementing to create a greener future. Discover the impact of our eco-friendly initiatives.",
+      'Toma un vistazo hacia las obras más importantes en la historia del arte',
     authors: [
-      { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
-      { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
+      { name: 'Marco Quispe', avatar: '/static/images/avatar/4.jpg' },
+      { name: 'Alfredo Huamani', avatar: '/static/images/avatar/5.jpg' },
     ],
   },
   {
-    img: 'https://picsum.photos/800/450?random=6',
+    img: MunImage,
     tag: 'Mundos virtuales',
-    title: 'Maximizing efficiency with our latest product updates',
+    title: 'Plaza de armas',
     description:
-      'Our recent product updates are designed to help you maximize efficiency and achieve more. Get a detailed overview of the new features and improvements that can elevate your workflow.',
-    authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
+      'Visita la plaza de armas de la ciudad de Arequipa, contempla el Misti y la Catedral en todo su esplendor',
+    authors: [{ name: 'Alfredo Huamani', avatar: '/static/images/avatar/2.jpg' }],
   },
 ];
 
