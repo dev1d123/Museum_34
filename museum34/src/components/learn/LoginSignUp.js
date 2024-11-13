@@ -27,10 +27,10 @@ const LoginSignUp = () => {
       <FormBox>
         <ButtonBox>
           <ToggleBtn onClick={() => setIsLogin(true)} active={isLogin}>
-            Log In
+            Iniciar sesión
           </ToggleBtn>
           <ToggleBtn onClick={() => setIsLogin(false)} active={!isLogin}>
-            Register
+            Registrarse
           </ToggleBtn>
           <BtnBackground active={isLogin} />
         </ButtonBox>
@@ -45,34 +45,39 @@ const LoginSignUp = () => {
           <Form onSubmit={handleSubmit}>
             <InputWrapper>
               <img src={user} alt="user icon" />
-              <Input type="text" placeholder="Username or Phone Number" required />
+              <Input type="text" placeholder="Nombre de usuario" required />
             </InputWrapper>
             <InputWrapper>
               <img src={password} alt="password icon" />
-              <Input type="password" placeholder="Password" required />
+              <Input type="password" placeholder="Contraseña" required />
             </InputWrapper>
-            <CheckBox type="checkbox" /> Remember Password
-            <SubmitButton type="submit">Log In</SubmitButton>
+            <InlineDiv>
+              <CheckBox type="checkbox" /> Recordar contraseña
+            </InlineDiv>
+            <SubmitButton type="submit">Iniciar sesion</SubmitButton>
           </Form>
         )}
 
         {/* Registration Form */}
         {!isLogin && (
           <Form onSubmit={handleSubmit}>
-            <Input type="text" placeholder="Full Name" required />
-            <Input type="email" placeholder="Email Address" required />
-            <Input type="password" placeholder="Create Password" required />
-            <Input type="password" placeholder="Confirm Password" required />
-            <CheckBox type="checkbox" /> I agree to the Terms & Conditions
-            <SubmitButton type="submit">Register</SubmitButton>
+            <Input type="text" placeholder="Nombre completo" required />
+            <Input type="email" placeholder="Direccion" required />
+            <Input type="password" placeholder="Crear contraseña" required />
+            <Input type="password" placeholder="Confirmar contraseña" required />
+            <InlineDiv>
+              <CheckBox type="checkbox" /> Acepto los terminos y condiciones
+            </InlineDiv>
+            <SubmitButton type="submit">Registrarse</SubmitButton>
+
           </Form>
         )}
 
         <Other>
-          <Separator>or</Separator>
+          <Separator>Tambien</Separator>
           <ConnectButton onClick={() => alert('Sign in with Google')}>
             <img src={google} alt="google icon" />
-            <span>Sign in with Google</span>
+            <span>Utiliza tu cuenta de Google</span>
           </ConnectButton>
         </Other>
       </FormBox>
@@ -83,6 +88,14 @@ const LoginSignUp = () => {
 export default LoginSignUp;
 
 // Styled components
+const InlineDiv = styled.div`
+  display: flex; 
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 30px;
+`;
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -94,7 +107,7 @@ const Container = styled.div`
 
 const FormBox = styled.div`
   width: 380px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.5);
   padding: 5px;
   border-radius: 5px;
   margin: 6% auto;
@@ -119,6 +132,7 @@ const ToggleBtn = styled.button`
   border: none;
   background: transparent;
   color: ${({ active }) => (active ? '#fff' : '#000')};
+  border-radius:30px;
   z-index: 1;
 `;
 
@@ -136,7 +150,7 @@ const SocialIcons = styled.div`
   text-align: center;
 
   img {
-    width: 30px;
+    width: 40px;
     margin: 0 7px;
     cursor: pointer;
     opacity: 0.85;
@@ -149,12 +163,14 @@ const Form = styled.form`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+    ::placeholder {
+    color: #3c3c3c;
+  }
 `;
 
 const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(0,0,0,0.4);
   margin: 5px 0;
 
   img {
@@ -169,6 +185,11 @@ const Input = styled.input`
   border: none;
   outline: none;
   background: transparent;
+  border-bottom: 1px solid rgba(0,0,0,0.4);
+
+  ::placeholder {
+    color: black;
+  }
 `;
 
 const CheckBox = styled.input`
