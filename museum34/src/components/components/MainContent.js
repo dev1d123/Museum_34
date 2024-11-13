@@ -16,25 +16,28 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
+import ImgAqp from '../../images/image/AqpImage.jpg';
+import ImgSistemas from '../../images/image/UNSAImage.jpg'
+
+
 
 const cardData = [
   {
-    img: 'https://picsum.photos/800/450?random=1',
+    img: ImgAqp,
     tag: 'Historia y cultura',
-    title: 'Revolutionizing software development with cutting-edge tools',
-    description:
-      'Our latest engineering tools are designed to streamline workflows and boost productivity. Discover how these innovations are transforming the software development landscape.',
+    title: 'Tradiccion e innovacion, una vista a la ciudad de Arequipa',
+    description: 'Explora el corazón cultural de la Ciudad Blanca desde casa. El Museo Virtual de Arequipa te lleva por sus tesoros históricos y artísticos. Una ventana digital al alma de Arequipa, donde el pasado y el presente se encuentran.',
     authors: [
       { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
       { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
     ],
   },
   {
-    img: 'https://picsum.photos/800/450?random=2',
+    img: ImgSistemas,
     tag: 'Mundos virtuales',
-    title: 'Innovative product features that drive success',
+    title: 'Visita a la Escuela Profesional de Ingenieria de Sistemas',
     description:
-      'Explore the key features of our latest product release that are helping businesses achieve their goals. From user-friendly interfaces to robust functionality, learn why our product stands out.',
+    'Explora a detalle la infraestructura de nuestra escuela, conoce los lugares importantes para que no te pierdas!',
     authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
   },
   {
@@ -230,11 +233,11 @@ export default function MainContent() {
             overflow: 'auto',
           }}
         >
-          <Chip onClick={handleClick} size="medium" label="All categories" />
+          <Chip onClick={handleClick} size="medium" label="Todas las categorias" />
           <Chip
             onClick={handleClick}
             size="medium"
-            label="Company"
+            label="Historia y Cultura"
             sx={{
               backgroundColor: 'transparent',
               border: 'none',
@@ -243,7 +246,7 @@ export default function MainContent() {
           <Chip
             onClick={handleClick}
             size="medium"
-            label="Product"
+            label="Mundos Virtuales"
             sx={{
               backgroundColor: 'transparent',
               border: 'none',
@@ -252,7 +255,7 @@ export default function MainContent() {
           <Chip
             onClick={handleClick}
             size="medium"
-            label="Design"
+            label="Diseño"
             sx={{
               backgroundColor: 'transparent',
               border: 'none',
@@ -261,7 +264,7 @@ export default function MainContent() {
           <Chip
             onClick={handleClick}
             size="medium"
-            label="Engineering"
+            label="Experiencias inmersivas"
             sx={{
               backgroundColor: 'transparent',
               border: 'none',
@@ -392,6 +395,16 @@ export default function MainContent() {
               className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
               sx={{ height: '100%' }}
             >
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[3].img}
+              sx={{
+                aspectRatio: '16 / 9',
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+              }}
+            />
               <SyledCardContent
                 sx={{
                   display: 'flex',
@@ -426,6 +439,16 @@ export default function MainContent() {
               className={focusedCardIndex === 4 ? 'Mui-focused' : ''}
               sx={{ height: '100%' }}
             >
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[4].img}
+              sx={{
+                aspectRatio: '16 / 9',
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+              }}
+            />
               <SyledCardContent
                 sx={{
                   display: 'flex',
