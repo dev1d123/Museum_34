@@ -144,7 +144,7 @@ function Author({ authors }: { authors: { name: string; avatar: string }[] }) {
           {authors.map((author) => author.name).join(', ')}
         </Typography>
       </Box>
-      <Typography variant="caption">July 14, 2021</Typography>
+      <Typography variant="caption">Dic 24, 2024</Typography>
     </Box>
   );
 }
@@ -190,10 +190,10 @@ export default function MainContent() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
       <div>
-        <Typography variant="h1" gutterBottom>
+        <Typography variant="h2" gutterBottom>
           Colecciones Destacadas
         </Typography>
-        <Typography>Investigue nuestros mundos virtuales!</Typography>
+        <Typography>Investigue nuestros mundos virtuales</Typography>
       </div>
       <Box
         sx={{
