@@ -230,7 +230,7 @@ function NavLearn() {
         </Logo>
         <MenuList>
           <li><a className="active" href="/">Home</a></li>
-          <li><a href="#portfolio_section">Sobre nosotros</a></li>
+          <li><a href="#portfolio_section">Temas populares</a></li>
           <li><a href="#team_section">Equipo</a></li>
           <li><a href="#services_section">Servicios</a></li>
           <li><a href="#contactus_section">Contacto</a></li>
@@ -255,7 +255,7 @@ function NavLearn() {
         </SideMenuUser>
         <ul>
           <li><a href="#about_section">Home</a></li>
-          <li><a href="#portfolio_section">Sobre nosotros</a></li>
+          <li><a href="#portfolio_section">Temas populares</a></li>
           <li><a href="#team_section">Equipo</a></li>
           <li><a href="#services_section">Servicios</a></li>
           <li><a href="#contactus_section">Contacto</a></li>
