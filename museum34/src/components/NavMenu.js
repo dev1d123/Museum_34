@@ -53,10 +53,10 @@ const NavMenu = () => {
             
         </li>
         <li>
-            <a href="#investigacion">
-                <img className = "iconImg"  src={investigation}></img>  <br></br>
+            <Link to="/investigacion">
+                <img className = "iconImg" src={investigation}></img> <br></br>
                 Investigación
-            </a>
+            </Link>
         </li>
 
 

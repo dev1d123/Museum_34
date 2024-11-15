@@ -1,11 +1,11 @@
 import Background from '../Background'
 import Logo from '../Logo'
-import './Colecciones.css';
+import './Investigacion.css';
 import NavMenu from '../NavMenu'
 import FooterPage from '../FooterPage';
 import MainContent from '../components/MainContent';
 import Latest from '../components/Latest';
-function Colecciones() {
+function Investigacion() {
   return (
 
     <div>
@@ -17,7 +17,7 @@ function Colecciones() {
       </div>
       <div className='main-content'>
         <div className='container-main'>
-            <MainContent></MainContent>
+            <Latest></Latest>
         </div>
       </div>
       <FooterPage></FooterPage>
@@ -26,4 +26,4 @@ function Colecciones() {
     
   );
 }
-export default Colecciones;
+export default Investigacion;
