@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import NavLearn from './NavLearn';
 import PopularSubjects from './PopularSubjects';
 import TeamSection from './TeamSection';
+import ServicesSection from './ServicesSection';
+import ContactUs from './ContactUs';
+
+import FooterPage from '../FooterPage';
 const Nav = styled.div`
     padding: 0;
     margin: 0;
@@ -27,8 +31,11 @@ function Learn(){
             <div>
                 <PopularSubjects></PopularSubjects>
                 <TeamSection></TeamSection>
-            </div>
+                <ServicesSection></ServicesSection>
+                <ContactUs></ContactUs>
 
+            </div>
+            <FooterPage></FooterPage>
         </div>
         
     )
