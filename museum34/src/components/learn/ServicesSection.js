@@ -1,9 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ImgAqp from '../../images/image/AqpImage.jpg';
+import ImgSistemas from '../../images/image/UNSAImage.jpg';
+import DisImage from '../..//images/image/DisImage.jpg';
+import ImnImage from '../../images/image/ImnImage.jpg';
+import UniImage from '../../images/image/UniImage.jpg'
+import MunImage from '../../images/image/MunImage.jpg';
+import BG from './images/extra/bg.jpg'
+
+
 // Estilos principales
 const ServiceSwipe = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -11,7 +21,7 @@ const ServiceSwipe = styled.div`
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0.7)
     ),
-    url("images/extra/b3.jpg");
+  url(${BG});
   background-size: cover;
   background-attachment: fixed;
   padding: 100px 0;
@@ -23,7 +33,14 @@ const SectionTitle = styled.h2`
   color: #fff;
   margin-bottom: 40px;
 `;
+const Container = styled.div`
 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  `;
 const CardLink = styled.a`
   padding: 0;
   margin: 40px 10px;
@@ -32,10 +49,12 @@ const CardLink = styled.a`
 
 const SCard = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 50px;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  width: 350px;
+  width: 500px;
   height: 200px;
   background: rgba(0, 0, 0, 0.6);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05),
@@ -52,7 +71,8 @@ const SCard = styled.div`
 `;
 
 const CardImage = styled.img`
-  width: 100px;
+  width: 400px;
+  max-height: 150px;
 `;
 
 const CardText = styled.p`
@@ -65,58 +85,51 @@ const CardText = styled.p`
 const ServicesSection = () => {
   const services = [
     {
-      href: "subjects/computer_courses.html",
-      imgSrc: "images/icon/computer-courses.png",
-      text: "Free Online Computer Courses",
+      href: '#',
+      imgSrc: ImgAqp,
+      text: "Museo virtual de Arequipa",
     },
     {
-      href: "subjects/jee.html",
-      imgSrc: "images/icon/brainbooster.png",
-      text: "Building Concepts for Competitive Exams",
+      href: '#',
+      imgSrc: ImgSistemas,
+      text: "Infraestructura de la EPIS",
     },
     {
-      href: "#",
-      imgSrc: "images/icon/online-tutorials.png",
-      text: "Online Video Lectures",
+      href: '#',
+      imgSrc: DisImage,
+      text: "Diseños innovadores",
     },
     {
-      href: "subjects/jee.html#sample_papers",
-      imgSrc: "images/icon/papers.jpg",
-      text: "Sample Papers of Various Competitive Exams",
+      href: '#',
+      imgSrc: ImnImage,
+      text: "Experiencias inmersivas",
     },
     {
-      href: "#",
-      imgSrc: "images/icon/p3.png",
-      text: "Performance and Ranking Report",
+      href: '#',
+      imgSrc: UniImage,
+      text: "Museo de arte universal",
     },
     {
-      href: "#contactus_section",
-      imgSrc: "images/icon/discussion.png",
-      text: "Discussion with Our Tutors & Mentors",
+      href: '#',
+      imgSrc: MunImage,
+      text: "Plaza de armas",
     },
-    {
-      href: "subjects/quiz.html",
-      imgSrc: "images/icon/q1.png",
-      text: "Daily Brain Teasing Questions to Improve IQ",
-    },
-    {
-      href: "#contactus_section",
-      imgSrc: "images/icon/help.png",
-      text: "24x7 Online Support",
-    },
+
   ];
 
   return (
     <ServiceSwipe id="services_section">
-      <SectionTitle>Services</SectionTitle>
-      {services.map((service, index) => (
-        <CardLink href={service.href} key={index}>
-          <SCard>
-            <CardImage src={service.imgSrc} alt={service.text} />
-            <CardText>{service.text}</CardText>
-          </SCard>
-        </CardLink>
-      ))}
+      <SectionTitle>Servicios</SectionTitle>
+      <Container>
+        {services.map((service, index) => (
+          <CardLink href={service.href} key={index}>
+            <SCard>
+              <CardImage src={service.imgSrc} alt={service.text} />
+              <CardText>{service.text}</CardText>
+            </SCard>
+          </CardLink>
+        ))}
+      </Container>
     </ServiceSwipe>
   );
 };

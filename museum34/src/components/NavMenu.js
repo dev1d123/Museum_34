@@ -46,11 +46,10 @@ const NavMenu = () => {
             </Link>
         </li>
         <li>
-            <a href="#educacion">
-                <img className = "iconImg"  src={education}></img>  <br></br>
-                Educación
-            </a>
-            
+            <Link to="/educacion">
+                <img className = "iconImg" src={education}></img> <br></br>
+                Educacion
+            </Link>            
         </li>
         <li>
             <Link to="/investigacion">

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Estilos principales
 const ContactSection = styled.div`
   position: relative;
   padding: 100px 0;
@@ -33,7 +32,7 @@ const ContactWrapper = styled.div`
 `;
 
 const ContactCard = styled.div`
-  width: 400px;
+  width: 500px;
   height: 500px;
   border-radius: 10px;
   background: #fff;
@@ -102,17 +101,17 @@ const Required = styled.span`
 const ContactUs = () => {
   return (
     <ContactSection id="contactus_section">
-      <SectionTitle>Contact Us</SectionTitle>
+      <SectionTitle>Contactanos</SectionTitle>
       <SkewBackground />
       <ContactWrapper>
         <ContactCard>
           <Form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
             <div>
               <Label>
-                First Name <Required>*</Required>
+                Nombres <Required>*</Required>
               </Label>
-              <Label style={{ marginLeft: "185px" }}>
-                Last Name <Required>*</Required>
+              <Label style={{ marginLeft: "150px" }}>
+                Apellidos <Required>*</Required>
               </Label>
               <div style={{ display: "flex", gap: "10px" }}>
                 <Input type="text" name="fname" required />
@@ -124,12 +123,12 @@ const ContactUs = () => {
             </Label>
             <Input type="email" name="email" required />
             <Label>
-              Message <Required>*</Required>
+              Mensaje <Required>*</Required>
             </Label>
             <Input type="text" name="message" required />
-            <Label>Additional Details</Label>
+            <Label>Detalles adicionales</Label>
             <TextArea name="additional" />
-            <SubmitButton type="submit">Send Message</SubmitButton>
+            <SubmitButton type="submit">Enviar Mensaje</SubmitButton>
           </Form>
         </ContactCard>
       </ContactWrapper>
