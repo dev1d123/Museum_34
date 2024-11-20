@@ -13,6 +13,8 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "aframe": "^1.6.0",
+    "aframe-react": "^4.4.0",
     "markdown-to-jsx": "^7.5.0",
     "museum34": "file:",
     "react": "^18.3.1",
