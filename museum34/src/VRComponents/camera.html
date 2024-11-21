@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamWeb - Reconocimiento de Manos</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px; 
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; 
+        }
+        #video {
+            width: 100%;
+            height: 400px;
+            border: 1px solid black; 
+            object-fit: cover;
+        }
+        button {
+            margin-top: 10px; 
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Captura de cámara web</h1>
+    <div class="container">    
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas"></canvas>
+        <button id="toggleButton">Activar Cámara</button> 
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>
