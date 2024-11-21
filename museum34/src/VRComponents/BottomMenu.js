@@ -43,9 +43,9 @@ const MenuButton = styled.button`
 const BottomMenu = () => {
   return (
     <BottomMenuContainer>
-      <MenuButton>Home</MenuButton>
-      <MenuButton>Settings</MenuButton>
-      <MenuButton>Profile</MenuButton>
+      <MenuButton>Modo visor</MenuButton>
+      <MenuButton>Configuraciones</MenuButton>
+      <MenuButton>Perfil</MenuButton>
     </BottomMenuContainer>
   );
 };

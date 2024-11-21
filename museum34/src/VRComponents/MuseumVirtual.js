@@ -12,9 +12,9 @@ import main from './main.js';
 
 import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 
-import script from './script.js';
 
 import "aframe";
+import CamPos from "./CamPos.js";
 
 const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
@@ -25,9 +25,9 @@ const MuseumVirtual = () => {
 
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
-      <BottomMenu>
-        
-      </BottomMenu>
+      {isLoaded && <BottomMenu />} {}
+      {isLoaded && <CamPos />} {}
+
       {!isLoaded ? (
         // Pantalla inicial con botón para cargar la escena
 
@@ -109,7 +109,7 @@ const MuseumVirtual = () => {
             intensity="1"
           ></a-light>
 
-          <a-entity id="player" camera look-controls wasd-controls="acceleration: 65" run-controls jump-controls position="0 1.6 0"></a-entity>
+          <a-entity id="player" camera look-controls wasd-controls="acceleration: 35" run-controls jump-controls position="0 1.6 0"></a-entity>
 
         </Scene>
       )}
