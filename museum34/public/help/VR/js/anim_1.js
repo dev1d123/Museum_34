@@ -1,12 +1,3 @@
-/* global AFRAME, THREE */
-var baseSpot; // Declaración de baseSpot
-var spot;     // Declaración de spot
-
-import "aframe";
-
-
-console.log("ANIM1 -> CARGADO!");
-
 AFRAME.registerComponent('anim_1', {
     init: function () {
         this.pivot = new THREE.Object3D();
@@ -15,8 +6,8 @@ AFRAME.registerComponent('anim_1', {
         this.time = 0;
 
 
-		var geometry = new THREE.SphereGeometry(spotScale, 4, 2);
-		//material = new THREE.MeshPhongMaterial( {color: 0xFFFFFF, envMap: envMap} ),
+		var geometry = new THREE.SphereBufferGeometry(spotScale, 4, 2),
+			//material = new THREE.MeshPhongMaterial( {color: 0xFFFFFF, envMap: envMap} ),
 			material = new THREE.MeshLambertMaterial( {color: 0xFFFFFF} ),
 			baseSpot = new THREE.Mesh( geometry, material ),
 			spot;

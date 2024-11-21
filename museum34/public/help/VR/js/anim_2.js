@@ -1,3 +1,5 @@
+console.log("ANIM2 -> CARGADO!");
+
 
 AFRAME.registerComponent('anim_2', {
     init: function () {
