@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import {Entity, Scene} from 'aframe-react'
+import BottomMenu from './BottomMenu.js';
+
 import audio1 from './audio/アドリブ-_instrumental_.ogg';
 import skyTexture from './textures/sky_sphere.jpg';
 import floor from './models/floor.obj';
 import floorTexture from './textures/floor.jpg';
 import floorNormalTexture from './textures/floor_normal.jpg';
 import mainMuseum from './models/main-museum.glb';
+import main from './main.js';
+
+import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
+
+import script from './script.js';
 
 import "aframe";
 
@@ -18,8 +25,12 @@ const MuseumVirtual = () => {
 
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
+      <BottomMenu>
+        
+      </BottomMenu>
       {!isLoaded ? (
         // Pantalla inicial con botón para cargar la escena
+
         <div
           style={{
             display: "flex",
@@ -47,8 +58,10 @@ const MuseumVirtual = () => {
             Iniciar Experiencia
           </button>
         </div>
+
       ) : (
         // La escena se carga después de hacer clic
+
         <Scene>
           <a-assets>
             <a-mixin id="checkpoint"></a-mixin>
@@ -95,6 +108,9 @@ const MuseumVirtual = () => {
             color="#FFF"
             intensity="1"
           ></a-light>
+
+          <a-entity id="player" camera look-controls wasd-controls="acceleration: 65" run-controls jump-controls position="0 1.6 0"></a-entity>
+
         </Scene>
       )}
     </div>

@@ -1,4 +1,8 @@
+import * as handpose from "@tensorflow-models/handpose"; 
+import * as tf from "@tensorflow/tfjs"; 
+
 console.log("script.js cargado");
+/*
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const toggleButton = document.getElementById("toggleButton");
@@ -100,3 +104,5 @@ async function toggleCamera() {
 }
 
 toggleButton.addEventListener("click", toggleCamera);
+
+*/

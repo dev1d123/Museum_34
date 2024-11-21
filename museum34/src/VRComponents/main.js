@@ -1,41 +1,6 @@
-var startExperienteBtn = document.getElementById('start_experience');
-var bottomNav = document.getElementById('bottom-menu');
-var camContainer = document.getElementById('camPos');
-var exitBtn = document.getElementById('exit');
-var isCamVisible = false;
-var visorButtom = document.getElementById('visor-button');
+/* global AFRAME */
 
-startExperienteBtn.onclick = function() {
-    document.getElementById('main-menu').style.display = 'none';
-    bottomNav.style.display = 'flex'; 
-    setTimeout(function() {
-        bottomNav.classList.add('show');
-    }, 10);
-    
-    document.getElementsByTagName('a-scene')[0].style.zIndex = 'auto';
-}
-
-exitBtn.onclick = function() {
-    window.close(); 
-}
-
-visorButtom.onclick = function(){
-    if(isCamVisible){
-        camContainer.style.display = 'none'; 
-
-    }else{
-        console.log("activing");
-        camContainer.style.display = 'flex'; 
-    
-        setTimeout(function() {
-            camContainer.classList.add('show'); 
-        }, 10);
-        
-        document.getElementsByTagName('a-scene')[0].style.zIndex = 'auto';
-    }
-    isCamVisible = !isCamVisible;
-
-}
+import "aframe";
 
 //funcion para que el personaje corra con la tecla shift
 AFRAME.registerComponent('run-controls', {
@@ -52,6 +17,7 @@ AFRAME.registerComponent('run-controls', {
         // Si se presiona la tecla shift
         window.addEventListener('keydown', function (event) {
         if (event.key === 'Shift') {
+            console.log("press shift");
             el.setAttribute('wasd-controls', 'acceleration', data.runSpeed);
         }
         });
@@ -102,16 +68,3 @@ AFRAME.registerComponent('jump-controls', {
     }
 });
 
-const loader = new THREE.GLTFLoader();
-loader.load('models/genshin_impact_-_furina.glb', function (gltf) {
-    scene.add(gltf.scene);
-    renderer.render(scene, camera);
-});
-
-camera.position.z = 5;
-
-function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-}
-animate();
