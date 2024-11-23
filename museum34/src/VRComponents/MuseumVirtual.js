@@ -15,6 +15,7 @@ import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 
 import "aframe";
 import CamPos from "./CamPos.js";
+import { div } from "@tensorflow/tfjs";
 
 const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
@@ -61,7 +62,7 @@ const MuseumVirtual = () => {
 
       ) : (
         // La escena se carga después de hacer clic
-
+        
         <Scene>
           <a-assets>
             <a-mixin id="checkpoint"></a-mixin>
