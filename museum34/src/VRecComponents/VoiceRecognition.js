@@ -12,13 +12,14 @@ const VoiceRecognition = () => {
 
         recognition.continuous = true;
         recognition.interimResults = true;
-        recognition.lang = "en-US";
+        recognition.lang = "es-US";
 
         recognition.onresult = (event) => {
             let finalTranscript = "";
             for (let i = 0; i < event.results.length; i++) {
                 finalTranscript += event.results[i][0].transcript;
             }
+            console.log(finalTranscript);
             setTranscript(finalTranscript);
         };
 
