@@ -1,56 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ModalInformation.css";
+import data from "./data.json";
 
-const Modal3D = () => {
-  // Definimos el estado interno para activar/desactivar el modal
-  const [isOpen, setIsOpen] = useState(false);
+const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
+  const [modelData, setModelData] = useState({
+    title: "Default Model",
+    description: "Default description for the model.",
+    path: "https://example.com/default_model",
+  });
 
-  // Valores por defecto para el título, descripción y modelo 3D
-  const defaultTitle = "B33 - Pollinator Robot";
-  const defaultDescription =
-    "This is a test for the B33 Pollinator Robot model. It's designed for interaction and visualization purposes.";
-  const defaultModelSrc =
-    "https://sketchfab.com/models/9112fdb300ac471dac8c221e89103147/embed";
+  useEffect(() => {
+    // Busca el modelo basado en el ID recibido o usa valores por defecto
+    const foundModel = data.find((item) => item.id === id);
+    setModelData(foundModel || modelData);
+  }, [id]);
+
+  if (!isOpen) return null; 
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      {/* Botón para abrir el modal */}
-      <button
-        onClick={() => setIsOpen(true)}
-        style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
-      >
-        Open 3D Modal
-      </button>
-
-      {/* Si el modal está abierto, se muestra */}
-      {isOpen && (
-        <div className="modal-overlay">
-          <div className="modal-container">
-            <button className="close-btn" onClick={() => setIsOpen(false)}>
-              ×
-            </button>
-            <div className="modal-content">
-              {/* Modelo 3D en el lado izquierdo */}
-              <div className="model-viewer">
-                <iframe
-                  title={defaultTitle}
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; xr-spatial-tracking"
-                  mozallowfullscreen="true"
-                  webkitallowfullscreen="true"
-                  src={defaultModelSrc}
-                  style={{ width: "100%", height: "100%" }}
-                ></iframe>
-              </div>
-              {/* Descripción en el lado derecho */}
-              <div className="model-description">
-                <h2>{defaultTitle}</h2>
-                <p>{defaultDescription}</p>
-              </div>
-            </div>
+    <div className="modal-overlay">
+      <div className="modal-container">
+        <button className="close-btn" onClick={onClose}>
+          ×
+        </button>
+        <div className="modal-content">
+          {/* Modelo 3D en el lado izquierdo */}
+          <div className="model-viewer">
+            <iframe
+              title={modelData.title}
+              frameBorder="0"
+              allow="autoplay; fullscreen; xr-spatial-tracking"
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              src={modelData.path}
+              style={{ width: "100%", height: "100%" }}
+            ></iframe>
+          </div>
+          {/* Descripción en el lado derecho */}
+          <div className="model-description">
+            <h2>{modelData.title}</h2>
+            <p>{modelData.description}</p>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

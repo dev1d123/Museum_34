@@ -1,21 +1,33 @@
 [
     {
       "id": 0,
-      "model": "volcan_misti.glb",
-      "title": "Volcán Misti",
-      "body": "El Volcán Misti es un icónico volcán en Perú. Este modelo 3D muestra su topografía detallada y su majestuosidad natural."
+      "title": "B33 - Pollinator Robot",
+      "description": "This is a test for the B33 Pollinator Robot model. It's designed for interaction and visualization purposes.",
+      "path": "https://sketchfab.com/models/9112fdb300ac471dac8c221e89103147/embed"
     },
     {
       "id": 1,
-      "model": "spaceship.glb",
-      "title": "Nave Espacial",
-      "body": "Modelo conceptual de una nave espacial. Ideal para proyectos de ciencia ficción."
+      "title": "Spaceship Concept",
+      "description": "A futuristic spaceship designed for intergalactic travel.",
+      "path": "https://example.com/models/spaceship"
     },
     {
       "id": 2,
-      "model": "robot.glb",
-      "title": "Robot Industrial",
-      "body": "Modelo 3D de un robot diseñado para trabajos industriales. Incluye detalles mecánicos avanzados."
+      "title": "Industrial Robot",
+      "description": "A highly detailed industrial robot model for factory automation.",
+      "path": "https://example.com/models/industrial_robot"
+    },
+    {
+      "id": 3,
+      "title": "Volcano 3D Model",
+      "description": "A 3D representation of a volcano for geological studies.",
+      "path": "https://example.com/models/volcano"
+    },
+    {
+      "id": 4,
+      "title": "Modern House",
+      "description": "A modern house designed for architectural visualization.",
+      "path": "https://example.com/models/modern_house"
     }
-]
+  ]
   
