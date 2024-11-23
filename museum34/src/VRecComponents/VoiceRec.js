@@ -1,7 +1,9 @@
-import React, { useEffect, useImperativeHandle, useRef } from "react";
+import React, { useEffect, useImperativeHandle, useRef, useState } from "react";
 
 const VoiceRec = React.forwardRef((props, ref) => {
+    const { onTranscriptUpdate } = props; 
     const recognitionRef = useRef(null);
+    const [transcript, setTranscript] = useState("");
 
     useImperativeHandle(ref, () => ({
         startListening: () => {
@@ -30,7 +32,12 @@ const VoiceRec = React.forwardRef((props, ref) => {
                 for (let i = 0; i < event.results.length; i++) {
                     finalTranscript += event.results[i][0].transcript;
                 }
-                console.log(finalTranscript);
+
+                setTranscript(finalTranscript); 
+                if (onTranscriptUpdate) {
+                    onTranscriptUpdate(finalTranscript); 
+                }
+                
             };
 
             recognition.onerror = (event) => {
@@ -49,9 +56,9 @@ const VoiceRec = React.forwardRef((props, ref) => {
                 recognitionRef.current.stop();
             }
         };
-    }, []);
+    }, [onTranscriptUpdate]);
 
-    return null; // Sin interfaz visible
+    return null;
 });
 
 export default VoiceRec;

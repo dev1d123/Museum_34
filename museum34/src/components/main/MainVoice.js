@@ -6,39 +6,55 @@ import mic from '../../images/icons/mic.png';
 import nomic from '../../images/icons/nomic.png';
 
 const MainVoice = () => {
-  const [isListening, setIsListening] = useState(false);
-  const voiceRecRef = useRef(null);
+    const [transcript, setTranscript] = useState("");
+    const [isListening, setIsListening] = useState(false);
+    const voiceRecRef = useRef(null);
+
+    const handleTranscriptUpdate = (newTranscript) => {
+        setTranscript(newTranscript);
+
+        const words = newTranscript.split(" ");
+        const lastWord = words[words.length - 1];
 
 
-  const listenWaos = () =>{
+        if (lastWord === "abajo") {
+            window.scrollTo({
+                top: window.scrollY + 100,
+                behavior: 'smooth'
+            });
+        } else if (lastWord === "arriba") {
+            window.scrollTo({
+                top: window.scrollY - 100,
+                behavior: 'smooth'
+            });
+        }
 
-  }
-  setInterval(listenWaos, 1000);
-  
-  const toggleListening = () => {
-    setIsListening(!isListening);
+    };
 
-    if (voiceRecRef.current) {
-      if (!isListening) {
-        voiceRecRef.current.startListening(); 
-      } else {
-        voiceRecRef.current.stopListening(); 
-      }
-    }
-  };
+    const toggleListening = () => {
+        setIsListening(!isListening);
 
-  return (
-    <div>
-      <VoiceRec ref={voiceRecRef} />
+        if (voiceRecRef.current) {
+            if (!isListening) {
+                voiceRecRef.current.startListening();
+            } else {
+                voiceRecRef.current.stopListening();
+            }
+        }
+    };
 
-      <Button
-        className={isListening ? "listening" : "stopped"}
-        onClick={toggleListening}
-      >
-        <img src={isListening ? nomic : mic} alt="Mic Icon" />
-      </Button>
-    </div>
-  );
+    return (
+        <div>
+            <VoiceRec ref={voiceRecRef} onTranscriptUpdate={handleTranscriptUpdate} />
+
+            <Button
+                className={isListening ? "listening" : "stopped"}
+                onClick={toggleListening}
+            >
+                <img src={isListening ? nomic : mic} alt="Mic Icon" />
+            </Button>
+        </div>
+    );
 };
 
 export default MainVoice;
@@ -81,7 +97,6 @@ const Button = styled.button`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, background-color 0.3s ease;
 
-  /* Animaciones dinámicas */
   animation: ${(props) =>
     props.className === "listening" ? listenAnimation : stopListenAnimation}
     ${(props) => (props.className === "listening" ? "1s" : "0.5s")} infinite ease-in-out;
