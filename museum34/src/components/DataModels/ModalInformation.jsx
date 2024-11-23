@@ -42,7 +42,11 @@ const Modal3D = () => {
                   style={{ width: "100%", height: "100%" }}
                 ></iframe>
               </div>
-              
+              {/* Descripción en el lado derecho */}
+              <div className="model-description">
+                <h2>{defaultTitle}</h2>
+                <p>{defaultDescription}</p>
+              </div>
             </div>
           </div>
         </div>
