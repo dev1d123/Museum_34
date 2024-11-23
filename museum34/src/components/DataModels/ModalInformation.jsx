@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./ModalInformation.css";
 import data from "./data.json";
 import { EditCalendar } from "@mui/icons-material";
+import ThreeViewer from "./ThreeViewer";
+
 
 const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const [modelData, setModelData] = useState({
@@ -27,15 +29,7 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
         <div className="modal-content">
           {/* Modelo 3D en el lado izquierdo */}
           <div className="model-viewer">
-            <iframe
-              title={modelData.title}
-              frameBorder="0"
-              allow="autoplay; fullscreen; xr-spatial-tracking"
-              mozallowfullscreen="true"
-              webkitallowfullscreen="true"
-              src={modelData.path}
-              style={{ width: "100%", height: "100%" }}
-            ></iframe>
+            <ThreeViewer path={modelData.path} />
           </div>
           {/* Descripción en el lado derecho */}
           <div className="model-description">

@@ -12,14 +12,18 @@
   }
   
   .modal-container {
-    background: white;
-    width: 70%;
-    height: 70%;
+    background: rgb(235, 234, 234);
+    width: 90%;
+    max-width: 1200px; 
+    height: 90%;
+    max-height: 800px; 
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     position: relative;
+    overflow: hidden; /* Evita desbordes */
   }
+  
   
   .close-btn {
     position: absolute;
@@ -47,13 +51,21 @@
     flex: 2;
     background: #e0e0e0;
     border-right: 1px solid #ddd;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
+  
   
   .model-description {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
+  
   
   .model-description h2 {
     margin-bottom: 15px;
@@ -65,3 +77,6 @@
     line-height: 1.5;
     color: #333;
   }
+  
+  
+  

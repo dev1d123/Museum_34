@@ -47,11 +47,11 @@
         animate();
 
         function init() {
-            // Configurar escena
+            // Configurar escena.....
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0xffffff);
 
-            // Configurar cámara
+            // Configurar cámara.....
             const container = document.querySelector('.viewer-container');
             const aspect = container.clientWidth / container.clientHeight;
             camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
