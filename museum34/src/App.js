@@ -5,6 +5,9 @@ import Learn from './components/learn/Learn';
 import Investigacion from './components/investigacion/Investigacion';
 import MuseumVirtual from './VRComponents/MuseumVirtual.js';
 import VoiceRecognition from './VRecComponents/VoiceRecognition.js';
+
+import Hands from './VRecComponents/HandsRec.js';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
@@ -18,6 +21,10 @@ function App() {
 
         <Route path='/test' element={<MuseumVirtual></MuseumVirtual>}></Route>
         <Route path='/voice' element={<VoiceRecognition></VoiceRecognition>}></Route>
+        <Route
+          path="/hands"
+          element={<Hands></Hands>}
+        />
       </Routes>
     </Router>
       
