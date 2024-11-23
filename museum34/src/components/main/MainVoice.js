@@ -1,34 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import VoiceRecognition from "../../VRecComponents/VoiceRecognition";
+import VoiceRec from "../../VRecComponents/VoiceRec";
 
 import mic from '../../images/icons/mic.png';
 import nomic from '../../images/icons/nomic.png';
 
 const MainVoice = () => {
   const [isListening, setIsListening] = useState(false);
+  const voiceRecRef = useRef(null);
 
-  // Cambiar el estado del botón
+
+  const listenWaos = () =>{
+
+  }
+  setInterval(listenWaos, 1000);
+  
   const toggleListening = () => {
     setIsListening(!isListening);
+
+    if (voiceRecRef.current) {
+      if (!isListening) {
+        voiceRecRef.current.startListening(); 
+      } else {
+        voiceRecRef.current.stopListening(); 
+      }
+    }
   };
 
   return (
     <div>
+      <VoiceRec ref={voiceRecRef} />
 
-
-        <Button
+      <Button
         className={isListening ? "listening" : "stopped"}
         onClick={toggleListening}
-        >
+      >
         <img src={isListening ? nomic : mic} alt="Mic Icon" />
-        </Button>
+      </Button>
     </div>
   );
 };
 
 export default MainVoice;
-// Animaciones
+
 const listenAnimation = keyframes`
   0% {
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
@@ -52,6 +66,7 @@ const stopListenAnimation = keyframes`
     transform: rotate(0deg);
   }
 `;
+
 const Button = styled.button`
   position: sticky;
   bottom: 20px;
