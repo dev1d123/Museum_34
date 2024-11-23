@@ -14,6 +14,8 @@ function App() {
         <Route path='/colecciones' element={<Colecciones></Colecciones>}></Route>
         <Route path='/educacion' element={<Learn></Learn>}></Route>
         <Route path='/investigacion' element={<Investigacion></Investigacion>}></Route>
+        {/*<Route path='/donaciones' element={<Donacion></Donacion>}></Route>*/}
+
         <Route path='/test' element={<MuseumVirtual></MuseumVirtual>}></Route>
         <Route path='/voice' element={<VoiceRecognition></VoiceRecognition>}></Route>
       </Routes>

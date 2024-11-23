@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import VoiceRec from "../../VRecComponents/VoiceRec";
+import { useNavigate } from "react-router-dom";
 
 import mic from '../../images/icons/mic.png';
 import nomic from '../../images/icons/nomic.png';
@@ -9,26 +10,41 @@ const MainVoice = () => {
     const [transcript, setTranscript] = useState("");
     const [isListening, setIsListening] = useState(false);
     const voiceRecRef = useRef(null);
+    const [previousWordsLength, setPreviousWordsLength] = useState(0);
+    const navigate = useNavigate();
 
     const handleTranscriptUpdate = (newTranscript) => {
         setTranscript(newTranscript);
+        const words = newTranscript.trim().split(" ");
+        console.log(words);
+        if (words.length > previousWordsLength) {
+            recWord(words);
+            setPreviousWordsLength(words.length);
+        }
+    };
 
-        const words = newTranscript.split(" ");
-        const lastWord = words[words.length - 1];
-
+    const recWord = (words) => {
+        const lastWord = words[words.length - 1].toLowerCase();
 
         if (lastWord === "abajo") {
             window.scrollTo({
-                top: window.scrollY + 100,
+                top: window.scrollY + 130,
                 behavior: 'smooth'
             });
         } else if (lastWord === "arriba") {
             window.scrollTo({
-                top: window.scrollY - 100,
+                top: window.scrollY - 130,
                 behavior: 'smooth'
             });
+        } else if (lastWord === "colecciones") {
+            navigate("/colecciones");
+        } else if (lastWord === "educación") {
+            navigate("/educacion");
+        } else if (lastWord === "investigación") {
+            navigate("/investigacion");
+        } else if (lastWord === "donaciones") {
+            navigate("/donaciones");
         }
-
     };
 
     const toggleListening = () => {

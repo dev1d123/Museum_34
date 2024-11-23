@@ -25,18 +25,17 @@ const VoiceRec = React.forwardRef((props, ref) => {
 
             recognition.continuous = true;
             recognition.interimResults = true;
-            recognition.lang = "es-US";
+            recognition.lang = "es-PE";
 
             recognition.onresult = (event) => {
                 let finalTranscript = "";
                 for (let i = 0; i < event.results.length; i++) {
                     finalTranscript += event.results[i][0].transcript;
                 }
-
+                
                 setTranscript(finalTranscript); 
-                if (onTranscriptUpdate) {
-                    onTranscriptUpdate(finalTranscript); 
-                }
+                onTranscriptUpdate(finalTranscript); 
+                
                 
             };
 
