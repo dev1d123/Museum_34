@@ -18,8 +18,6 @@ function Main() {
       <ImgCar></ImgCar>
       <FooterPage></FooterPage>
       
-      {/* Aqui va ir el test para que salga el modal  */}
-
     </div>
     
   );
