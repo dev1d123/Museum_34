@@ -1,0 +1,21 @@
+[
+    {
+      "id": 0,
+      "model": "volcan_misti.glb",
+      "title": "Volcán Misti",
+      "body": "El Volcán Misti es un icónico volcán en Perú. Este modelo 3D muestra su topografía detallada y su majestuosidad natural."
+    },
+    {
+      "id": 1,
+      "model": "spaceship.glb",
+      "title": "Nave Espacial",
+      "body": "Modelo conceptual de una nave espacial. Ideal para proyectos de ciencia ficción."
+    },
+    {
+      "id": 2,
+      "model": "robot.glb",
+      "title": "Robot Industrial",
+      "body": "Modelo 3D de un robot diseñado para trabajos industriales. Incluye detalles mecánicos avanzados."
+    }
+]
+  
