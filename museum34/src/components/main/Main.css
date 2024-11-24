@@ -1,7 +1,17 @@
+.allContainer{
+    height: 100vh; 
+}
 .lgB{
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     align-items: center;
+}
+
+.buttonVoice{
+    position: sticky;
+    top: 10px;
+
+    margin: 10px;
 }

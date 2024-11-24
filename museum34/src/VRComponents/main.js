@@ -6,7 +6,7 @@ import "aframe";
 AFRAME.registerComponent('run-controls', {
     //definir propiedades del componente
     schema: {
-        normalSpeed: { type: 'number', default: 35 },
+        normalSpeed: { type: 'number', default: 10 },
         runSpeed: { type: 'number', default: 50 }
     },
 

@@ -5,6 +5,9 @@ import Learn from './components/learn/Learn';
 import Investigacion from './components/investigacion/Investigacion';
 import MuseumVirtual from './VRComponents/MuseumVirtual.js';
 import VoiceRecognition from './VRecComponents/VoiceRecognition.js';
+
+import Hands from './VRecComponents/HandsRec.js';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // test para ver el modal
@@ -18,11 +21,22 @@ function App() {
         <Route path='/colecciones' element={<Colecciones></Colecciones>}></Route>
         <Route path='/educacion' element={<Learn></Learn>}></Route>
         <Route path='/investigacion' element={<Investigacion></Investigacion>}></Route>
+        {/*<Route path='/donaciones' element={<Donacion></Donacion>}></Route>*/}
+
         <Route path='/test' element={<MuseumVirtual></MuseumVirtual>}></Route>
         <Route path='/voice' element={<VoiceRecognition></VoiceRecognition>}></Route>
+                                     
+                                     
+
 
         {/* Ruta para ver el modal */}
         <Route path='/modal' element={<Modal3D></Modal3D>}> </Route>
+
+        <Route
+          path="/hands"
+          element={<Hands></Hands>}
+        />
+
       </Routes>
     </Router>
       
