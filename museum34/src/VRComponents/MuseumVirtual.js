@@ -109,7 +109,7 @@ const MuseumVirtual = () => {
             intensity="1"
           ></a-light>
 
-          <a-entity id="player" camera look-controls wasd-controls="acceleration: 35" run-controls jump-controls position="0 1.6 0"></a-entity>
+          <a-entity id="player" camera look-controls="pointerLockEnabled: true" wasd-controls="acceleration: 35" run-controls jump-controls position="0 1.6 0"></a-entity>
 
         </Scene>
       )}
