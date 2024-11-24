@@ -6,8 +6,14 @@ import HandsRec from "../../VRecComponents/HandsRec";
 
 const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const [isHandsOpen, setIsHandsOpen] = useState(false);
-  const toggleHands = () => {
+  const handsRecRef = useRef(null); // Referencia para HandsRec
 
+  const toggleHands = () => {
+    if (isHandsOpen && handsRecRef.current) {
+      // Llamar a disableWebCam si se está desactivando la cámara
+      handsRecRef.current.disableWebCam();
+      
+    }
     setIsHandsOpen((prev) => !prev);
     console.log(isHandsOpen ? "Desactivando cámara..." : "Activando cámara...");
   };

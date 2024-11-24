@@ -8,6 +8,7 @@ import {
   drawConnectors,
   drawLandmarks,
 } from "@mediapipe/drawing_utils";
+import { counter } from "@fortawesome/fontawesome-svg-core";
 
 const Container = styled.div`
   font-family: "Roboto", sans-serif;
@@ -57,28 +58,20 @@ const HandsRec = forwardRef((props, ref) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const animationFrameIdRef = useRef(null);
+  const tracksRef = useRef([]);
 
-  // Destructor para liberar recursos
   const cleanUpResources = () => {
-
-    webcamRunningRef.current = false;
-
-    cancelAnimationFrame(animationFrameIdRef.current);
-
-    navigator.mediaDevices
-    .getUserMedia({ video: true }) // Obtener el flujo actual
-    .then((stream) => {
-      // Detén todas las pistas de video activas
-      const videoTracks = stream.getVideoTracks();
-      videoTracks.forEach((track) => {
-        track.stop(); // Llama al método stop de MediaStreamTrack
-        console.log("Video track stopped:", track.label);
-      });
-    })
-    .catch((error) => {
-      console.error("Error stopping webcam:", error);
+    console.log("Cleaning!", videoRef);
+    console.log("info: ", videoRef);
+    console.log("Tracks almacenados en tracksRef:", tracksRef.current);
+    tracksRef.current.forEach((track) => {
+      console.log("Deteniendo pista:", track);
+      track.stop();
     });
-
+    
+    
+    webcamRunningRef.current = false;
+    cancelAnimationFrame(animationFrameIdRef.current);
 
     if (handLandmarker) {
       handLandmarker.close();
@@ -124,6 +117,8 @@ const HandsRec = forwardRef((props, ref) => {
 
     // Destructor para limpiar cuando el componente se desmonte
     return () => {
+      console.log("Componente desmontado, limpiando recursos...");
+
       cleanUpResources();
     };
   }, []);
@@ -136,11 +131,14 @@ const HandsRec = forwardRef((props, ref) => {
   const enableWebcam = async (handLandmarkerInstance) => {
     try {
       console.log("Enabling webcam...");
-      const video = videoRef.current;
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      
       videoRef.current.srcObject = stream;  // Asignar la transmisión al video
+      
+   
+      tracksRef.current = stream.getTracks();
 
-      video.addEventListener("loadeddata", () => {
+      videoRef.current.addEventListener("loadeddata", () => {
         console.log("Webcam loaded. Starting detection...");
         webcamRunningRef.current = true;
         predictWebcam(handLandmarkerInstance);
