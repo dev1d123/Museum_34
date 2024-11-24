@@ -38,8 +38,10 @@ const MuseumVirtual = () => {
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
       {isLoaded && <BottomMenu />} {}
-      {isLoaded && <CamPos />} {}
 
+      {/* 
+      {isLoaded && <CamPos />} {}
+      */}
       {/* probando el modal */}
       {/* Modal para mostrar información */}
       <Modal3D isOpen={isModalOpen} id={selectedModelId} onClose={() => setIsModalOpen(false)} />
