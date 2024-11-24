@@ -1,0 +1,82 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-container {
+    background: rgb(235, 234, 234);
+    width: 90%;
+    max-width: 1200px; 
+    height: 90%;
+    max-height: 800px; 
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden; /* Evita desbordes */
+  }
+  
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    background: #ff1c1c;
+  }
+  
+  .modal-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .model-viewer {
+    flex: 2;
+    background: #e0e0e0;
+    border-right: 1px solid #ddd;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  
+  .model-description {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .model-description h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+  
+  .model-description p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  
+  

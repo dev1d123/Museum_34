@@ -23,7 +23,7 @@ function Main() {
       </div>
       <ImgCar></ImgCar>
       <FooterPage></FooterPage>
-
+      
     </div>
     
   );

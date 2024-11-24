@@ -1,0 +1,33 @@
+[
+    {
+      "id": 0,
+      "title": "B33 - Pollinator Robot",
+      "description": "This is a test for the B33 Pollinator Robot model. It's designed for interaction and visualization purposes.",
+      "path": "/models/volcan_misti.glb"
+    },
+    {
+      "id": 1,
+      "title": "Spaceship Concept",
+      "description": "A futuristic spaceship designed for intergalactic travel.",
+      "path": "https://example.com/models/spaceship"
+    },
+    {
+      "id": 2,
+      "title": "Industrial Robot",
+      "description": "A highly detailed industrial robot model for factory automation.",
+      "path": "https://example.com/models/industrial_robot"
+    },
+    {
+      "id": 3,
+      "title": "Volcano 3D Model",
+      "description": "A 3D representation of a volcano for geological studies.",
+      "path": "https://example.com/models/volcano"
+    },
+    {
+      "id": 4,
+      "title": "Modern House",
+      "description": "A modern house designed for architectural visualization.",
+      "path": "https://example.com/models/modern_house"
+    }
+  ]
+  

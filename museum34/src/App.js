@@ -9,6 +9,10 @@ import VoiceRecognition from './VRecComponents/VoiceRecognition.js';
 import Hands from './VRecComponents/HandsRec.js';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+// test para ver el modal
+import Modal3D from './components/DataModels/ModalInformation.jsx';
+
 function App() {
   return (
     <Router>
@@ -21,10 +25,18 @@ function App() {
 
         <Route path='/test' element={<MuseumVirtual></MuseumVirtual>}></Route>
         <Route path='/voice' element={<VoiceRecognition></VoiceRecognition>}></Route>
+                                     
+                                     
+
+
+        {/* Ruta para ver el modal */}
+        <Route path='/modal' element={<Modal3D></Modal3D>}> </Route>
+
         <Route
           path="/hands"
           element={<Hands></Hands>}
         />
+
       </Routes>
     </Router>
       

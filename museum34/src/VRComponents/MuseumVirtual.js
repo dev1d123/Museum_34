@@ -15,18 +15,65 @@ import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 
 import "aframe";
 import CamPos from "./CamPos.js";
+import { div } from "@tensorflow/tfjs";
+
+// import para mostrar el modal
+import Modal3D from "../components/DataModels/ModalInformation.jsx";
 
 const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
+
+  // Estados para controlar el modal
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado del modal
+  const [selectedModelId, setSelectedModelId] = useState(0); // ID del modelo
 
   const handleLoadScene = () => {
     setIsLoaded(true);
   };
 
+  // Funcion temporal para controlar el estado del modal
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
       {isLoaded && <BottomMenu />} {}
       {isLoaded && <CamPos />} {}
+
+      {/* probando el modal */}
+      {/* Modal para mostrar información */}
+      <Modal3D isOpen={isModalOpen} id={selectedModelId} onClose={() => setIsModalOpen(false)} />
+       {/* Botón superior para abrir/cerrar el modal */}
+       {isLoaded && (
+        <div
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            zIndex: 1000,
+            backgroundColor: "#fff",
+            padding: "10px",
+            borderRadius: "5px",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <button
+            onClick={toggleModal}
+            style={{
+              padding: "10px 20px",
+              fontSize: "14px",
+              backgroundColor: isModalOpen ? "#FF5C5C" : "#6CEEB5",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            {isModalOpen ? "Cerrar Modal" : "Abrir Modal"}
+          </button>
+        </div>
+      )}
+
 
       {!isLoaded ? (
         // Pantalla inicial con botón para cargar la escena
@@ -61,7 +108,7 @@ const MuseumVirtual = () => {
 
       ) : (
         // La escena se carga después de hacer clic
-
+        
         <Scene>
           <a-assets>
             <a-mixin id="checkpoint"></a-mixin>
