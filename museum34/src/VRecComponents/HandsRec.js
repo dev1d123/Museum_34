@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import styled from "styled-components";
 import {
   HandLandmarker,
@@ -16,50 +16,80 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw; /* Ancho completo del viewport */
-  height: 100vh; /* Altura completa del viewport */
-  background-color: #000; /* Fondo negro para resaltar el video */
+
+  background-color: #000; 
 `;
 
 const VideoView = styled.div`
   position: relative;
-  width: auto; /* Deja que el ancho se ajuste al contenido */
-  height: auto; /* Deja que el alto se ajuste al contenido */
-  max-width: 100%; /* Asegúrate de que no desborde el ancho del viewport */
-  max-height: 100%; /* Asegúrate de que no desborde el alto del viewport */
+  width: auto;
+  height: auto; 
+  max-width: 100%; 
+  max-height: 100%;
 `;
 
 const VideoContainer = styled.div`
   position: relative;
   display: inline-block;
-  width: auto; /* Ajusta automáticamente según el tamaño del video */
-  height: auto; /* Ajusta automáticamente según el tamaño del video */
+  width: auto;
+  height: auto; 
 `;
 
 const Video = styled.video`
   display: block;
-  max-width: 100%; /* Escala para que quepa dentro del viewport */
-  max-height: 100%; /* Escala para que quepa dentro del viewport */
-  transform: rotateY(180deg); /* Reflejo horizontal */
+  max-width: 100%; 
+  max-height: 100%; 
+  transform: rotateY(180deg); 
 `;
 
 const Canvas = styled.canvas`
   position: absolute;
   top: 0;
   left: 0;
-  max-width: 100%; /* Asegúrate de que el canvas no sea más grande que el video */
-  max-height: 100%; /* Asegúrate de que el canvas no sea más grande que el video */
-  transform: rotateY(180deg); /* Reflejo horizontal */
+  max-width: 100%; 
+  max-height: 100%;
+  transform: rotateY(180deg); 
 `;
 
-
-const HandsRec = () => {
+const HandsRec = forwardRef((props, ref) => {
   const [handLandmarker, setHandLandmarker] = useState(null);
   const webcamRunningRef = useRef(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const animationFrameIdRef = useRef(null);
 
+  // Destructor para liberar recursos
+  const cleanUpResources = () => {
+
+    webcamRunningRef.current = false;
+
+    cancelAnimationFrame(animationFrameIdRef.current);
+
+    navigator.mediaDevices
+    .getUserMedia({ video: true }) // Obtener el flujo actual
+    .then((stream) => {
+      // Detén todas las pistas de video activas
+      const videoTracks = stream.getVideoTracks();
+      videoTracks.forEach((track) => {
+        track.stop(); // Llama al método stop de MediaStreamTrack
+        console.log("Video track stopped:", track.label);
+      });
+    })
+    .catch((error) => {
+      console.error("Error stopping webcam:", error);
+    });
+
+
+    if (handLandmarker) {
+      handLandmarker.close();
+      console.log("HandLandmarker closed.");
+    }
+  };
+  useImperativeHandle(ref, () => ({
+    disableWebCam: () => {
+      cleanUpResources();
+    },
+  }));
   useEffect(() => {
     // Inicializa HandLandmarker
     const createHandLandmarker = async () => {
@@ -92,32 +122,29 @@ const HandsRec = () => {
 
     createHandLandmarker();
 
+    // Destructor para limpiar cuando el componente se desmonte
     return () => {
-      // Limpieza
-      webcamRunningRef.current = false;
-      cancelAnimationFrame(animationFrameIdRef.current);
-      const tracks = videoRef.current?.srcObject?.getTracks();
-      if (tracks) {
-        tracks.forEach((track) => track.stop());
-      }
-      if (handLandmarker) {
-        handLandmarker.close();
-        console.log("HandLandmarker closed.");
-      }
+      cleanUpResources();
     };
   }, []);
+
+
+  const disableWebCam = async () =>{
+    webcamRunningRef.current = false;
+  }
 
   const enableWebcam = async (handLandmarkerInstance) => {
     try {
       console.log("Enabling webcam...");
       const video = videoRef.current;
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      video.srcObject = stream;
+      videoRef.current.srcObject = stream;  // Asignar la transmisión al video
 
       video.addEventListener("loadeddata", () => {
         console.log("Webcam loaded. Starting detection...");
         webcamRunningRef.current = true;
         predictWebcam(handLandmarkerInstance);
+
       });
     } catch (error) {
       console.error("Error accessing webcam:", error);
@@ -183,6 +210,6 @@ const HandsRec = () => {
       </VideoView>
     </Container>
   );
-};
+});
 
 export default HandsRec;

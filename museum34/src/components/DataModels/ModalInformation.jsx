@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef} from "react";
 import "./ModalInformation.css";
 import data from "./data.json";
-import { EditCalendar } from "@mui/icons-material";
 import ThreeViewer from "./ThreeViewer";
-
+import HandsRec from "../../VRecComponents/HandsRec";
 
 const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
-  const [isHandsOpen, setIsHandsOpen] = useState(false); // Estado del modal
-
+  const [isHandsOpen, setIsHandsOpen] = useState(false);
   const toggleHands = () => {
-    setIsHandsOpen(!isHandsOpen);
-    console.log("activar camara!");
+
+    setIsHandsOpen((prev) => !prev);
+    console.log(isHandsOpen ? "Desactivando cámara..." : "Activando cámara...");
   };
 
 
@@ -26,7 +25,7 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     setModelData(foundModel || modelData);
   }, [id]);
 
-  if (!isOpen) return null; 
+  if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
@@ -38,7 +37,6 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
           {/* Modelo 3D en el lado izquierdo */}
           <div className="model-viewer">
             <ThreeViewer path={modelData.path} />
-            
           </div>
           {/* Descripción en el lado derecho */}
           <div className="model-description">
@@ -46,14 +44,17 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
               <h2>{modelData.title}</h2>
               <p>{modelData.description}</p>
             </div>
-            <div className="camera-space">
-              Espacio para la cámara
-            </div>
-            <button onClick={toggleHands}
-            >Activar camara!</button>
-          </div>
 
-          
+            <div className="camera-space">
+              {/* Renderiza HandsRec si isHandsOpen es true */}
+              {isHandsOpen && <HandsRec />}
+            </div>
+
+            {/* Botón para activar/desactivar cámara */}
+            <button onClick={toggleHands}>
+              {isHandsOpen ? "Desactivar cámara" : "Activar cámara"}
+            </button>
+          </div>
         </div>
       </div>
     </div>
