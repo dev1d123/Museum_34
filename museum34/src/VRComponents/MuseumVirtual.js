@@ -90,6 +90,8 @@ const MuseumVirtual = () => {
             <a-asset-item id="catedral" src={models.catedral}></a-asset-item>
             <a-asset-item id="donkey_sillar_polycam" src={models.donkey_sillar_polycam}></a-asset-item>
             <a-asset-item id="eagle_sillar_polycam" src={models.eagle_sillar_polycam}></a-asset-item>
+            <a-asset-item id="barroco_andino" src={models.barroco_andino}></a-asset-item>
+            
             
             <a-asset-item id="podiums-obj" src={models.podiumsModel}></a-asset-item>
             <img id="podiums-texture" src={models.podiumsTexture}></img>
@@ -118,6 +120,7 @@ const MuseumVirtual = () => {
           <Entity gltf-model="#catedral" position="10 1.8 -5" rotation="0 180 0" scale="3 3 3"static-body></Entity>
           <Entity gltf-model="#donkey_sillar_polycam" position="9 1.18 7" rotation="0 0 0" scale="3 3 3" static-body></Entity>
           <Entity gltf-model="#eagle_sillar_polycam" position="9.7 1.2 4" rotation="0 0 0" scale="2 2 2" static-body></Entity>
+          <Entity gltf-model="#barroco_andino" position="9.7 1.7 10" rotation="0 90 0" scale="0.6 0.6 0.6" static-body></Entity>
 
           {/* podiums */}
           <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="13 0 12.1" rotation="0 0 0" static-body></Entity>

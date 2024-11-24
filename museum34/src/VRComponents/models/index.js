@@ -18,6 +18,7 @@ import volcanPhoto2 from '../textures/volcan_2.jpg'
 import donkey_sillar_polycam from './donkey_sillar_polycam.glb';
 import eagle_sillar_polycam from './eagle_sillar_polycam.glb';
 import catedral from './catedral.glb';
+import barroco_andino from './barroco_andino.glb';
 
 
 
@@ -41,6 +42,7 @@ const models = {
   donkey_sillar_polycam,
   eagle_sillar_polycam,
   catedral,
+  barroco_andino,
   
 };
 
