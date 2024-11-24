@@ -158,6 +158,67 @@ const HandsRec = forwardRef((props, ref) => {
     [0, 17], // Muñeca
   ];
 
+  const processHandGestures = (landmarks) => {
+    /*
+Muñeca
+0: Muñeca (Wrist)
+Pulgar
+1: Base del pulgar (CMC - carpometacarpiana)
+2: Primera articulación (MCP - metacarpofalángica)
+3: Segunda articulación (IP - interfalángica)
+4: Punta del dedo (Tip)
+Índice
+5: Base del índice (MCP - metacarpofalángica)
+6: Primera articulación (PIP - proximal interfalángica)
+7: Segunda articulación (DIP - distal interfalángica)
+8: Punta del dedo (Tip)
+Dedo medio
+9: Base del dedo medio (MCP - metacarpofalángica)
+10: Primera articulación (PIP - proximal interfalángica)
+11: Segunda articulación (DIP - distal interfalángica)
+12: Punta del dedo (Tip)
+Anular
+13: Base del anular (MCP - metacarpofalángica)
+14: Primera articulación (PIP - proximal interfalángica)
+15: Segunda articulación (DIP - distal interfalángica)
+16: Punta del dedo (Tip)
+Meñique
+17: Base del meñique (MCP - metacarpofalángica)
+18: Primera articulación (PIP - proximal interfalángica)
+19: Segunda articulación (DIP - distal interfalángica)
+20: Punta del dedo (Tip)
+
+    */
+    if (!landmarks || landmarks.length === 0) {
+      console.log("No landmarks detected.");
+      return;
+    }
+
+    const fingers = {
+      thumb: landmarks[4].x < landmarks[2].x, // Pulgar más "adentro"
+      index: landmarks[8].y > landmarks[6].y, // Índice doblado
+      middle: landmarks[12].y > landmarks[10].y, // Medio doblado
+      ring: landmarks[16].y > landmarks[14].y, // Anular doblado
+      pinky: landmarks[20].y > landmarks[18].y, // Meñique doblado
+    };
+
+    const isGrabbing =
+      fingers.thumb &&
+      fingers.index &&
+      fingers.middle &&
+      fingers.ring &&
+      fingers.pinky;
+
+    if (isGrabbing) {
+      console.log("Gesto detectado: AGARRE (puño cerrado)");
+    } else {
+      console.log("La mano no está en posición de agarre.");
+    }
+   
+  };
+  
+
+
   const predictWebcam = (handLandmarkerInstance) => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -188,7 +249,14 @@ const HandsRec = forwardRef((props, ref) => {
             drawLandmarks(ctx, landmarks, { color: "#FF0000", lineWidth: 2 });
           });
 
-          console.log("Landmarks drawn:", results.landmarks);
+          if (results.landmarks.length > 0) {
+            console.log("imprimiendo!!!");
+            console.log("res: ", results.landmarks[0][8]);
+            processHandGestures(results.landmarks[0]);
+          }else{
+            console.log("no hay nada");
+          }
+          //console.clear()
         }
       }
 

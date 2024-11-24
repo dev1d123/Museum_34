@@ -47,6 +47,7 @@ const ThreeViewer = ({ path }) => {
     );
 
     // Controles para rotación y zoom
+    
     let isDragging = false;
     let previousMousePosition = { x: 0, y: 0 };
 
