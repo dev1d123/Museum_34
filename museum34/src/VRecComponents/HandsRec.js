@@ -158,7 +158,34 @@ const HandsRec = forwardRef((props, ref) => {
     [0, 17], // Muñeca
   ];
 
+  const determineHandSide = (landmarks) => {
+    if (!landmarks || landmarks.length === 0) {
+      console.log("No landmarks detected.");
+      return;
+    }
+  
+    const wrist = landmarks[0];
+    const thumbTip = landmarks[4];
+  
+    // Determinar mano según la posición del pulgar
+    const isRightHand = thumbTip.x > wrist.x;
+    const isLeftHand = thumbTip.x < wrist.x;
+  
+    if (isRightHand) {
+      console.log("Es la mano derecha.");
+      return "derecha";
+    } else if (isLeftHand) {
+      console.log("Es la mano izquierda.");
+      return "izquierda";
+    } else {
+      console.log("No se pudo determinar la mano.");
+      return "desconocida";
+    }
+  };
+
   const processHandGestures = (landmarks) => {
+    var handSide = determineHandSide(landmarks);
+    
     /*
 Muñeca
 0: Muñeca (Wrist)
@@ -189,32 +216,38 @@ Meñique
 20: Punta del dedo (Tip)
 
     */
-    if (!landmarks || landmarks.length === 0) {
-      console.log("No landmarks detected.");
-      return;
-    }
+    const threshold = 0.4; // Ajusta este valor según sea necesario (valores más pequeños = más cerca de la muñeca)
 
-    const fingers = {
-      thumb: landmarks[4].x < landmarks[2].x, // Pulgar más "adentro"
-      index: landmarks[8].y > landmarks[6].y, // Índice doblado
-      middle: landmarks[12].y > landmarks[10].y, // Medio doblado
-      ring: landmarks[16].y > landmarks[14].y, // Anular doblado
-      pinky: landmarks[20].y > landmarks[18].y, // Meñique doblado
+    // Función para calcular la distancia entre dos puntos
+    const calculateDistance = (x1, y1, x2, y2) => {
+      return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     };
 
+    // Calcular las distancias de cada punta de los dedos al landmark[0] (muñeca)
+    const distances = {
+      thumb: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[4].x, landmarks[4].y),
+      index: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[8].x, landmarks[8].y),
+      middle: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[12].x, landmarks[12].y),
+      ring: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[16].x, landmarks[16].y),
+      pinky: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[20].x, landmarks[20].y),
+    };
+
+    // Determinar si la mano está cerrada (agarre)
     const isGrabbing =
-      fingers.thumb &&
-      fingers.index &&
-      fingers.middle &&
-      fingers.ring &&
-      fingers.pinky;
+      distances.thumb < threshold &&
+      distances.index < threshold &&
+      distances.middle < threshold &&
+      distances.ring < threshold &&
+      distances.pinky < threshold;
 
     if (isGrabbing) {
       console.log("Gesto detectado: AGARRE (puño cerrado)");
     } else {
       console.log("La mano no está en posición de agarre.");
     }
-   
+
+    console.log("Distancias de los dedos a la muñeca:", distances);
+      
   };
   
 
