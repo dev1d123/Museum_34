@@ -4,6 +4,7 @@ import data from "./data.json";
 import { EditCalendar } from "@mui/icons-material";
 import ThreeViewer from "./ThreeViewer";
 
+import IASpeak from "./IASpeak";
 
 const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const [modelData, setModelData] = useState({
@@ -35,6 +36,9 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
           <div className="model-description">
             <h2>{modelData.title}</h2>
             <p>{modelData.description}</p>
+            
+            <IASpeak className="btnLeer" title={modelData.title} description={modelData.description}/>
+
           </div>
         </div>
       </div>
