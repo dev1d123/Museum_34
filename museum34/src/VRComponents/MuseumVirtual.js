@@ -162,7 +162,6 @@ const MuseumVirtual = () => {
             intensity="1"
           ></a-light>
 
-          {/* Entidad del jugador que dispara el sonido al moverse */}
           <a-entity
             id="player"
             camera
