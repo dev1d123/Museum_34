@@ -9,6 +9,7 @@ import floorTexture from "./textures/floor.jpg";
 import floorNormalTexture from "./textures/floor_normal.jpg";
 import mainMuseum from "./models/main-museum.glb";
 import Modal3D from "../components/DataModels/ModalInformation.jsx";
+import main from "./main.js";
 import "aframe";
 
 
@@ -90,7 +91,35 @@ const MuseumVirtual = () => {
         id={0} // Eliminé el uso de selectedModelId porque no se está usando
         onClose={() => setIsModalOpen(false)}
       />
-
+{isLoaded && (
+        <div
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            zIndex: 1000,
+            backgroundColor: "#fff",
+            padding: "10px",
+            borderRadius: "5px",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <button
+            onClick={toggleModal}
+            style={{
+              padding: "10px 20px",
+              fontSize: "14px",
+              backgroundColor: isModalOpen ? "#FF5C5C" : "#6CEEB5",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            {isModalOpen ? "Cerrar Modal" : "Abrir Modal"}
+          </button>
+        </div>
+      )}
       {!isLoaded ? (
         <div
           style={{
