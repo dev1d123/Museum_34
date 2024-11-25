@@ -19,6 +19,8 @@ import donkey_sillar_polycam from './donkey_sillar_polycam.glb';
 import eagle_sillar_polycam from './eagle_sillar_polycam.glb';
 import catedral from './catedral.glb';
 import barroco_andino from './barroco_andino.glb';
+import sillar_plycam_1 from './sillar_plycam_1.glb';
+
 
 
 
@@ -43,6 +45,7 @@ const models = {
   eagle_sillar_polycam,
   catedral,
   barroco_andino,
+  sillar_plycam_1,
   
 };
 
