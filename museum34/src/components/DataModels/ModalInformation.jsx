@@ -37,7 +37,7 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
             <h2>{modelData.title}</h2>
             <p>{modelData.description}</p>
             
-            <IASpeak className="btnLeer" title={modelData.title} description={modelData.description}/>
+            <IASpeak className="btn-leer" title={modelData.title} description={modelData.description}/>
 
           </div>
         </div>
