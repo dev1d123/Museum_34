@@ -183,7 +183,7 @@ const MuseumVirtual = () => {
           <Entity light="type: directional; color: #FFF; intensity: 0.5" position="2 20 0"></Entity>
           <Entity light="type: ambient; color: #FFF"></Entity>
 
-          <a-box position="0 1 -5" color="red"></a-box>
+          <a-box position="0 1 -5" color="red" dynamic-body></a-box>
           <a-light
             type="directional"
             position="2 4 -3"
@@ -199,6 +199,7 @@ const MuseumVirtual = () => {
             run-controls
             jump-controls
             position="0 1.6 0"
+            dynamic-body
             step-sound
           ></a-entity>
         </Scene>

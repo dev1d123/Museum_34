@@ -25,6 +25,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aframe": "^1.6.0",
+    "aframe-physics-system": "^4.0.2",
     "aframe-react": "^4.4.0",
     "fingerpose": "^0.1.0",
     "markdown-to-jsx": "^7.5.0",
@@ -62,5 +63,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "worker-plugin": "^5.0.1"
   }
 }

@@ -187,43 +187,41 @@ const HandsRec = forwardRef((props, ref) => {
     var handSide = determineHandSide(landmarks);
     
     /*
-Muñeca
-0: Muñeca (Wrist)
-Pulgar
-1: Base del pulgar (CMC - carpometacarpiana)
-2: Primera articulación (MCP - metacarpofalángica)
-3: Segunda articulación (IP - interfalángica)
-4: Punta del dedo (Tip)
-Índice
-5: Base del índice (MCP - metacarpofalángica)
-6: Primera articulación (PIP - proximal interfalángica)
-7: Segunda articulación (DIP - distal interfalángica)
-8: Punta del dedo (Tip)
-Dedo medio
-9: Base del dedo medio (MCP - metacarpofalángica)
-10: Primera articulación (PIP - proximal interfalángica)
-11: Segunda articulación (DIP - distal interfalángica)
-12: Punta del dedo (Tip)
-Anular
-13: Base del anular (MCP - metacarpofalángica)
-14: Primera articulación (PIP - proximal interfalángica)
-15: Segunda articulación (DIP - distal interfalángica)
-16: Punta del dedo (Tip)
-Meñique
-17: Base del meñique (MCP - metacarpofalángica)
-18: Primera articulación (PIP - proximal interfalángica)
-19: Segunda articulación (DIP - distal interfalángica)
-20: Punta del dedo (Tip)
+    Muñeca
+    0: Muñeca (Wrist)
+    Pulgar
+    1: Base del pulgar (CMC - carpometacarpiana)
+    2: Primera articulación (MCP - metacarpofalángica)
+    3: Segunda articulación (IP - interfalángica)
+    4: Punta del dedo (Tip)
+    Índice
+    5: Base del índice (MCP - metacarpofalángica)
+    6: Primera articulación (PIP - proximal interfalángica)
+    7: Segunda articulación (DIP - distal interfalángica)
+    8: Punta del dedo (Tip)
+    Dedo medio
+    9: Base del dedo medio (MCP - metacarpofalángica)
+    10: Primera articulación (PIP - proximal interfalángica)
+    11: Segunda articulación (DIP - distal interfalángica)
+    12: Punta del dedo (Tip)
+    Anular
+    13: Base del anular (MCP - metacarpofalángica)
+    14: Primera articulación (PIP - proximal interfalángica)
+    15: Segunda articulación (DIP - distal interfalángica)
+    16: Punta del dedo (Tip)
+    Meñique
+    17: Base del meñique (MCP - metacarpofalángica)
+    18: Primera articulación (PIP - proximal interfalángica)
+    19: Segunda articulación (DIP - distal interfalángica)
+    20: Punta del dedo (Tip)
 
     */
-    const threshold = 0.4; // Ajusta este valor según sea necesario (valores más pequeños = más cerca de la muñeca)
+    const threshold = 0.4; //umbral de distancia
 
-    // Función para calcular la distancia entre dos puntos
     const calculateDistance = (x1, y1, x2, y2) => {
       return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     };
 
-    // Calcular las distancias de cada punta de los dedos al landmark[0] (muñeca)
     const distances = {
       thumb: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[4].x, landmarks[4].y),
       index: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[8].x, landmarks[8].y),
@@ -232,7 +230,6 @@ Meñique
       pinky: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[20].x, landmarks[20].y),
     };
 
-    // Determinar si la mano está cerrada (agarre)
     const isGrabbing =
       distances.thumb < threshold &&
       distances.index < threshold &&

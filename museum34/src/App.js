@@ -6,6 +6,8 @@ import Investigacion from './components/investigacion/Investigacion';
 import MuseumVirtual from './VRComponents/MuseumVirtual.js';
 import VoiceRecognition from './VRecComponents/VoiceRecognition.js';
 
+import ViewerModel  from './components/modalViewer/ViewerModel.js';
+
 import Hands from './VRecComponents/HandsRec.js';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -36,6 +38,12 @@ function App() {
           path="/hands"
           element={<Hands></Hands>}
         />
+
+        <Route
+          path="/viewer"
+          element={<ViewerModel></ViewerModel>}
+        />
+
 
       </Routes>
     </Router>
