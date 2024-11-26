@@ -14,6 +14,12 @@ import sillarPhoto from '../textures/sillar.jpg'
 import rocotoPhoto from '../textures/rocoto.jpg'
 import plazaPhoto from '../textures/plaza.jpg'
 import volcanPhoto2 from '../textures/volcan_2.jpg'
+import sillarPhoto2 from '../textures/sillar_2.jpg'
+import sillarPhoto3 from '../textures/sillar_3.jpg'
+import vallePhoto from '../textures/valle.jpg'
+import vallePhoto2 from '../textures/valle_2.jpg'
+import plazaPhoto2 from '../textures/plaza_2.jpg'
+
 
 import donkey_sillar_polycam from './donkey_sillar_polycam.glb';
 import eagle_sillar_polycam from './eagle_sillar_polycam.glb';
@@ -40,6 +46,11 @@ const models = {
   rocotoPhoto,
   plazaPhoto,
   volcanPhoto2,
+  sillarPhoto2,
+  sillarPhoto3,
+  vallePhoto,
+  vallePhoto2,
+  plazaPhoto2,
 
   donkey_sillar_polycam,
   eagle_sillar_polycam,

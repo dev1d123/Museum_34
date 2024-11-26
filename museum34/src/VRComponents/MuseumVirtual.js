@@ -109,6 +109,12 @@ const MuseumVirtual = () => {
             <img id="plazaPhoto" src={models.plazaPhoto}></img>
             <img id="sillarPhoto" src={models.sillarPhoto}></img>
             <img id="rocotoPhoto" src={models.rocotoPhoto}></img>
+            <img id="plazaPhoto2" src={models.plazaPhoto2}></img>
+            <img id="sillarPhoto2" src={models.sillarPhoto2}></img>
+            <img id="sillarPhoto3" src={models.sillarPhoto3}></img>
+            <img id="vallePhoto" src={models.vallePhoto}></img>
+            <img id="vallePhoto2" src={models.vallePhoto2}></img>
+            <img id="plazaPhoto2" src={models.plazaPhoto2}></img>
             
 
 
@@ -138,8 +144,8 @@ const MuseumVirtual = () => {
           <Entity obj-model="obj: #lamps-obj" material="src: #lamps-texture" position="-10 0 -12" rotation="0 0 0" scale="1 1 1" static-body></Entity>
 
           {/* cuadros */}
-          <Entity obj-model="obj: #recuadro-obj" material="src: #moonlight-texture" position="-7.2 0 0" rotation="0 0 0" scale="1 1 1" static-body></Entity>
-          <Entity obj-model="obj: #recuadro-obj" material="src: #plazaPhoto" position="-6.2 -0.2  0" rotation="0 0 0" scale="0.7 1.1 1" static-body></Entity>
+          <Entity obj-model="obj: #recuadro-obj" material="src: #sillarPhoto3" position="-7.2 0 0" rotation="0 0 0" scale="1 1 1" static-body></Entity>
+          <Entity obj-model="obj: #recuadro-obj" material="src: #sillarPhoto2" position="-6.2 -0.2  0" rotation="0 0 0" scale="0.7 1.1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #rocotoPhoto" position="18.8 -0.2 0" rotation="0 0 0" scale="1.21 1.1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #sillarPhoto" position="1 0 12" rotation="0 0 0" scale="1 1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #volcanPhoto2" position="3.3 0 12" rotation="0 0 0" scale="1 1 1" static-body></Entity>
@@ -147,10 +153,10 @@ const MuseumVirtual = () => {
           <Entity obj-model="obj: #recuadro-obj" material="src: #volcanPhoto" position="7.9 0 12" rotation="0 0 0" scale="1 1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #miradorPhoto" position="10.2 0 12" rotation="0 0 0" scale="1 1 1" static-body></Entity>
 
-          <Entity obj-model="obj: #recuadro-obj" material="src: #moonlight-texture" position="-7.2 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
-          <Entity obj-model="obj: #recuadro-obj" material="src: #moonlight-texture" position="-4.9 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
-          <Entity obj-model="obj: #recuadro-obj" material="src: #moonlight-texture" position="-9.5 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
-          <Entity obj-model="obj: #recuadro-obj" material="src: #moonlight-texture" position="-2.6 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
+          <Entity obj-model="obj: #recuadro-obj" material="src: #plazaPhoto2" position="-7.2 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
+          <Entity obj-model="obj: #recuadro-obj" material="src: #vallePhoto" position="-4.9 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
+          <Entity obj-model="obj: #recuadro-obj" material="src: #vallePhoto2" position="-9.5 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
+          <Entity obj-model="obj: #recuadro-obj" material="src: #plazaPhoto2" position="-2.6 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
 
 
           <Entity light="type: directional; color: #FFF; intensity: 0.5" position="2 20 0" ></Entity>
