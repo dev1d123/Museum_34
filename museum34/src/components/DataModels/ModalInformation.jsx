@@ -4,7 +4,7 @@ import data from "./data.json";
 import ThreeViewer from "./ThreeViewer";
 import HandsRec from "../../VRecComponents/HandsRec";
 
-const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
+const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const [isHandsOpen, setIsHandsOpen] = useState(false);
   const handsRecRef = useRef(null); // Referencia para HandsRec
 
@@ -24,6 +24,23 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     description: "Default description for the model.",
     path: "https://example.com/default_model",
   });
+  const handleFingerData = (data) => {
+    if (data && data.fingers) {
+      console.log("Mano: ", data.handSide);
+      console.log("Esta agarrando?: ", data.isGrabbing);
+
+      data.fingers.forEach((finger, index) => {
+        //console.log(`Dedo ${index}: X=${finger.x}, Y=${finger.y}, Z=${finger.z}`);
+      
+        //primer paso, determinar si es mano derecha o izquierda.
+
+      
+      
+      
+      
+      });
+    }
+  };
 
   useEffect(() => {
     // Busca el modelo basado en el ID recibido o usa valores por defecto
@@ -44,7 +61,6 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
           <div className="model-viewer">
             <ThreeViewer path={modelData.path} />
           </div>
-          {/* Descripción en el lado derecho */}
           <div className="model-description">
             <div>
               <h2>{modelData.title}</h2>
@@ -52,11 +68,11 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
             </div>
 
             <div className="camera-space">
-              {/* Renderiza HandsRec si isHandsOpen es true */}
-              {isHandsOpen && <HandsRec />}
+
+              {isHandsOpen && <HandsRec onData={handleFingerData} />}
+              
             </div>
 
-            {/* Botón para activar/desactivar cámara */}
             <button onClick={toggleHands}>
               {isHandsOpen ? "Desactivar cámara" : "Activar cámara"}
             </button>
@@ -67,4 +83,4 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   );
 };
 
-export default Modal3D;
+export default ModalInformation;

@@ -52,7 +52,7 @@ const Canvas = styled.canvas`
   transform: rotateY(180deg); 
 `;
 
-const HandsRec = forwardRef((props, ref) => {
+const HandsRec = forwardRef(({onData}, ref) => {
   const [handLandmarker, setHandLandmarker] = useState(null);
   const webcamRunningRef = useRef(false);
   const videoRef = useRef(null);
@@ -124,9 +124,6 @@ const HandsRec = forwardRef((props, ref) => {
   }, []);
 
 
-  const disableWebCam = async () =>{
-    webcamRunningRef.current = false;
-  }
 
   const enableWebcam = async (handLandmarkerInstance) => {
     try {
@@ -172,48 +169,45 @@ const HandsRec = forwardRef((props, ref) => {
     const isLeftHand = thumbTip.x < wrist.x;
   
     if (isRightHand) {
-      console.log("Es la mano derecha.");
       return "derecha";
     } else if (isLeftHand) {
-      console.log("Es la mano izquierda.");
       return "izquierda";
     } else {
-      console.log("No se pudo determinar la mano.");
       return "desconocida";
     }
   };
 
-  const processHandGestures = (landmarks) => {
-    var handSide = determineHandSide(landmarks);
+  const processHandGestures = (landmarks, handSide) => {
+    var handSideDetected = determineHandSide(landmarks);
     
     /*
     Muñeca
-    0: Muñeca (Wrist)
+      0: Muñeca (Wrist)
     Pulgar
-    1: Base del pulgar (CMC - carpometacarpiana)
-    2: Primera articulación (MCP - metacarpofalángica)
-    3: Segunda articulación (IP - interfalángica)
-    4: Punta del dedo (Tip)
+      1: Base del pulgar (CMC - carpometacarpiana)
+      2: Primera articulación (MCP - metacarpofalángica)
+      3: Segunda articulación (IP - interfalángica)
+      4: Punta del dedo (Tip)
     Índice
-    5: Base del índice (MCP - metacarpofalángica)
-    6: Primera articulación (PIP - proximal interfalángica)
-    7: Segunda articulación (DIP - distal interfalángica)
-    8: Punta del dedo (Tip)
+      5: Base del índice (MCP - metacarpofalángica)
+      6: Primera articulación (PIP - proximal interfalángica)
+      7: Segunda articulación (DIP - distal interfalángica)
+      8: Punta del dedo (Tip)
     Dedo medio
-    9: Base del dedo medio (MCP - metacarpofalángica)
-    10: Primera articulación (PIP - proximal interfalángica)
-    11: Segunda articulación (DIP - distal interfalángica)
-    12: Punta del dedo (Tip)
+      9: Base del dedo medio (MCP - metacarpofalángica)
+      10: Primera articulación (PIP - proximal interfalángica)
+      11: Segunda articulación (DIP - distal interfalángica)
+      12: Punta del dedo (Tip)
     Anular
-    13: Base del anular (MCP - metacarpofalángica)
-    14: Primera articulación (PIP - proximal interfalángica)
-    15: Segunda articulación (DIP - distal interfalángica)
-    16: Punta del dedo (Tip)
+      13: Base del anular (MCP - metacarpofalángica)
+      14: Primera articulación (PIP - proximal interfalángica)
+      15: Segunda articulación (DIP - distal interfalángica)
+      16: Punta del dedo (Tip)
     Meñique
-    17: Base del meñique (MCP - metacarpofalángica)
-    18: Primera articulación (PIP - proximal interfalángica)
-    19: Segunda articulación (DIP - distal interfalángica)
-    20: Punta del dedo (Tip)
+      17: Base del meñique (MCP - metacarpofalángica)
+      18: Primera articulación (PIP - proximal interfalángica)
+      19: Segunda articulación (DIP - distal interfalángica)
+      20: Punta del dedo (Tip)
 
     */
     const threshold = 0.4; //umbral de distancia
@@ -237,15 +231,36 @@ const HandsRec = forwardRef((props, ref) => {
       distances.ring < threshold &&
       distances.pinky < threshold;
 
-    if (isGrabbing) {
-      console.log("Gesto detectado: AGARRE (puño cerrado)");
-    } else {
-      console.log("La mano no está en posición de agarre.");
-    }
-
-    console.log("Distancias de los dedos a la muñeca:", distances);
+      const fingers = landmarks.map((point) => ({ x: point.x, y: point.y, z: point.z }));
       
-  };
+      const data = {
+        handSide: handSideDetected,
+        isGrabbing,
+        fingers, // Aquí están las posiciones de los dedos
+      };
+      if(onData) {
+        onData(data);
+      }
+      /*
+      if (isGrabbing) {
+        if (handSide === "derecha") {
+          console.log("La mano derecha está cerrada.");
+        }
+        if (handSide === "izquierda") {
+          console.log("La mano izquierda está cerrada.");
+        }
+      } else {
+        if (handSide === "derecha") {
+          console.log("La mano derecha esta abierta");
+        }
+        if (handSide === "izquierda") {
+          console.log("La mano izquierda está abierta");
+        }
+      }
+    
+      console.log("Distancias de los dedos a la muñeca:", distances);
+      */
+     };
   
 
 
@@ -272,21 +287,29 @@ const HandsRec = forwardRef((props, ref) => {
         if (results.landmarks) {
           const HAND_CONNECTIONS = generateHandConnections();
           results.landmarks.forEach((landmarks) => {
+            const handSide = determineHandSide(landmarks);
+
             drawConnectors(ctx, landmarks, HAND_CONNECTIONS, {
               color: "black",
               lineWidth: 5,
             });
             drawLandmarks(ctx, landmarks, { color: "#FF0000", lineWidth: 2 });
-          });
+            processHandGestures(landmarks, handSide);
 
+          });
+          /*
           if (results.landmarks.length > 0) {
             console.log("imprimiendo!!!");
             console.log("res: ", results.landmarks[0][8]);
             processHandGestures(results.landmarks[0]);
+
+            if (results.landmarks.length > 1) {
+              processHandGestures(results.landmarks[1]);
+            }
           }else{
             console.log("no hay nada");
           }
-          //console.clear()
+          */
         }
       }
 
