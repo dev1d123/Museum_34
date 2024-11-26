@@ -42,7 +42,7 @@ const NavMenu = () => {
         <li>
             <Link to="/colecciones">
                 <img className = "iconImg" src={museum}></img> <br></br>
-                Colecciones Destacadas
+                Colecciones
             </Link>
         </li>
         <li>

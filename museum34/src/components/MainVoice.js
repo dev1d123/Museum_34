@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import VoiceRec from "../../VRecComponents/VoiceRec";
+import VoiceRec from "../VRecComponents/VoiceRec";
 import { useNavigate } from "react-router-dom";
 
-import mic from '../../images/icons/mic.png';
-import nomic from '../../images/icons/nomic.png';
+import mic from '../images/icons/mic.png';
+import nomic from '../images/icons/nomic.png';
 
 const MainVoice = () => {
     const [transcript, setTranscript] = useState("");
@@ -44,7 +44,9 @@ const MainVoice = () => {
             navigate("/investigacion");
         } else if (lastWord === "donaciones") {
             navigate("/donaciones");
-        }
+        }else if (lastWord === "casa") {
+          navigate("/");
+      }
     };
 
     const toggleListening = () => {
@@ -62,7 +64,9 @@ const MainVoice = () => {
     return (
         <div>
             <VoiceRec ref={voiceRecRef} onTranscriptUpdate={handleTranscriptUpdate} />
-
+            {isListening && (
+                <VoiceRec onTranscriptUpdate={handleTranscriptUpdate} />
+            )}
             <Button
                 className={isListening ? "listening" : "stopped"}
                 onClick={toggleListening}
