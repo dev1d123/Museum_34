@@ -72,7 +72,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     let intervalId;
 
     if (isHandsOpen) {
-      intervalId = setInterval(checkDataUpdates, 500); // Comprobar cada 100 ms mientras esté abierto
+      intervalId = setInterval(checkDataUpdates, 100); // Comprobar cada 100 ms mientras esté abierto
     }
 
     // Limpiar intervalo si se desactiva la cámara
