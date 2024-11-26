@@ -38,7 +38,7 @@ const ThreeViewer = ({ path, handData }) => {
       path,
       (gltf) => {
         model = gltf.scene;
-        model.scale.set(0.03, 0.03, 0.03);
+        model.scale.set(5, 5, 5);
         scene.add(model);
 
         // Centrar el modelo
