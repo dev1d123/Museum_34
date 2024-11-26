@@ -1,11 +1,26 @@
-import React from 'react'
-import "./IASpeak.css"
-export default function IASpeak() {
+import React, { useState } from "react";
+import "./IASpeak.css";
+
+export default function IASpeak({ title, description }) {
+  const [isSpeaking, setIsSpeaking] = useState(false); 
+  const handleSpeakToggle = () => {
+    if (!isSpeaking) {
+      const utterance = new SpeechSynthesisUtterance();
+      utterance.text = `${title}. ${description}`;
+      utterance.onend = () => setIsSpeaking(false); 
+      speechSynthesis.speak(utterance);
+      setIsSpeaking(true);
+    } else {
+      speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+  };
+
   return (
-    <button className="close-btn" >
-        <span class="material-symbols-outlined">
-            volume_up
-        </span>
+    <button className="btn-leer" onClick={handleSpeakToggle}>
+      <span className="material-symbols-outlined">
+        {isSpeaking ? "volume_off" : "volume_up"}
+      </span>
     </button>
-  )
+  );
 }
