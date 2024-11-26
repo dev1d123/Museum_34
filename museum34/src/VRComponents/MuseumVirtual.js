@@ -3,10 +3,8 @@ import { Entity, Scene } from "aframe-react";
 import BottomMenu from "./BottomMenu.js";
 import stepSound from "./audio/step-sound.ogg";
 import audio1 from "./audio/アドリブ-_instrumental_.ogg";
-import skyTexture from "./textures/sky_sphere.jpg";
-import floor from "./models/floor.obj";
-import floorTexture from "./textures/floor.jpg";
-import floorNormalTexture from "./textures/floor_normal.jpg";
+
+
 
 import models from 'museum34/public/models/';
 
@@ -197,9 +195,9 @@ const MuseumVirtual = () => {
               volume="0.3"
             ></a-sound>
             
-            <a-asset-item id="floor-obj" src={floor}></a-asset-item>
-            <img id="floor-texture" src={floorTexture} alt="" />
-            <img id="floor_normal-texture" src={floorNormalTexture} alt="" />
+            <a-asset-item id="floor-obj" src={models.floor}></a-asset-item>
+            <img id="floor-texture" src={models.floorTexture} alt="" />
+            <img id="floor_normal-texture" src={models.floorNormalTexture} alt="" />
             <a-asset-item id="main_museum" src={models.main_museum}></a-asset-item>
           </a-assets>
 

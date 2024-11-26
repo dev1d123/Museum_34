@@ -1,5 +1,10 @@
 import sky_sphere from '../textures/sky_sphere.jpg';
 
+import floor from './floor.obj';
+import floorTexture from '../textures/floor.jpg';
+import floorNormalTexture from '../textures/floor_normal.jpg';
+
+
 import main_museum from './main_museum.glb';
 import furina from './genshin_impact_-_furina.glb';
 import volcan from './volcan_misti.glb'
@@ -35,6 +40,10 @@ import sillar_plycam_1 from './sillar_plycam_1.glb';
 
 
 const models = {  
+  floorNormalTexture,
+  floorTexture,
+  floor,
+
   sky_sphere,
   main_museum,
   furina,
