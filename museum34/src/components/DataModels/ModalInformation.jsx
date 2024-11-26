@@ -24,24 +24,62 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     description: "Default description for the model.",
     path: "https://example.com/default_model",
   });
+
+  const [handData, setHandData] = useState({
+    leftGrabbing: false,
+    rightGrabbing: false,
+    leftFingers: [],
+    rightFingers: [],
+  });
+  const handDataRef = useRef({
+    leftGrabbing: false,
+    rightGrabbing: false,
+    leftFingers: [],
+    rightFingers: [],
+  });
+  
+
   const handleFingerData = (data) => {
-    if (data && data.fingers) {
-      console.log("Mano: ", data.handSide);
-      console.log("Esta agarrando?: ", data.isGrabbing);
-
-      data.fingers.forEach((finger, index) => {
-        //console.log(`Dedo ${index}: X=${finger.x}, Y=${finger.y}, Z=${finger.z}`);
-      
-        //primer paso, determinar si es mano derecha o izquierda.
-
-      
-      
-      
-      
+    if (data) {
+      // Actualizamos los valores de las manos detectadas
+      handDataRef.current = {
+        leftGrabbing: data.leftGrabbing,
+        rightGrabbing: data.rightGrabbing,
+        leftFingers: data.leftFingers,
+        rightFingers: data.rightFingers,
+      };
+  
+      // También actualizamos el estado
+      setHandData({
+        leftGrabbing: data.leftGrabbing,
+        rightGrabbing: data.rightGrabbing,
+        leftFingers: data.leftFingers,
+        rightFingers: data.rightFingers,
       });
     }
   };
+  const checkDataUpdates = () => {
+    console.log("Revisando datos de las manos...");
+    console.log("Mano izquierda está agarrando?: ", handDataRef.current.leftGrabbing);
+    console.log("Mano derecha está agarrando?: ", handDataRef.current.rightGrabbing);
+    console.log("Dedos de la mano izquierda: ", handDataRef.current.leftFingers);
+    console.log("Dedos de la mano derecha: ", handDataRef.current.rightFingers);
+  };
+  
+  useEffect(() => {
+    let intervalId;
 
+    if (isHandsOpen) {
+      intervalId = setInterval(checkDataUpdates, 500); // Comprobar cada 100 ms mientras esté abierto
+    }
+
+    // Limpiar intervalo si se desactiva la cámara
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [isHandsOpen]); // Este efecto depende de isHandsOpen
   useEffect(() => {
     // Busca el modelo basado en el ID recibido o usa valores por defecto
     const foundModel = data.find((item) => item.id === id);
