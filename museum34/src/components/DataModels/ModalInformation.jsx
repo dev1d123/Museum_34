@@ -6,7 +6,7 @@ import ThreeViewer from "./ThreeViewer";
 
 import IASpeak from "./IASpeak";
 
-const Modal3D = ({ isOpen = true, id = 0 }) => {
+const Modal3D = ({ isOpen = true, id = 2 }) => {
   const [modelData, setModelData] = useState({
     title: "Default Model",
     description: "Default description for the model.",

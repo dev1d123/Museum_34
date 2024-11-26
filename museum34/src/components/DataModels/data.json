@@ -1,10 +1,11 @@
 [
     {
       "id": 0,
-      "title": "B33 - Pollinator Robot gdgsdgs g sdgg",
-      "description": "This is a test for the B33 Pollinator Robot model. It's designed for interaction and visualization purposes. lore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis au",
+      "title": "Volcán Misti - Arequipa",
+      "description": "El Volcán Misti, conocido como el 'Señor Misti', es un imponente volcán ubicado en la ciudad de Arequipa, Perú. Este volcán de forma cónica tiene una altura de 5,825 metros sobre el nivel del mar. Es considerado un símbolo de la ciudad y ofrece vistas espectaculares de la región. A lo largo de la historia, el Misti ha sido un lugar de gran importancia cultural y religiosa para los antiguos habitantes de la zona. Aunque su última erupción registrada ocurrió en el siglo XV, sigue siendo un volcán activo, monitoreado constantemente por los expertos. Además, es un destino popular para el montañismo, atrayendo a aventureros de todo el mundo que buscan alcanzar su cima y disfrutar de las vistas panorámicas de Arequipa y el Valle del Chili.",
       "path": "/models/volcan_misti.glb"
     },
+  
     {
       "id": 1,
       "title": "Spaceship Concept",
