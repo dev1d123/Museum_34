@@ -19,7 +19,7 @@ export default function IASpeak({ title, description }) {
   return (
     <button className="btn-leer" onClick={handleSpeakToggle}>
       <span className="material-symbols-outlined">
-        {isSpeaking ? "volume_off" : "volume_up"}
+        volume_up
       </span>
     </button>
   );
