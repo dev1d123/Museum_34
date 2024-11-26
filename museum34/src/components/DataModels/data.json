@@ -1,33 +1,38 @@
 [
-    {
-      "id": 0,
-      "title": "B33 - Pollinator Robot",
-      "description": "This is a test for the B33 Pollinator Robot model. It's designed for interaction and visualization purposes.",
-      "path": "/models/volcan_misti.glb"
-    },
-    {
-      "id": 1,
-      "title": "Spaceship Concept",
-      "description": "A futuristic spaceship designed for intergalactic travel.",
-      "path": "https://example.com/models/spaceship"
-    },
-    {
-      "id": 2,
-      "title": "Industrial Robot",
-      "description": "A highly detailed industrial robot model for factory automation.",
-      "path": "https://example.com/models/industrial_robot"
-    },
-    {
-      "id": 3,
-      "title": "Volcano 3D Model",
-      "description": "A 3D representation of a volcano for geological studies.",
-      "path": "https://example.com/models/volcano"
-    },
-    {
-      "id": 4,
-      "title": "Modern House",
-      "description": "A modern house designed for architectural visualization.",
-      "path": "https://example.com/models/modern_house"
-    }
-  ]
-  
+  {
+    "id": 0,
+    "title": "Volcán Misti - Arequipa",
+    "description": "El Volcán Misti, conocido como el 'Señor Misti', es un imponente volcán ubicado en la ciudad de Arequipa, Perú. Este volcán de forma cónica tiene una altura de 5,825 metros sobre el nivel del mar. Es considerado un símbolo de la ciudad y ofrece vistas espectaculares de la región. A lo largo de la historia, el Misti ha sido un lugar de gran importancia cultural y religiosa para los antiguos habitantes de la zona. Aunque su última erupción registrada ocurrió en el siglo XV, sigue siendo un volcán activo, monitoreado constantemente por los expertos. Además, es un destino popular para el montañismo, atrayendo a aventureros de todo el mundo que buscan alcanzar su cima y disfrutar de las vistas panorámicas de Arequipa y el Valle del Chili.",
+    "path": "/models/volcan_misti.glb"
+  },
+  {
+    "id": 1,
+    "title": "Escultura del Águila - Arequipa",
+    "description": "Esta escultura representa un majestuoso águila tallada en sillar, una piedra volcánica característica de Arequipa. El águila simboliza la fortaleza y la libertad, y es una muestra del arte detallado que se puede encontrar en las manos de los artesanos arequipeños. Fue creada en los talleres tradicionales de Yanahuara, un distrito famoso por su habilidad en el tallado de sillar.",
+    "path": "/models/eagle_sillar_polycam.glb"
+  },
+  {
+    "id": 2,
+    "title": "Escultura del Burro - Arequipa",
+    "description": "El burro es una representación de los animales de carga que han acompañado a los habitantes de Arequipa a lo largo de su historia. Esta escultura, hecha de sillar, captura con detalle al noble animal que ha sido un símbolo de trabajo arduo y resistencia en los Andes. Fue tallada por artesanos en el distrito de Cerro Colorado, conocido por sus canteras de sillar.",
+    "path": "/models/donkey_sillar_polycam.glb"
+  },
+  {
+    "id": 3,
+    "title": "Friso Colonial Tallado en Sillar",
+    "description": "Este friso es una representación del estilo barroco mestizo que caracteriza muchas iglesias y construcciones coloniales de Arequipa. Tallado en sillar con intrincados diseños que incluyen motivos religiosos y heráldicos, este tipo de ornamentación es típico de iglesias como la Compañía de Jesús o Santa Catalina. Esta pieza refleja la habilidad y dedicación de los artesanos arequipeños durante la época colonial.",
+    "path": "/models/barroco_andino.glb"
+  },
+  {
+    "id": 4,
+    "title": "Catedral de Arequipa - Miniatura",
+    "description": "Esta representación en miniatura de la Catedral de Arequipa está tallada en sillar, el material que caracteriza a esta icónica construcción. La catedral, ubicada en la Plaza de Armas de Arequipa, es un símbolo de la fe y la historia de la ciudad. La miniatura refleja los detalles arquitectónicos de esta joya neoclásica, que data del siglo XVII.",
+    "path": "/models/catedral.glb"
+  },
+  {
+    "id": 5,
+    "title": "Pareja Arequipeña en Sillar",
+    "description": "Esta escultura en sillar representa a una pareja arequipeña tradicional. La mujer, con su sombrero típico y vestimenta tradicional, y el hombre, con su indumentaria característica de trabajador andino, simbolizan la vida cotidiana y el espíritu resiliente de los habitantes de Arequipa. Tallada con detalle, esta pieza es un homenaje a las raíces culturales y al estilo de vida en la región. Fue elaborada en talleres especializados de sillar en el distrito de Yanahuara.",
+    "path": "/models/sillar_plycam_1.glb"
+  }
+]
