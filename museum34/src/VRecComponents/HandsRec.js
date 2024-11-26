@@ -1,90 +1,90 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import styled from "styled-components";
 import {
   HandLandmarker,
   FilesetResolver,
 } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
 import {
-    drawConnectors,
-    drawLandmarks,
-    HAND_CONNECTIONS,
-  } from "@mediapipe/drawing_utils";
+  drawConnectors,
+  drawLandmarks,
+} from "@mediapipe/drawing_utils";
+import { counter } from "@fortawesome/fontawesome-svg-core";
 
 const Container = styled.div`
   font-family: "Roboto", sans-serif;
-  margin: 2em;
-  color: #3d3d3d;
-`;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-const Title = styled.h1`
-  color: #007f8b;
-`;
-
-const Section = styled.section`
-  opacity: 1;
-  transition: opacity 500ms ease-in-out;
-
-  &.invisible {
-    opacity: 0.2;
-  }
-`;
-
-const Subtitle = styled.h2`
-  clear: both;
-`;
-
-const Paragraph = styled.p`
-  font-style: italic;
-  font-size: 1.3em;
+  background-color: #000; 
 `;
 
 const VideoView = styled.div`
   position: relative;
-  float: left;
-  width: 48%;
-  margin: 2% 1%;
-`;
-
-const WebcamButton = styled.button`
-  background: #007f8b;
-  color: #f1f3f4;
-  padding: 0.5em 1em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-
-  &:hover {
-    background: #005f6b;
-  }
+  width: auto;
+  height: auto; 
+  max-width: 100%; 
+  max-height: 100%;
 `;
 
 const VideoContainer = styled.div`
   position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto; 
 `;
 
 const Video = styled.video`
   display: block;
-  transform: rotateY(180deg);
+  max-width: 100%; 
+  max-height: 100%; 
+  transform: rotateY(180deg); 
 `;
 
 const Canvas = styled.canvas`
   position: absolute;
-  left: 0;
   top: 0;
-  transform: rotateY(180deg);
+  left: 0;
+  max-width: 100%; 
+  max-height: 100%;
+  transform: rotateY(180deg); 
 `;
 
-const HandsRec = () => {
+const HandsRec = forwardRef(({onData}, ref) => {
   const [handLandmarker, setHandLandmarker] = useState(null);
-  const webcamRunningRef = useRef(false); // Referencia para el estado de la cámara
+  const webcamRunningRef = useRef(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const animationFrameIdRef = useRef(null);
+  const tracksRef = useRef([]);
 
-  // Inicializa HandLandmarker
+  const cleanUpResources = () => {
+    console.log("Cleaning!", videoRef);
+    console.log("info: ", videoRef);
+    console.log("Tracks almacenados en tracksRef:", tracksRef.current);
+    tracksRef.current.forEach((track) => {
+      console.log("Deteniendo pista:", track);
+      track.stop();
+    });
+    
+    
+    webcamRunningRef.current = false;
+    cancelAnimationFrame(animationFrameIdRef.current);
+
+    if (handLandmarker) {
+      handLandmarker.close();
+      console.log("HandLandmarker closed.");
+    }
+  };
+  useImperativeHandle(ref, () => ({
+    disableWebCam: () => {
+      cleanUpResources();
+    },
+  }));
   useEffect(() => {
+    // Inicializa HandLandmarker
     const createHandLandmarker = async () => {
       try {
         console.log("Initializing HandLandmarker...");
@@ -107,6 +107,7 @@ const HandsRec = () => {
 
         setHandLandmarker(handLandmarkerInstance);
         console.log("HandLandmarker initialized successfully!");
+        enableWebcam(handLandmarkerInstance); // Inicia la webcam
       } catch (error) {
         console.error("Error initializing HandLandmarker:", error);
       }
@@ -114,48 +115,166 @@ const HandsRec = () => {
 
     createHandLandmarker();
 
+    // Destructor para limpiar cuando el componente se desmonte
     return () => {
-      if (handLandmarker) {
-        handLandmarker.close();
-        console.log("HandLandmarker closed.");
-      }
+      console.log("Componente desmontado, limpiando recursos...");
+
+      cleanUpResources();
     };
   }, []);
 
-  const enableCam = async () => {
-    if (!handLandmarker) {
-      alert("HandLandmarker is not initialized yet!");
-      console.error("HandLandmarker not ready.");
-      return;
-    }
 
+
+  const enableWebcam = async (handLandmarkerInstance) => {
     try {
       console.log("Enabling webcam...");
-      const video = videoRef.current;
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      video.srcObject = stream;
+      
+      videoRef.current.srcObject = stream;  // Asignar la transmisión al video
+      
+   
+      tracksRef.current = stream.getTracks();
 
-      video.addEventListener("loadeddata", () => {
-        alert("Webcam loaded. Starting detection!");
-        webcamRunningRef.current = true; // Actualiza la referencia
-        predictWebcam();
+      videoRef.current.addEventListener("loadeddata", () => {
+        console.log("Webcam loaded. Starting detection...");
+        webcamRunningRef.current = true;
+        predictWebcam(handLandmarkerInstance);
+
       });
     } catch (error) {
       console.error("Error accessing webcam:", error);
-      alert("Error accessing webcam. Check permissions.");
     }
   };
+
   const generateHandConnections = () => [
     [0, 1], [1, 2], [2, 3], [3, 4], // Pulgar
-    [0, 5], [5, 6], [6, 7], [7, 8], // Indice
+    [0, 5], [5, 6], [6, 7], [7, 8], // Índice
     [5, 9], [9, 10], [10, 11], [11, 12], // Medio
     [9, 13], [13, 14], [14, 15], [15, 16], // Anular
     [13, 17], [17, 18], [18, 19], [19, 20], // Meñique
-    [0, 17], //muñeca
+    [0, 17], // Muñeca
   ];
+
+  const determineHandSide = (landmarks) => {
+    if (!landmarks || landmarks.length === 0) {
+      console.log("No landmarks detected.");
+      return;
+    }
   
-  const predictWebcam = async () => {
-    if (!handLandmarker) return;
+    const wrist = landmarks[0];
+    const thumbTip = landmarks[4];
+  
+    // Determinar mano según la posición del pulgar
+    const isRightHand = thumbTip.x > wrist.x;
+    const isLeftHand = thumbTip.x < wrist.x;
+  
+    if (isRightHand) {
+      return "derecha";
+    } else if (isLeftHand) {
+      return "izquierda";
+    } else {
+      return "desconocida";
+    }
+  };
+
+      /*
+    Muñeca
+      0: Muñeca (Wrist)
+    Pulgar
+      1: Base del pulgar (CMC - carpometacarpiana)
+      2: Primera articulación (MCP - metacarpofalángica)
+      3: Segunda articulación (IP - interfalángica)
+      4: Punta del dedo (Tip)
+    Índice
+      5: Base del índice (MCP - metacarpofalángica)
+      6: Primera articulación (PIP - proximal interfalángica)
+      7: Segunda articulación (DIP - distal interfalángica)
+      8: Punta del dedo (Tip)
+    Dedo medio
+      9: Base del dedo medio (MCP - metacarpofalángica)
+      10: Primera articulación (PIP - proximal interfalángica)
+      11: Segunda articulación (DIP - distal interfalángica)
+      12: Punta del dedo (Tip)
+    Anular
+      13: Base del anular (MCP - metacarpofalángica)
+      14: Primera articulación (PIP - proximal interfalángica)
+      15: Segunda articulación (DIP - distal interfalángica)
+      16: Punta del dedo (Tip)
+    Meñique
+      17: Base del meñique (MCP - metacarpofalángica)
+      18: Primera articulación (PIP - proximal interfalángica)
+      19: Segunda articulación (DIP - distal interfalángica)
+      20: Punta del dedo (Tip)
+
+    */
+
+  //retorna 2 arreglos (uno por la mano izquierda y otro por la mano derecha, ademas
+  //retorna handSide y leftGrabbing y rightGrabbing)
+  const processHandGestures = (results, landmarks) => {
+    const threshold = 0.4; // Umbral de distancia para determinar si la mano está cerrada
+    const calculateDistance = (x1, y1, x2, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  
+    // Función para calcular si una mano está cerrada y obtener los dedos
+    const getHandData = (handLandmarks) => {
+      const distances = {
+        thumb: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[4].x, handLandmarks[4].y),
+        index: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[8].x, handLandmarks[8].y),
+        middle: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[12].x, handLandmarks[12].y),
+        ring: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[16].x, handLandmarks[16].y),
+        pinky: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[20].x, handLandmarks[20].y),
+      };
+  
+      const isGrabbing =
+        distances.thumb < threshold &&
+        distances.index < threshold &&
+        distances.middle < threshold &&
+        distances.ring < threshold &&
+        distances.pinky < threshold;
+  
+      // Mapear las posiciones de los dedos
+      const fingers = handLandmarks.map((point) => ({ x: point.x, y: point.y, z: point.z }));
+  
+      return { isGrabbing, fingers };
+    };
+  
+    // Preparar los datos para la mano izquierda y derecha
+    let leftGrabbing = false;
+    let rightGrabbing = false;
+    let leftFingers = [];
+    let rightFingers = [];
+  
+    const leftLandmarks = results.landmarks.filter((landmark) => determineHandSide(landmark) === 'izquierda');
+    const rightLandmarks = results.landmarks.filter((landmark) => determineHandSide(landmark) === 'derecha');
+  
+    if (leftLandmarks.length > 0) {
+      const leftData = getHandData(leftLandmarks[0]);
+      leftGrabbing = leftData.isGrabbing;
+      leftFingers = leftData.fingers;
+    }
+  
+    if (rightLandmarks.length > 0) {
+      const rightData = getHandData(rightLandmarks[0]);
+      rightGrabbing = rightData.isGrabbing;
+      rightFingers = rightData.fingers;
+    }
+  
+    // Determina si hay dos manos detectadas
+    const isTwoHands = leftLandmarks.length > 0 && rightLandmarks.length > 0;
+  
+    // Estructura de los datos para enviar
+    const data = {
+      leftGrabbing,
+      rightGrabbing,
+      leftFingers,
+      rightFingers,
+    };
+  
+    // Llamar a onData con los datos de ambas manos
+    if (onData) {
+      onData(data);
+    }
+  };
+  const predictWebcam = (handLandmarkerInstance) => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -164,7 +283,10 @@ const HandsRec = () => {
       if (video.readyState === 4 && webcamRunningRef.current) {
         const startTimeMs = performance.now();
 
-        const results = handLandmarker.detectForVideo(video, startTimeMs);
+        const results = handLandmarkerInstance.detectForVideo(
+          video,
+          startTimeMs
+        );
 
         // Actualiza el tamaño del canvas y limpia
         canvas.width = video.videoWidth;
@@ -173,18 +295,31 @@ const HandsRec = () => {
 
         // Dibuja los resultados
         if (results.landmarks) {
-          const HAND_CONNECTIONS = generateHandConnections(); 
+          const HAND_CONNECTIONS = generateHandConnections();
           results.landmarks.forEach((landmarks) => {
+            const handSide = determineHandSide(landmarks);
+
             drawConnectors(ctx, landmarks, HAND_CONNECTIONS, {
-              
               color: "black",
               lineWidth: 5,
             });
-            console.log(HAND_CONNECTIONS);
             drawLandmarks(ctx, landmarks, { color: "#FF0000", lineWidth: 2 });
+            processHandGestures(results, landmarks, handSide);
+
           });
-          
-          console.log("Landmarks drawn:", results.landmarks);
+          /*
+          if (results.landmarks.length > 0) {
+            console.log("imprimiendo!!!");
+            console.log("res: ", results.landmarks[0][8]);
+            processHandGestures(results.landmarks[0]);
+
+            if (results.landmarks.length > 1) {
+              processHandGestures(results.landmarks[1]);
+            }
+          }else{
+            console.log("no hay nada");
+          }
+          */
         }
       }
 
@@ -194,37 +329,16 @@ const HandsRec = () => {
     processFrame();
   };
 
-  useEffect(() => {
-    return () => {
-      webcamRunningRef.current = false; // Detener cuando el componente se desmonte
-      cancelAnimationFrame(animationFrameIdRef.current);
-      const tracks = videoRef.current?.srcObject?.getTracks();
-      if (tracks) {
-        tracks.forEach((track) => track.stop());
-      }
-    };
-  }, []);
-
   return (
     <Container>
-      <Title>Hand Landmark Detection using MediaPipe</Title>
-      <Section>
-        <Subtitle>Webcam Continuous Hand Landmark Detection</Subtitle>
-        <Paragraph>
-          Hold your hand in front of your webcam to see real-time hand landmark
-          detection. Click <b>Enable Webcam</b> below and grant access if
-          prompted.
-        </Paragraph>
-        <VideoView>
-          <WebcamButton onClick={enableCam}>ENABLE WEBCAM</WebcamButton>
-          <VideoContainer>
-            <Video ref={videoRef} autoPlay playsInline muted />
-            <Canvas ref={canvasRef} />
-          </VideoContainer>
-        </VideoView>
-      </Section>
+      <VideoView>
+        <VideoContainer>
+          <Video ref={videoRef} autoPlay playsInline muted />
+          <Canvas ref={canvasRef} />
+        </VideoContainer>
+      </VideoView>
     </Container>
   );
-};
+});
 
 export default HandsRec;

@@ -14,6 +14,9 @@ import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 import ImgAqp from '../../images/image/AqpImage.jpg';
@@ -183,6 +186,14 @@ export function Search() {
 export default function MainContent() {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
 
+  const navigate = useNavigate(); 
+
+  const mundoVirtual = (world) => {
+    console.log('Card clicked! ', world   );
+    if(world == 0){
+      navigate('/colecciones/museo'); 
+    }
+  };
   const handleFocus = (index) => {
     setFocusedCardIndex(index);
   };
@@ -298,16 +309,19 @@ export default function MainContent() {
             tabIndex={0}
             className={focusedCardIndex === 0 ? 'Mui-focused' : ''}
           >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[0].img}
-              sx={{
-                aspectRatio: '16 / 9',
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-              }}
-            />
+            <Box onClick={() => mundoVirtual(0)}>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                image={cardData[0].img}
+                sx={{
+                  aspectRatio: '16 / 9',
+                  borderBottom: '1px solid',
+                  borderColor: 'divider',
+                }}
+              />
+            </Box>
+
             <SyledCardContent>
               <Typography gutterBottom variant="caption" component="div">
                 {cardData[0].tag}
@@ -330,16 +344,19 @@ export default function MainContent() {
             tabIndex={0}
             className={focusedCardIndex === 1 ? 'Mui-focused' : ''}
           >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[1].img}
-              aspect-ratio="16 / 9"
-              sx={{
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-              }}
-            />
+            <Box onClick={() => mundoVirtual(1)}>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                image={cardData[1].img}
+                aspect-ratio="16 / 9"
+                sx={{
+                  borderBottom: '1px solid',
+                  borderColor: 'divider',
+                }}
+              />
+            </Box>
+
             <SyledCardContent>
               <Typography gutterBottom variant="caption" component="div">
                 {cardData[1].tag}
@@ -363,6 +380,8 @@ export default function MainContent() {
             className={focusedCardIndex === 2 ? 'Mui-focused' : ''}
             sx={{ height: '100%' }}
           >
+            <Box onClick={() => mundoVirtual(2)}>
+
             <CardMedia
               component="img"
               alt="green iguana"
@@ -372,6 +391,7 @@ export default function MainContent() {
                 aspectRatio: { sm: '16 / 9', md: '' },
               }}
             />
+            </Box>
             <SyledCardContent>
               <Typography gutterBottom variant="caption" component="div">
                 {cardData[2].tag}
@@ -390,6 +410,7 @@ export default function MainContent() {
           <Box
             sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}
           >
+
             <SyledCard
               variant="outlined"
               onFocus={() => handleFocus(3)}
@@ -398,6 +419,8 @@ export default function MainContent() {
               className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
               sx={{ height: '100%' }}
             >
+            <Box onClick={() => mundoVirtual(3)}>
+
             <CardMedia
               component="img"
               alt="green iguana"
@@ -408,6 +431,8 @@ export default function MainContent() {
                 borderColor: 'divider',
               }}
             />
+            </Box>
+
               <SyledCardContent
                 sx={{
                   display: 'flex',
@@ -442,6 +467,8 @@ export default function MainContent() {
               className={focusedCardIndex === 4 ? 'Mui-focused' : ''}
               sx={{ height: '100%' }}
             >
+            <Box onClick={() => mundoVirtual(4)}>
+
             <CardMedia
               component="img"
               alt="green iguana"
@@ -452,6 +479,7 @@ export default function MainContent() {
                 borderColor: 'divider',
               }}
             />
+            </Box>
               <SyledCardContent
                 sx={{
                   display: 'flex',
@@ -489,6 +517,8 @@ export default function MainContent() {
             className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
             sx={{ height: '100%' }}
           >
+            <Box onClick={() => mundoVirtual(5)}>
+
             <CardMedia
               component="img"
               alt="green iguana"
@@ -498,6 +528,7 @@ export default function MainContent() {
                 aspectRatio: { sm: '16 / 9', md: '' },
               }}
             />
+            </Box>
             <SyledCardContent>
               <Typography gutterBottom variant="caption" component="div">
                 {cardData[5].tag}

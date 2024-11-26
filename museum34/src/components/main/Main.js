@@ -4,8 +4,7 @@ import './Main.css';
 import NavMenu from '../NavMenu'
 import ImgCar from './ImgCar';
 import FooterPage from '../FooterPage';
-import VoiceRecognition from '../../VRecComponents/VoiceRecognition';
-import MainVoice from './MainVoice';
+import MainVoice from '../MainVoice';
 function Main() {
   return (
 
@@ -18,8 +17,8 @@ function Main() {
         <NavMenu></NavMenu>
       </div>
       
-      <div className='buttonVoice'>
-        <MainVoice></MainVoice>
+      <div className="buttonVoice" style={{ position: 'sticky', top: '10px', margin: '10px' }}>
+        <MainVoice />
       </div>
       <ImgCar></ImgCar>
       <FooterPage></FooterPage>
