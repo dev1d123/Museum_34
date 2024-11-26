@@ -4,15 +4,30 @@ import BottomMenu from "./BottomMenu.js";
 import stepSound from "./audio/step-sound.ogg";
 import audio1 from "./audio/アドリブ-_instrumental_.ogg";
 
-
+import Perfil from "./Perfil.js";
+import Configuracion  from "./Configuracion.js";
+import Informacion from "./Informacion.js";
 
 import models from 'museum34/public/models/';
+import styled from "styled-components";
 
 import Modal3D from "../components/DataModels/ModalInformation.jsx";
 import main from "./main.js";
 import "aframe";
 
-
+const ModalContainer = styled.div`
+  position: absolute;
+  z-index: 99999;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 70%;
+  background: #1e1f29;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+`;
 
 const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
@@ -81,9 +96,29 @@ const MuseumVirtual = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const [isPerfilOpen, setIsPerfilOpen] = useState(false);
+  const [isConfigOpen, setIsConfigOpen] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+
+  const closeAllSections = () => {
+    setIsPerfilOpen(false);
+    setIsConfigOpen(false);
+    setIsInfoOpen(false);
+  };
+
+
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
-      {isLoaded && <BottomMenu />}
+      {isLoaded && (
+        <BottomMenu
+          setActiveSection={(section) => {
+            closeAllSections(); // Cierra todas las secciones antes de abrir otra
+            if (section === "perfil") setIsPerfilOpen(true);
+            if (section === "config") setIsConfigOpen(true);
+            if (section === "info") setIsInfoOpen(true);
+          }}
+        />
+      )}
 
       {/* Modal para mostrar información */}
       <Modal3D
@@ -91,6 +126,27 @@ const MuseumVirtual = () => {
         id={4} // Eliminé el uso de selectedModelId porque no se está usando
         onClose={() => setIsModalOpen(false)}
       />
+          {/* Modal dinámico para cada sección */}
+      {isPerfilOpen && (
+        <ModalContainer>
+          <Perfil />
+          <button onClick={closeAllSections}>Cerrar</button>
+        </ModalContainer>
+      )}
+
+      {isConfigOpen && (
+        <ModalContainer>
+          <Configuracion />
+          <button onClick={closeAllSections}>Cerrar</button>
+        </ModalContainer>
+      )}
+
+      {isInfoOpen && (
+        <ModalContainer>
+          <Informacion />
+          <button onClick={closeAllSections}>Cerrar</button>
+        </ModalContainer>
+      )}
 {isLoaded && (
         <div
           style={{

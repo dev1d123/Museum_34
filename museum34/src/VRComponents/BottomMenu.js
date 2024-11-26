@@ -81,7 +81,7 @@ const FadeIn = styled.div`
   }
 `;
 
-const BottomMenu = () => {
+const BottomMenu = ({ setActiveSection  }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Manejadores de eventos para mostrar/ocultar el menú
@@ -104,18 +104,18 @@ const BottomMenu = () => {
             <Icon src={home} alt="Home" />
             Inicio
           </MenuButton>
-          <MenuButton>
-            <Icon src={config} alt="Config" />
-            Configuración
-          </MenuButton>
-          <MenuButton>
-            <Icon src={perfil} alt="Perfil" />
-            Perfil
-          </MenuButton>
-          <MenuButton>
-            <Icon src={info} alt="Info" />
-            Info
-          </MenuButton>
+          <MenuButton onClick={() => setActiveSection("perfil")}>
+          <Icon src={perfil} alt="Perfil" />
+          Perfil
+        </MenuButton>
+        <MenuButton onClick={() => setActiveSection("config")}>
+          <Icon src={config} alt="Configuración" />
+          Configuración
+        </MenuButton>
+        <MenuButton onClick={() => setActiveSection("info")}>
+          <Icon src={info} alt="Información" />
+          Info
+        </MenuButton>
         </BottomMenuContainer>
       </FadeIn>
     </div>
