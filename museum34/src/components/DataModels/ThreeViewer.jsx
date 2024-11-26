@@ -43,7 +43,7 @@ const ThreeViewer = ({ path, handData }) => {
       path,
       (gltf) => {
         model = gltf.scene;
-        model.scale.set(0.03, 0.03, 0.03);
+        model.scale.set(5, 5, 5);
         scene.add(model);
 
         // Centrar el modelo
@@ -83,9 +83,11 @@ const ThreeViewer = ({ path, handData }) => {
     };
     const onMouseUp = () => {
       isDragging = false;
+      /*
       model.rotation.y = 0;
       model.rotation.x = 0;
-    };
+      */
+      };
     
 
     //No se descartan las funciones ya establecidas
@@ -164,19 +166,20 @@ const ThreeViewer = ({ path, handData }) => {
         setInitialRightY(rightFingers[0].y);
         setIsDraggingRight(true);
       }
-
-      const dedoX = scaleAndStabilize(rightFingers[0].x, 0, 1, -30, 30);
-      const dedoY = scaleAndStabilize(rightFingers[0].y, 0, 1, -23, 23);
       const dedoIX = scaleAndStabilize(initialRightX, 0, 1, -30, 30);
       const dedoIY = scaleAndStabilize(initialRightY, 0, 1, -23, 23);
+
+      const dedoX = lerp(dedoIX, scaleAndStabilize(rightFingers[0].x, 0, 1, -30, 30), 0.1);
+      const dedoY = lerp(dedoIY, scaleAndStabilize(rightFingers[0].y, 0, 1, -23, 23), 0.1);
+      
 
       
       const deltaMoveX = dedoX - dedoIX;
       const deltaMoveY = dedoY - dedoIY;
 
 
-      const targetRotationY = modelRef.current.rotation.y + deltaMoveX * 1// Eje Y (izquierda-derecha)
-      const targetRotationX = modelRef.current.rotation.x + deltaMoveY * 1 // Eje X (arriba-abajo)
+      const targetRotationY = modelRef.current.rotation.y + deltaMoveX * 20 // Eje Y (izquierda-derecha)
+      const targetRotationX = modelRef.current.rotation.x + deltaMoveY * 20 // Eje X (arriba-abajo)
 
       modelRef.current.rotation.y = lerp(modelRef.current.rotation.y, targetRotationY, 0.1);
       modelRef.current.rotation.x = lerp(modelRef.current.rotation.x, targetRotationX, 0.1);
