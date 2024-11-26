@@ -88,7 +88,7 @@ const MuseumVirtual = () => {
       {/* Modal para mostrar información */}
       <Modal3D
         isOpen={isModalOpen}
-        id={0} // Eliminé el uso de selectedModelId porque no se está usando
+        id={4} // Eliminé el uso de selectedModelId porque no se está usando
         onClose={() => setIsModalOpen(false)}
       />
 {isLoaded && (
