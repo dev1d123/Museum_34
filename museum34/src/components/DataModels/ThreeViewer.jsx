@@ -156,7 +156,7 @@ const ThreeViewer = ({ path, handData }) => {
     const { leftGrabbing, leftFingers, rightGrabbing, rightFingers } = handData;
 
     if (leftGrabbing && cameraRef.current) {
-      const targetPos = scaleAndStabilize(leftFingers[0].z, -0.0000009, -0.0000002, 2, 8);
+      const targetPos = scaleAndStabilize(leftFingers[0].z, -0.0000009, -0.0000002, 2, 5);
       cameraRef.current.position.z = lerp(cameraRef.current.position.z, targetPos, 0.1); // Alpha controla la suavidad
     }
 
