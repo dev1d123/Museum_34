@@ -18,7 +18,10 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     console.log(isHandsOpen ? "Desactivando cámara..." : "Activando cámara...");
   };
 
+import IASpeak from "./IASpeak";
 
+
+const Modal3D = ({ isOpen = true, id = 2 }) => {
   const [modelData, setModelData] = useState({
     title: "Default Model",
     description: "Default description for the model.",
@@ -93,15 +96,22 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-container">
-        <button className="close-btn" onClick={onClose}>
-          ×
-        </button>
+        
         <div className="modal-content">
           {/* Modelo 3D en el lado izquierdo */}
           <div className="model-viewer">
             <ThreeViewer path={modelData.path} handData={handData}/>
           </div>
           <div className="model-description">
+            <h2>{modelData.title}</h2>
+            <textarea 
+              className="description-textarea"
+              value={modelData.description} 
+              readOnly 
+            />
+            
+            <IASpeak className="btn-leer" title={modelData.title} description={modelData.description}/>
+
             <div>
               <h2>{modelData.title}</h2>
               <p>{modelData.description}</p>
