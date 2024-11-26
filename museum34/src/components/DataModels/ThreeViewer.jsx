@@ -7,6 +7,10 @@ const ThreeViewer = ({ path, handData }) => {
   const cameraRef = useRef(null);
 
   const [initialLeftZ, setInitialLeftZ] = useState(null);
+  const [initialRightX, setInitialRightX] = useState(null);
+  const [initialRightY, setInitialRightY] = useState(null);
+
+  const [isDraggingRight, setIsDraggingRight] = useState(false);
 
   useEffect(() => {
     if (!viewerRef.current) return;
@@ -38,7 +42,7 @@ const ThreeViewer = ({ path, handData }) => {
       path,
       (gltf) => {
         model = gltf.scene;
-        model.scale.set(5, 5, 5);
+        model.scale.set(0.03, 0.03, 0.03);
         scene.add(model);
 
         // Centrar el modelo
@@ -70,11 +74,18 @@ const ThreeViewer = ({ path, handData }) => {
 
       model.rotation.y += deltaMove.x * 0.01;
       model.rotation.x += deltaMove.y * 0.01;
+    
+      console.log("Rotacion del modelo Y en: ", model.rotation.y);
+      console.log("Rotacion del modelo X en: ", model.rotation.x);
 
       previousMousePosition = { x: event.clientX, y: event.clientY };
     };
-
-    const onMouseUp = () => (isDragging = false);
+    const onMouseUp = () => {
+      isDragging = false;
+      model.rotation.y = 0;
+      model.rotation.x = 0;
+    };
+    
 
     //No se descartan las funciones ya establecidas
     const onWheel = (event) => {
@@ -147,6 +158,50 @@ const ThreeViewer = ({ path, handData }) => {
       cameraRef.current.position.z = lerp(cameraRef.current.position.z, targetPos, 0.1); // Alpha controla la suavidad
       console.log("Nueva posición suavizada:", cameraRef.current.position.z);
     }
+
+    if(rightGrabbing && cameraRef.current){
+      if (!isDraggingRight) {
+        setInitialRightX(rightFingers[0].x);
+        setInitialRightY(rightFingers[0].y);
+        setIsDraggingRight(true);
+      }
+
+      console.log("Posicion inicial de referencia X: ", initialRightX);
+      console.log("Posicion inicial de referencia Y: ", initialRightY);
+
+      const dedoX = scaleAndStabilize(rightFingers[0].x, 0, 1, -4, 4);
+      const dedoY = scaleAndStabilize(rightFingers[0].y, 0, 1, -4, 4);
+      const dedoIX = scaleAndStabilize(initialRightX, 0, 1, -4, 4);
+      const dedoIY = scaleAndStabilize(initialRightY, 0, 1, -4, 4);
+      console.log("asdasaasdddedoX: ", dedoX);
+      console.log("dafdfasddedoY: ", dedoY);
+      console.log("fsgsfgasddedoIX: ", dedoIX);
+      console.log("sfgsfgsasddedoIY: ", dedoIY);
+      
+      const deltaMoveX = dedoX - dedoIX;
+      const deltaMoveY = dedoY - dedoIY;
+      // Ajuste d e rotación en ambos ejes
+
+
+      const targetRotationY = cameraRef.current.rotation.y + deltaMoveX * 1// Eje Y (izquierda-derecha)
+      const targetRotationX = cameraRef.current.rotation.x + deltaMoveY * 1 // Eje X (arriba-abajo)
+
+      // Aplicamos las nuevas rotaciones suavizadas
+      cameraRef.current.rotation.y = lerp(cameraRef.current.rotation.y, targetRotationY, 0.1);
+      cameraRef.current.rotation.x = lerp(cameraRef.current.rotation.x, targetRotationX, 0.1);
+
+      console.log("Rotacion actual Y de la camara: ", cameraRef.current.rotation.y);
+
+      console.log("Rotacion actual X de la camara: ", cameraRef.current.rotation.x);
+
+      setInitialRightX(rightFingers[0].x);
+      setInitialRightY(rightFingers[0].y);
+
+    } else{
+      setIsDraggingRight(false);
+    }
+
+
     if (handData.leftGrabbing === true) {
       console.log("Mano izquierda");
       console.log("Profundidad:", handData.leftFingers[0].z);
@@ -157,7 +212,7 @@ const ThreeViewer = ({ path, handData }) => {
       console.log("EjeYasdasdasdas:", handData.rightFingers[0].y);
 
     } 
-  }, [JSON.stringify(handData)]);
+  }, [JSON.stringify(handData), initialRightX, initialRightY]);
   
 
 
