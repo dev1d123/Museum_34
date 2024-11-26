@@ -41,16 +41,23 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
 
   const handleFingerData = (data) => {
     if (data) {
-      setHandData((prevHandData) => ({
-        ...prevHandData, // Copiar los valores existentes
+      // Actualizamos los valores de las manos detectadas
+      handDataRef.current = {
         leftGrabbing: data.leftGrabbing,
         rightGrabbing: data.rightGrabbing,
-        leftFingers: [...data.leftFingers], // Asegúrate de copiar los valores de forma segura
-        rightFingers: [...data.rightFingers], // Asegúrate de copiar los valores de forma segura
-      }));
+        leftFingers: data.leftFingers,
+        rightFingers: data.rightFingers,
+      };
+  
+      // También actualizamos el estado
+      setHandData({
+        leftGrabbing: data.leftGrabbing,
+        rightGrabbing: data.rightGrabbing,
+        leftFingers: data.leftFingers,
+        rightFingers: data.rightFingers,
+      });
     }
   };
-  
   const checkDataUpdates = () => {
     /*
     console.log("Revisando datos de las manos...");
