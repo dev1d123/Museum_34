@@ -17,12 +17,11 @@ const Nav = styled.div`
 function Learn(){
     return(
         <div>
-            <div className="buttonVoice" style={{ position: 'sticky', top: '10px', margin: '10px', zIndex: '9000' }}>
-                <MainVoice />
-            </div>
+
             <Nav>
                 <NavLearn></NavLearn>
             </Nav>
+
             <br></br>
             <br></br>
             <br></br>
@@ -32,6 +31,9 @@ function Learn(){
             <br></br>
             
             <div>
+            <div className="buttonVoice" style={{ position: 'sticky', top: '10px', margin: '10px', zIndex: '9000' }}>
+                <MainVoice />
+            </div>
                 <PopularSubjects></PopularSubjects>
                 <TeamSection></TeamSection>
                 <ServicesSection></ServicesSection>

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import home from "../images/icons/home.png";
 import perfil from "../images/icons/perfil.png";
 import config from "../images/icons/config.png";
 import info from "../images/icons/info.png";
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 
 // Contenedor del menú inferior
 const BottomMenuContainer = styled.div`
   position: fixed;
-  bottom: 0;
+  bottom: ${(props) => (props.isVisible ? "0" : "-100px")};
   left: 50%;
   transform: translateX(-50%);
   width: 30%;
@@ -20,6 +21,7 @@ const BottomMenuContainer = styled.div`
   border-radius: 15px 15px 0 0;
   box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
   z-index: 1000;
+  transition: bottom 0.3s ease;
 `;
 
 // Estilo de los botones
@@ -80,27 +82,43 @@ const FadeIn = styled.div`
 `;
 
 const BottomMenu = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Manejadores de eventos para mostrar/ocultar el menú
+  const handleMouseEnter = () => setIsVisible(true);
+  const handleMouseLeave = () => setIsVisible(false);
+  const navigate = useNavigate(); 
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.location.reload(); 
+  };
   return (
-    <FadeIn>
-      <BottomMenuContainer>
-        <MenuButton>
-          <Icon src={home} alt="Home" />
-          Inicio
-        </MenuButton>
-        <MenuButton>
-          <Icon src={config} alt="Config" />
-          Configuración
-        </MenuButton>
-        <MenuButton>
-          <Icon src={perfil} alt="Perfil" />
-          Perfil
-        </MenuButton>
-        <MenuButton>
-          <Icon src={info} alt="Info" />
-          Info
-        </MenuButton>
-      </BottomMenuContainer>
-    </FadeIn>
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{ position: "fixed", width: "100%", height:"100px", bottom: 10, zIndex: 1000 }}
+    >
+      <FadeIn>
+        <BottomMenuContainer isVisible={isVisible}>
+          <MenuButton onClick={() => handleNavigation("/")}>
+            <Icon src={home} alt="Home" />
+            Inicio
+          </MenuButton>
+          <MenuButton>
+            <Icon src={config} alt="Config" />
+            Configuración
+          </MenuButton>
+          <MenuButton>
+            <Icon src={perfil} alt="Perfil" />
+            Perfil
+          </MenuButton>
+          <MenuButton>
+            <Icon src={info} alt="Info" />
+            Info
+          </MenuButton>
+        </BottomMenuContainer>
+      </FadeIn>
+    </div>
   );
 };
 
