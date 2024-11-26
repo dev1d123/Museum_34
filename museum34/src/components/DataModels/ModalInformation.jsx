@@ -6,7 +6,7 @@ import ThreeViewer from "./ThreeViewer";
 
 import IASpeak from "./IASpeak";
 
-const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
+const Modal3D = ({ isOpen = true, id = 0 }) => {
   const [modelData, setModelData] = useState({
     title: "Default Model",
     description: "Default description for the model.",
@@ -24,9 +24,7 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-container">
-        <button className="close-btn" onClick={onClose}>
-          ×
-        </button>
+        
         <div className="modal-content">
           {/* Modelo 3D en el lado izquierdo */}
           <div className="model-viewer">
@@ -35,7 +33,11 @@ const Modal3D = ({ isOpen = true, id = 0, onClose = () => {} }) => {
           {/* Descripción en el lado derecho */}
           <div className="model-description">
             <h2>{modelData.title}</h2>
-            <p>{modelData.description}</p>
+            <textarea 
+              className="description-textarea"
+              value={modelData.description} 
+              readOnly 
+            />
             
             <IASpeak className="btn-leer" title={modelData.title} description={modelData.description}/>
 
