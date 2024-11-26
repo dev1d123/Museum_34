@@ -94,6 +94,8 @@ const MuseumVirtual = () => {
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+    console.log("toggleModal!", isModalOpen);
+
   };
 
   const [isPerfilOpen, setIsPerfilOpen] = useState(false);
