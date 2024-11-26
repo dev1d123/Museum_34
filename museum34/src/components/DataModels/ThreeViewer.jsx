@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const ThreeViewer = ({ path }) => {
+const ThreeViewer = ({ path, handData }) => {
   const viewerRef = useRef(null);
 
   useEffect(() => {
@@ -111,6 +111,25 @@ const ThreeViewer = ({ path }) => {
       renderer.dispose();
     };
   }, [path]);
+
+
+  useEffect(() => {
+    console.log("handData actualizado:", handData);
+  
+    if (handData.leftGrabbing === true) {
+      console.log("Mano izquierda");
+      console.log("Profundidad:", handData.leftFingers[0].z);
+    } 
+    if (handData.rightGrabbing === true) {
+      console.log("Mano derecha");
+      console.log("EjeXasdasdasdas:", handData.rightFingers[0].x);
+
+      console.log("EjeYasdasdasdas:", handData.rightFingers[0].y);
+
+    } 
+  }, [JSON.stringify(handData)]); // Usamos JSON.stringify para detectar cambios profundos
+  
+
 
   return (
     <div

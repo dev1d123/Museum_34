@@ -41,29 +41,24 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
 
   const handleFingerData = (data) => {
     if (data) {
-      // Actualizamos los valores de las manos detectadas
-      handDataRef.current = {
+      setHandData((prevHandData) => ({
+        ...prevHandData, // Copiar los valores existentes
         leftGrabbing: data.leftGrabbing,
         rightGrabbing: data.rightGrabbing,
-        leftFingers: data.leftFingers,
-        rightFingers: data.rightFingers,
-      };
-  
-      // También actualizamos el estado
-      setHandData({
-        leftGrabbing: data.leftGrabbing,
-        rightGrabbing: data.rightGrabbing,
-        leftFingers: data.leftFingers,
-        rightFingers: data.rightFingers,
-      });
+        leftFingers: [...data.leftFingers], // Asegúrate de copiar los valores de forma segura
+        rightFingers: [...data.rightFingers], // Asegúrate de copiar los valores de forma segura
+      }));
     }
   };
+  
   const checkDataUpdates = () => {
+    /*
     console.log("Revisando datos de las manos...");
     console.log("Mano izquierda está agarrando?: ", handDataRef.current.leftGrabbing);
     console.log("Mano derecha está agarrando?: ", handDataRef.current.rightGrabbing);
     console.log("Dedos de la mano izquierda: ", handDataRef.current.leftFingers);
     console.log("Dedos de la mano derecha: ", handDataRef.current.rightFingers);
+    */
   };
   
   useEffect(() => {
@@ -97,7 +92,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
         <div className="modal-content">
           {/* Modelo 3D en el lado izquierdo */}
           <div className="model-viewer">
-            <ThreeViewer path={modelData.path} />
+            <ThreeViewer path={modelData.path} handData={handData}/>
           </div>
           <div className="model-description">
             <div>
