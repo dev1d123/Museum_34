@@ -177,10 +177,7 @@ const HandsRec = forwardRef(({onData}, ref) => {
     }
   };
 
-  const processHandGestures = (landmarks, handSide) => {
-    var handSideDetected = determineHandSide(landmarks);
-    
-    /*
+      /*
     Muñeca
       0: Muñeca (Wrist)
     Pulgar
@@ -210,60 +207,73 @@ const HandsRec = forwardRef(({onData}, ref) => {
       20: Punta del dedo (Tip)
 
     */
-    const threshold = 0.4; //umbral de distancia
 
-    const calculateDistance = (x1, y1, x2, y2) => {
-      return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    };
-
-    const distances = {
-      thumb: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[4].x, landmarks[4].y),
-      index: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[8].x, landmarks[8].y),
-      middle: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[12].x, landmarks[12].y),
-      ring: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[16].x, landmarks[16].y),
-      pinky: calculateDistance(landmarks[0].x, landmarks[0].y, landmarks[20].x, landmarks[20].y),
-    };
-
-    const isGrabbing =
-      distances.thumb < threshold &&
-      distances.index < threshold &&
-      distances.middle < threshold &&
-      distances.ring < threshold &&
-      distances.pinky < threshold;
-
-      const fingers = landmarks.map((point) => ({ x: point.x, y: point.y, z: point.z }));
-      
-      const data = {
-        handSide: handSideDetected,
-        isGrabbing,
-        fingers, // Aquí están las posiciones de los dedos
-      };
-      if(onData) {
-        onData(data);
-      }
-      /*
-      if (isGrabbing) {
-        if (handSide === "derecha") {
-          console.log("La mano derecha está cerrada.");
-        }
-        if (handSide === "izquierda") {
-          console.log("La mano izquierda está cerrada.");
-        }
-      } else {
-        if (handSide === "derecha") {
-          console.log("La mano derecha esta abierta");
-        }
-        if (handSide === "izquierda") {
-          console.log("La mano izquierda está abierta");
-        }
-      }
-    
-      console.log("Distancias de los dedos a la muñeca:", distances);
-      */
-     };
+  //retorna 2 arreglos (uno por la mano izquierda y otro por la mano derecha, ademas
+  //retorna handSide y leftGrabbing y rightGrabbing)
+  const processHandGestures = (results, landmarks) => {
+    const threshold = 0.4; // Umbral de distancia para determinar si la mano está cerrada
+    const calculateDistance = (x1, y1, x2, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
   
-
-
+    // Función para calcular si una mano está cerrada y obtener los dedos
+    const getHandData = (handLandmarks) => {
+      const distances = {
+        thumb: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[4].x, handLandmarks[4].y),
+        index: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[8].x, handLandmarks[8].y),
+        middle: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[12].x, handLandmarks[12].y),
+        ring: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[16].x, handLandmarks[16].y),
+        pinky: calculateDistance(handLandmarks[0].x, handLandmarks[0].y, handLandmarks[20].x, handLandmarks[20].y),
+      };
+  
+      const isGrabbing =
+        distances.thumb < threshold &&
+        distances.index < threshold &&
+        distances.middle < threshold &&
+        distances.ring < threshold &&
+        distances.pinky < threshold;
+  
+      // Mapear las posiciones de los dedos
+      const fingers = handLandmarks.map((point) => ({ x: point.x, y: point.y, z: point.z }));
+  
+      return { isGrabbing, fingers };
+    };
+  
+    // Preparar los datos para la mano izquierda y derecha
+    let leftGrabbing = false;
+    let rightGrabbing = false;
+    let leftFingers = [];
+    let rightFingers = [];
+  
+    const leftLandmarks = results.landmarks.filter((landmark) => determineHandSide(landmark) === 'izquierda');
+    const rightLandmarks = results.landmarks.filter((landmark) => determineHandSide(landmark) === 'derecha');
+  
+    if (leftLandmarks.length > 0) {
+      const leftData = getHandData(leftLandmarks[0]);
+      leftGrabbing = leftData.isGrabbing;
+      leftFingers = leftData.fingers;
+    }
+  
+    if (rightLandmarks.length > 0) {
+      const rightData = getHandData(rightLandmarks[0]);
+      rightGrabbing = rightData.isGrabbing;
+      rightFingers = rightData.fingers;
+    }
+  
+    // Determina si hay dos manos detectadas
+    const isTwoHands = leftLandmarks.length > 0 && rightLandmarks.length > 0;
+  
+    // Estructura de los datos para enviar
+    const data = {
+      leftGrabbing,
+      rightGrabbing,
+      leftFingers,
+      rightFingers,
+    };
+  
+    // Llamar a onData con los datos de ambas manos
+    if (onData) {
+      onData(data);
+    }
+  };
   const predictWebcam = (handLandmarkerInstance) => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -294,7 +304,7 @@ const HandsRec = forwardRef(({onData}, ref) => {
               lineWidth: 5,
             });
             drawLandmarks(ctx, landmarks, { color: "#FF0000", lineWidth: 2 });
-            processHandGestures(landmarks, handSide);
+            processHandGestures(results, landmarks, handSide);
 
           });
           /*
