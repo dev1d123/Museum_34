@@ -83,11 +83,17 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
       }
     };
   }, [isHandsOpen]); // Este efecto depende de isHandsOpen
+
   useEffect(() => {
     // Busca el modelo basado en el ID recibido o usa valores por defecto
     const foundModel = data.find((item) => item.id === id);
     setModelData(foundModel || modelData);
   }, [id]);
+
+  useEffect(() => {
+    console.log("Modal abierto:", isOpen); // Confirmar estado del modal
+  }, [isOpen]);
+
 
   if (!isOpen) return null;
 

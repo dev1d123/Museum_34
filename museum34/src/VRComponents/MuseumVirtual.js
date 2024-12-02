@@ -11,9 +11,9 @@ import Informacion from "./Informacion.js";
 import models from 'museum34/public/models/';
 import styled from "styled-components";
 
-import Modal3D from "../components/DataModels/ModalInformation.jsx";
 import main from "./main.js";
 import "aframe";
+import ModalInformation from "../components/DataModels/ModalInformation.jsx";
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -92,11 +92,8 @@ const MuseumVirtual = () => {
     setIsLoaded(true);
   };
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-    console.log("toggleModal!", isModalOpen);
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
 
-  };
 
   const [isPerfilOpen, setIsPerfilOpen] = useState(false);
   const [isConfigOpen, setIsConfigOpen] = useState(false);
@@ -123,11 +120,13 @@ const MuseumVirtual = () => {
       )}
 
       {/* Modal para mostrar información */}
-      <Modal3D
-        isOpen={isModalOpen}
-        id={4} // Eliminé el uso de selectedModelId porque no se está usando
-        onClose={() => setIsModalOpen(false)}
-      />
+      {isModalOpen && (
+          <ModalInformation
+            isOpen={isModalOpen}
+            id={4}
+            onClose={() => setIsModalOpen(false)}
+          />
+        )}
           {/* Modal dinámico para cada sección */}
       {isPerfilOpen && (
         <ModalContainer>
