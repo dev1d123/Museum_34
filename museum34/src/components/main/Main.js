@@ -5,7 +5,14 @@ import NavMenu from '../NavMenu'
 import ImgCar from './ImgCar';
 import FooterPage from '../FooterPage';
 import MainVoice from '../MainVoice';
+import { Link, useNavigate } from 'react-router-dom';
+
 function Main() {
+  const navigate = useNavigate();
+  const handleNavigate = () =>{
+    navigate('/colecciones/museo');
+  };
+
   return (
 
     <div>
@@ -21,6 +28,14 @@ function Main() {
         <MainVoice />
       </div>
       <ImgCar></ImgCar>
+
+      <div className='buttonAcc'>
+        <button className="button" onClick={handleNavigate}>
+          <span className="hover-text" data-text="Accede al museo virtual, aqui!!!"></span>
+          Accede al museo virtual, aqui!!!
+        </button>
+
+      </div>
       <FooterPage></FooterPage>
       
     </div>

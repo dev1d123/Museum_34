@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import home from "../images/icons/home.png";
 import perfil from "../images/icons/perfil.png";
@@ -92,6 +92,28 @@ const BottomMenu = ({ setActiveSection  }) => {
     navigate(path);
     window.location.reload(); 
   };
+
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'p' || event.key === 'P') {
+        setActiveSection('perfil');
+      } else if (event.key === 'c' || event.key === 'C') {
+        setActiveSection('config');
+      } else if (event.key === 'i' || event.key === 'I') {
+        setActiveSection('info');
+      }
+    };
+
+    // Añadir el listener para detectar la tecla presionada
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Limpiar el listener cuando el componente se desmonte
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [setActiveSection]); // Dependencia para asegurar que setActiveSection siempre esté actualizado
+
   return (
     <div
       onMouseEnter={handleMouseEnter}
@@ -104,6 +126,7 @@ const BottomMenu = ({ setActiveSection  }) => {
             <Icon src={home} alt="Home" />
             Inicio
           </MenuButton>
+          
           <MenuButton onClick={() => setActiveSection("perfil")}>
           <Icon src={perfil} alt="Perfil" />
           Perfil
