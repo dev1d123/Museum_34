@@ -62,6 +62,18 @@ const MuseumVirtual = () => {
           console.log('CampiñaMist picture area!');
         }else if(x >= 1.8 && x <= 3.9 && z >= -14 && z <= -12){
           console.log('Plaza 2 picture area!');
+        }else if(x >= -2.4 && x <= 0.7 && z >= -14 && z <= -12){
+          console.log('Plaza picture area!');
+        }else if(x >= 3.6 && x <= 5.5 && z >= 12.4 && z <= 14){
+          console.log('Portada picture area!');
+        }else if(x >= 1.5 && x <= 3.3 && z >= 12.4 && z <= 14){
+          console.log('Misti picture area!');
+        }else if(x >= -0.7 && x <= 1.0 && z >= 12.4 && z <= 14){
+          console.log('Catedral picture area!');
+        }else if(x >= -3.18 && x <= 0.1 && z >= 12.4 && z <= 14){
+          console.log('Campiña picture area!');
+        }else if(x >= -5.8 && x <= -3.5 && z >= 12.4 && z <= 14){
+          console.log('Sillar picture area!');
         }
         
 
