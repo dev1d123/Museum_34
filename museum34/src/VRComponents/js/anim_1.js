@@ -1,11 +1,6 @@
-/* global AFRAME, THREE */
-var baseSpot; // Declaración de baseSpot
-var spot;     // Declaración de spot
-
-import "aframe";
 
 
-console.log("ANIM1 -> CARGADO!");
+
 
 AFRAME.registerComponent('anim_1', {
     init: function () {
