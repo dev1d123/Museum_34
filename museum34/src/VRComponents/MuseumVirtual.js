@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Entity, Scene } from "aframe-react";
 import BottomMenu from "./BottomMenu.js";
 import stepSound from "./audio/step-sound.ogg";
+import clickSound from "./audio/click-sound.ogg";
 import audio1 from "./audio/アドリブ-_instrumental_.ogg";
 
 import Perfil from "./Perfil.js";
@@ -44,6 +45,7 @@ const MuseumVirtual = () => {
     audio.volume = 0.5;
     audio.loop = true; // El sonido se repetirá
     let keysPressed = new Set(); // Usaremos un Set para almacenar las teclas presionadas
+    let jumpTimeout; // Controlará el tiempo en que se pausa el sonido tras un salto
   
     // Función para iniciar el sonido
     const startSound = () => {
@@ -60,41 +62,79 @@ const MuseumVirtual = () => {
       }
     };
   
-    // Manejadores de eventos para teclas de movimiento
+    // Función para ajustar la velocidad del sonido
+    const adjustPlaybackRate = (rate) => {
+      audio.playbackRate = rate;
+    };
+  
+    // Manejadores de eventos para teclas de movimiento y correr
     const handleKeyDown = (event) => {
-      if (['w', 'a', 's', 'd'].includes(event.key.toLowerCase())) {
-        keysPressed.add(event.key.toLowerCase());
+      const key = event.key.toLowerCase();
+  
+      // Movimiento con WASD
+      if (['w', 'a', 's', 'd'].includes(key)) {
+        keysPressed.add(key);
         if (keysPressed.size > 0 && !isMoving) {
           startSound();
           isMoving = true;
         }
       }
+  
+      // Salto con barra espaciadora
+      if (key === " ") {
+        stopSound(); // Detenemos el sonido inmediatamente
+        clearTimeout(jumpTimeout); // Limpiamos cualquier timeout previo
+        jumpTimeout = setTimeout(() => {
+          // Reanudar el sonido si se siguen moviendo teclas de WASD
+          if (keysPressed.size > 0) {
+            startSound();
+          }
+        }, 1000); // Pausa de 1 segundo
+      }
+  
+      // Correr con Shift
+      if (key === "shift") {
+        adjustPlaybackRate(1.5); // Aumenta la velocidad del sonido
+      }
     };
   
     const handleKeyUp = (event) => {
-      if (['w', 'a', 's', 'd'].includes(event.key.toLowerCase())) {
-        keysPressed.delete(event.key.toLowerCase());
+      const key = event.key.toLowerCase();
+  
+      // Movimiento con WASD
+      if (['w', 'a', 's', 'd'].includes(key)) {
+        keysPressed.delete(key);
         if (keysPressed.size === 0) {
           isMoving = false;
           stopSound();
         }
       }
+  
+      // Dejar de correr al soltar Shift
+      if (key === "shift") {
+        adjustPlaybackRate(1.0); // Vuelve a la velocidad normal
+      }
     };
   
     // Registrar eventos de teclado
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
   
     // Cleanup al desmontar el componente
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+      clearTimeout(jumpTimeout);
     };
   }, []);
   
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLoadScene = () => {
+    // Reproducir el sonido de clic
+    const clickAudio = new Audio(clickSound);
+    clickAudio.volume = 0.5;
+    clickAudio.play().catch((error) => console.error("Error playing click sound:", error));
     setIsLoading(true); 
 
     setTimeout(() => {
@@ -107,8 +147,15 @@ const MuseumVirtual = () => {
   
 
 
-  const toggleModal = () => setIsModalOpen((prev) => !prev);
-
+  const toggleModal = () => {
+    // Reproducir el sonido de clic
+    const clickAudio = new Audio(clickSound);
+    clickAudio.volume = 0.5;
+    clickAudio.play().catch((error) => console.error("Error playing click sound:", error));
+  
+    // Alternar el estado del modal
+    setIsModalOpen((prev) => !prev);
+  };
 
   const [isPerfilOpen, setIsPerfilOpen] = useState(false);
   const [isConfigOpen, setIsConfigOpen] = useState(false);
@@ -272,7 +319,7 @@ const MuseumVirtual = () => {
               position="1 1 0"
               volume="0.3"
             ></a-sound>
-            
+
             <a-asset-item id="floor-obj" src={models.floor}></a-asset-item>
             <img id="floor-texture" src={models.floorTexture} alt="" />
             <img id="floor_normal-texture" src={models.floorNormalTexture} alt="" />
