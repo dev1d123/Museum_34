@@ -70,12 +70,16 @@ AFRAME.registerComponent('jump-controls', {
 
 AFRAME.registerComponent('log-position', {
     tick: function () {
-      // Obtener la posición del jugador
       const position = this.el.object3D.position;
-      const positionString = `Position - X: ${position.x.toFixed(2)}, Y: ${position.y.toFixed(2)}, Z: ${position.z.toFixed(2)}`;
-  
-      // Imprimir la posición en la consola
-      console.log(positionString);
+      const positionData = {
+        x: position.x.toFixed(2),
+        y: position.y.toFixed(2),
+        z: position.z.toFixed(2)
+      };
+      //console.log("Informacion: ", positionData);
+      this.el.emit('position-updated', positionData);
+      console.log('Event emitted:', positionData);
     }
   });
+  
   

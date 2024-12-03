@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Entity, Scene } from "aframe-react";
 import BottomMenu from "./BottomMenu.js";
 import stepSound from "./audio/step-sound.ogg";
@@ -38,6 +38,38 @@ const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado del modal
   const [contentDisplay, setContentDisplay] = useState("none");
+  
+  //RECONOCER EL MOVIMIENTO DEL JUGADOR
+  const playerRef = useRef(null);
+  useEffect(() => {
+    const waitForPlayerRef = async () => {
+      while (!playerRef.current) {
+        await new Promise((resolve) => setTimeout(resolve, 50)); 
+      }
+  
+      const playerEl = playerRef.current; 
+      console.log('Player ref:', playerEl); 
+  
+      const handlePositionUpdate = (event) => {
+        const { x, y, z } = event.detail; 
+        console.log(`MuseumVirtual received position: X=${x}, Y=${y}, Z=${z}`);
+      };
+  
+      const handlePlayerLoaded = () => {
+        playerEl.addEventListener('position-updated', handlePositionUpdate);
+      };
+  
+      playerEl.addEventListener('loaded', handlePlayerLoaded);
+      return () => {
+        playerEl.removeEventListener('loaded', handlePlayerLoaded);
+        playerEl.removeEventListener('position-updated', handlePositionUpdate);
+      };
+    };
+  
+    waitForPlayerRef(); // Iniciar la espera
+  }, []);
+
+
 
   useEffect(() => {
     let isMoving = false; // Controla si se está moviendo
@@ -167,7 +199,15 @@ const MuseumVirtual = () => {
     setIsInfoOpen(false);
   };
 
-
+  document.addEventListener('DOMContentLoaded', () => {
+    const player = document.querySelector('#player'); 
+  
+    player.addEventListener('position-updated', (event) => {
+      const positionData = event.detail;
+      console.log(`MuseumVirtual received position: X=${positionData.x}, Y=${positionData.y}, Z=${positionData.z}`);
+      // Aquí puedes realizar cualquier acción, como actualizar la UI o guardar datos
+    });
+  });
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
 
@@ -390,6 +430,7 @@ const MuseumVirtual = () => {
 
           <a-entity
             id="player"
+            ref={playerRef}
             camera
             look-controls="pointerLockEnabled: true"
             wasd-controls="acceleration: 35"

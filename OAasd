@@ -1,0 +1,618 @@
+[33mcommit adf9ab79a797ed324a9c2c01d2dccb701dc47013[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Dec 3 04:57:24 2024 -0500
+
+    Player position recognition complete
+
+[33mcommit 5c7465ea47cb9242e60c335fbbd19ec0b325185f[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 22:50:30 2024 -0500
+
+    Config menu component added
+
+[33mcommit 48a82c7648e3878f5265329bf162984fe5b027e8[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 22:46:58 2024 -0500
+
+    Added info component
+
+[33mcommit f5231901a270f3c5576068de9b1204dc476814f6[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 22:41:06 2024 -0500
+
+    Perfil component complete
+
+[33mcommit 6ff6ab259ab1a474d82ef904886f254890b0d8e0[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 22:38:32 2024 -0500
+
+    Recognice player position ended
+
+[33mcommit af64589833b87aac1632b46ea7fcc23a44982cdf[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 22:01:39 2024 -0500
+
+    xd
+
+[33mcommit 5b61b5f2cb5b3edc26cd22023e9f8414cc9a7339[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 21:54:51 2024 -0500
+
+    transition animation
+
+[33mcommit a77b52ff309f6bd0edb3f844bf13f3f04872e4b0[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 21:20:17 2024 -0500
+
+    Transition component created
+
+[33mcommit fecb9384c7d82cb9f186d6e79e67968021a3425a[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 16:31:56 2024 -0500
+
+    Modal bug solved (ya pe julio)
+
+[33mcommit 0482eeb46637899b525975c04aefdbef335c2ee2[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Dec 2 13:08:50 2024 -0500
+
+    Added hot keys
+
+[33mcommit a891de665090663f4e1f19de9d74bcc50fbcd1cb[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 30 09:32:30 2024 -0500
+
+    some changes
+
+[33mcommit b205ebe1e869f491cb9c5706e23259e430fee69e[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 06:32:47 2024 -0500
+
+    Im high... not literally....I should sleep
+
+[33mcommit 92798ffe8f76199ee2e7979f51cce917d1606857[m
+Merge: 45c856f 67070e7
+Author: dev1d123 <139636102+dev1d123@users.noreply.github.com>
+Date:   Tue Nov 26 06:04:27 2024 -0500
+
+    Merge pull request #4 from dev1d123/dataModels
+    
+    IA text (thx Julio)
+
+[33mcommit 67070e71ae6bb5671d22df0bec61302e1b2abc60[m[33m ([m[1;31morigin/dataModels[m[33m)[m
+Merge: 8dcebfd 45c856f
+Author: dev1d123 <139636102+dev1d123@users.noreply.github.com>
+Date:   Tue Nov 26 06:04:14 2024 -0500
+
+    Merge branch 'main' into dataModels
+
+[33mcommit 45c856f7534cd026ead07daa4f40f950a3325d8a[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 05:46:00 2024 -0500
+
+    botomMenu complete
+
+[33mcommit 27d85c1aca593b40533573d7861e03de42662010[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 05:08:58 2024 -0500
+
+    Improve bottom menu and fixing the mic
+
+[33mcommit ce29a3b59fe112d872b25f15622e97efe8bd7b86[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 04:54:03 2024 -0500
+
+    Added bottom menu
+
+[33mcommit 238e745ff9b83149f65a108a52db13efe37f7310[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 04:22:46 2024 -0500
+
+    change senibility
+
+[33mcommit 42790d1bc5a8416af3b2cdc742813de51ec3880e[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 01:55:15 2024 -0500
+
+    Improved voice recognition
+
+[33mcommit dcf4fc5b9315fa80266d4fa323cedf55963bce3f[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 01:19:23 2024 -0500
+
+    idk
+
+[33mcommit f327380b19e93364ae0fbf0e3b83ebd1ab92be9a[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 01:12:52 2024 -0500
+
+    Fixed stability and parameters
+
+[33mcommit 1cd141efd9523299b9ed8f1ff2e402f8b487300b[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 00:57:53 2024 -0500
+
+    Hand control is done!!!
+
+[33mcommit 45c481400ca366cef36033b5ba406e873c284f70[m
+Merge: df773e9 346d770
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 00:43:16 2024 -0500
+
+    Merge branch 'main' of https://github.com/dev1d123/Museum_34
+
+[33mcommit df773e92640d7f5638986916d30416bbf2cdd8ea[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 26 00:41:46 2024 -0500
+
+    Cam rotation xd
+
+[33mcommit 346d770ec3e663d7260343691bbbf9be90ce23c0[m
+Author: JulioChura <139524958+JulioChura@users.noreply.github.com>
+Date:   Mon Nov 25 23:51:42 2024 -0500
+
+    se pone como id predeterminado el 4 y ya no el 0
+
+[33mcommit 821a9b1a2acf9a514d80d503e87d7e0be21948f9[m
+Author: JulioChura <139524958+JulioChura@users.noreply.github.com>
+Date:   Mon Nov 25 23:44:19 2024 -0500
+
+    Se cambia la escala del modelo para que se muestre de forma correcta
+
+[33mcommit f22614a935e67b3226f4b4ecdca6d9e83ba90fb5[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 25 23:37:01 2024 -0500
+
+    The zoom detection is done!!!!
+
+[33mcommit c8d5ca408173757d9f0d239579a6fc57cf24e3a2[m
+Author: JulioChura <139524958+JulioChura@users.noreply.github.com>
+Date:   Mon Nov 25 23:11:54 2024 -0500
+
+    Se agregan los modelos creados hasta el momento al json
+
+[33mcommit 9c57d1926d7aa7d8a5723a59c5d7d2d54b353531[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 25 22:49:53 2024 -0500
+
+    Comunication between Viewer and Modal complete!!!
+
+[33mcommit 8dcebfde19a7be001cf08483c4875b4c0ceae545[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Mon Nov 25 22:25:26 2024 -0500
+
+    Subiendo todos los cambios
+
+[33mcommit ad6cc4f8c4593dba4fbd1323c2b210d408683764[m
+Author: wcarlosc <wcarlosc@unsa.edu.pe>
+Date:   Mon Nov 25 21:56:37 2024 -0500
+
+    moviendo el resto de los modelos a la carpeta public
+
+[33mcommit 7724e1bf134ccda55f8fb37a962a9dbffc28c5f3[m
+Merge: 741e9bf e9c5c82
+Author: wcarlosc <wcarlosc@unsa.edu.pe>
+Date:   Mon Nov 25 21:49:03 2024 -0500
+
+    colocando modelos
+
+[33mcommit 741e9bf1bb0d86497430c72d78444a0c47ff32b8[m
+Author: wcarlosc <wcarlosc@unsa.edu.pe>
+Date:   Mon Nov 25 21:42:46 2024 -0500
+
+    colocando modelos
+
+[33mcommit e9c5c82c24d9e0ce7acb7777a2d89505d3f080c9[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 25 21:40:00 2024 -0500
+
+    Hand controls improved!
+
+[33mcommit 1dd3e7cacfe4ba314c6f273b9d875a8824c28fc1[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Mon Nov 25 21:24:05 2024 -0500
+
+    Se corrige el icono
+
+[33mcommit 32607fb6def099133ac039993b530705f4ebea6f[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Mon Nov 25 21:08:08 2024 -0500
+
+    Se integra lectura con IA
+
+[33mcommit 44f69e365c5e2e132ec74aa4158160d29fb7d9d2[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 25 19:48:09 2024 -0500
+
+    Added communication between modal info and hands rec
+
+[33mcommit 0f852e003fc64ab3936938de39e10c1a5e19fc7d[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Mon Nov 25 19:32:42 2024 -0500
+
+    Se corrige la disposicion del boton y se corrige el desbordamiento del texto
+
+[33mcommit 194580834c64911b2e502769745a1bfb793ccfd0[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 25 18:49:30 2024 -0500
+
+    modalViewer added
+
+[33mcommit 1a829036f71459ec3a1d5c2a3557908eb06f1e70[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Mon Nov 25 18:13:33 2024 -0500
+
+    Se agregan estilos al boton
+
+[33mcommit aeb647495def7070e91d88559a3bc2e2a4246a00[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Mon Nov 25 17:54:39 2024 -0500
+
+    Se añade el boton para que una IA lea el texto, falta añadir los estilos y la funcionalidad
+
+[33mcommit 31166f2429ee7321d38920d29570fc26eafb2457[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 25 05:41:22 2024 -0500
+
+    Don't change the previus code xdddd
+
+[33mcommit 6c10df3c97c49eefc16fcf7bbacdba753bb25831[m
+Merge: 8a79e8f 4493f87
+Author: wchoquehuancab <139658543+WilliamLawrence25@users.noreply.github.com>
+Date:   Sun Nov 24 23:29:39 2024 -0500
+
+    Merge pull request #3 from dev1d123/hitsounds
+    
+    walk sound effect added
+
+[33mcommit 4493f8757a0c9486f177a625c2decc7a0e76f44d[m
+Author: wchoquehuancab <wchoquehuancab@unsa.edu.pe>
+Date:   Sun Nov 24 23:24:26 2024 -0500
+
+    wa
+
+[33mcommit ca04d277b3e155f375a424079491c0408a167703[m
+Author: wchoquehuancab <wchoquehuancab@unsa.edu.pe>
+Date:   Sun Nov 24 23:19:42 2024 -0500
+
+    walk sound effect added
+
+[33mcommit 8a79e8fa28f5d60299052b8df169663ae272c1e0[m
+Author: wchoquehuancab <wchoquehuancab@unsa.edu.pe>
+Date:   Sun Nov 24 19:16:00 2024 -0500
+
+    wa
+
+[33mcommit 80e0305d6995d4cd2a74753f45f04e149fd5bca8[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sun Nov 24 11:23:07 2024 -0500
+
+    recognize handSide
+
+[33mcommit 652426d8591ea374e6c84af75f7bbb83a4803643[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sun Nov 24 11:14:18 2024 -0500
+
+    Grabbing position recognition
+
+[33mcommit 4847bc6b85dc0f644178b742b780389dcb7151f1[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sun Nov 24 06:10:06 2024 -0500
+
+    turn on/off cam, resolved.....xd
+
+[33mcommit f5616523f19586c2ff1fd58a9150bb1c77a931f6[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 23 23:27:59 2024 -0500
+
+    cam posicion finished
+
+[33mcommit 90030fddca8a2c2dd56855d265aa90a77671e317[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 23 21:58:50 2024 -0500
+
+    Fixing the hand rec component
+
+[33mcommit e059df4234898c98c439f1d2bf992a7001ef5a2b[m
+Merge: 7c9f193 09fc148
+Author: dev1d123 <139636102+dev1d123@users.noreply.github.com>
+Date:   Sat Nov 23 20:22:16 2024 -0500
+
+    Merge pull request #1 from dev1d123/dataModels
+    
+    Data models
+
+[33mcommit 09fc14819a4b7576003a8d5c7eda04513cab46f4[m
+Merge: 2b91d4e 7c9f193
+Author: dev1d123 <139636102+dev1d123@users.noreply.github.com>
+Date:   Sat Nov 23 20:21:28 2024 -0500
+
+    Merge branch 'main' into dataModels
+
+[33mcommit 2b91d4e006616f748b9ee949278b2cad5e356f3b[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Sat Nov 23 15:34:32 2024 -0500
+
+    Se integra un modelo descargado al modal , pero salen errores
+
+[33mcommit ece3dc8a32cb03741b3313cc75ee8327818d2ea0[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Sat Nov 23 12:57:54 2024 -0500
+
+    Se crea un archivo html para poder testear la visualizacion del modelo del volcan
+
+[33mcommit 19152d8da157948b12373895bc7082205218f0e8[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Sat Nov 23 12:54:38 2024 -0500
+
+    Se crea un archivo html para poder testear la visualizacion del modelo del volcan
+
+[33mcommit e58101fea22b28d568adfc9abbda7aa96e782818[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Sat Nov 23 12:12:36 2024 -0500
+
+    Se crea un archivo html para poder testear la visualizacion del modelo del volcan
+
+[33mcommit 7c9f193a1b2b3bb91907cf85d4d83d4dfaf09cc1[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 23 11:58:04 2024 -0500
+
+    Hand recognition with mediapipe finished
+
+[33mcommit 5c7696e1b162b629951f3a87373a98950b4cdbbf[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 23 07:46:09 2024 -0500
+
+    voice rec in landing page almost finished
+
+[33mcommit 32b09dea03221dd858f10cc8c326441dddd25a7f[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Fri Nov 22 23:29:31 2024 -0500
+
+    voice Scroll function added
+
+[33mcommit b9ea771d5d8601f9438bcf1d35b060484821154d[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Fri Nov 22 23:04:29 2024 -0500
+
+    Se integra el modal al component de MuseumVirtual
+
+[33mcommit e1807ddcc39cc35a280c21591bffa02988cae43b[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Fri Nov 22 22:47:34 2024 -0500
+
+    Added recognition function!
+
+[33mcommit 9101266cafba69127be28afe82b2ff2b7bcf38a2[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Fri Nov 22 22:29:31 2024 -0500
+
+    Added button rec
+
+[33mcommit eef2e121f5c7efdb0aac71a73ac023202d7bb3fc[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Fri Nov 22 22:14:36 2024 -0500
+
+    Se corrigen errores
+
+[33mcommit e00a1a8b8bedd1a721269262d367690ad784b262[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Fri Nov 22 21:45:10 2024 -0500
+
+    Deleting some useless components
+
+[33mcommit 0e3589e8be682c33bfff3b6cd729e4aba048c2d8[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Fri Nov 22 21:32:09 2024 -0500
+
+    Se crea un archivo json para poder incluir la informacion de los objetos disponibles
+
+[33mcommit 40c2b3f4cbfe16a193d04f0bbcf38fe2fdb9d28a[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Fri Nov 22 21:18:31 2024 -0500
+
+    Se agregan los estilos
+
+[33mcommit 27e877df5d74141bffb928f154e6f7cc39bd7022[m
+Author: Julio Chura <jchuraaca@unsa.edu.pe>
+Date:   Fri Nov 22 19:21:24 2024 -0500
+
+    Se crea un modal para mostrar un modelo 3d
+
+[33mcommit 11450c4b9fa670b4c033a5b6ea90f946d2250ff9[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Thu Nov 21 10:04:15 2024 -0500
+
+    Im almost done for today :)
+
+[33mcommit 9d184db61d949e8d0394b4658155d3010d4cfeea[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Wed Nov 20 22:31:17 2024 -0500
+
+    Added bottom menu!
+
+[33mcommit a22ed595e142da4c69e22edb6d4e5a494a10337c[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Wed Nov 20 21:56:08 2024 -0500
+
+    It almost done!!!
+
+[33mcommit d3b555dbbefe4de658089c7284d6faae79b4fcd2[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Wed Nov 20 20:33:00 2024 -0500
+
+    Starting the VR Map!!!
+
+[33mcommit 3e3610bfaec5f3887a806c7cb45ef1e1cc26ef85[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 19 20:29:29 2024 -0500
+
+    Added voice recognition!
+
+[33mcommit d3fe4a97c44102ba7c4077be8bef5f01e25479f3[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 16 23:00:29 2024 -0500
+
+    Fixing and tranlating all the components
+
+[33mcommit 49d049989712e57dd02b49aa175b701200f1c54b[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 16 22:37:07 2024 -0500
+
+    Adding contact us section!
+
+[33mcommit bb079a7f238b0f1061a4ad0b7a2481c8c5cb6a08[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Fri Nov 15 18:03:35 2024 -0500
+
+    Fixing the names
+
+[33mcommit ab28d2e329b91208f47a6bdf7a536f64663f42b5[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Fri Nov 15 16:01:17 2024 -0500
+
+    Added courses components
+
+[33mcommit 4a930b2639968478e1156491385aa42592e31394[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Wed Nov 13 17:46:59 2024 -0500
+
+    Adding the navbar of learn part
+
+[33mcommit bdf7bf278dd56533bb93af08699ca54532178f03[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Wed Nov 13 12:46:30 2024 -0500
+
+    Starting the learn site!
+
+[33mcommit 2c5ec654be52ab59b4861ac17a352a76b78b0305[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 12 23:53:54 2024 -0500
+
+    Adding data, complete
+
+[33mcommit 5fa3c57593ce764d1d4a6825a2119734d44eddb0[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 12 23:31:45 2024 -0500
+
+    Fix show images and added more descriptions
+
+[33mcommit aa1d063f61d225a4010c7ca1ac649d0be43f2a94[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 12 08:22:32 2024 -0500
+
+    Change the data
+
+[33mcommit 49489080d24af1b12f9d12835b77117582f43b13[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 12 07:57:28 2024 -0500
+
+    Added the routing in the navbar
+
+[33mcommit 5d46676167eb63501621a03bf59ddf12e25b0438[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 12 07:44:59 2024 -0500
+
+    Adding routing function
+
+[33mcommit 890efaee01342d35e5e39f682a08fbd0b676e662[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Tue Nov 12 05:19:12 2024 -0500
+
+    Changing colors
+
+[33mcommit c956576362265f32448da97f6d1ac58c6494dd0a[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 11 22:32:56 2024 -0500
+
+    Completing the Main component
+
+[33mcommit a8c99bf8148a8fbb37750d392cb09725388862c8[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 11 22:28:37 2024 -0500
+
+    Added the Main component
+
+[33mcommit 5c7026c046416e23096f4a854d78d62cd8fe55e0[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 11 22:14:40 2024 -0500
+
+    Added the background
+
+[33mcommit a7653be93c5b883ada8ffc4385d2cc3850211764[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 11 15:38:15 2024 -0500
+
+    Some changes xd
+
+[33mcommit a35efa1c4dc4c9ddad6ea5087a3341ba33dad4c9[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 4 22:42:56 2024 -0500
+
+    fixing names
+
+[33mcommit d7258435f5c03b88cc47ed7ba401653785b03c87[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Mon Nov 4 22:31:40 2024 -0500
+
+    Added styles of blog to select levels
+
+[33mcommit 236881c2afc31ba87622a25cc3c1bbab97b12283[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sun Nov 3 07:09:41 2024 -0500
+
+    Added the gif carousel
+
+[33mcommit 4cdb682bfedee86ee8a51efcbad34f6d1ed8c297[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sun Nov 3 07:08:48 2024 -0500
+
+    Add resources gif
+
+[33mcommit b47e0b2833cd39b851cbd34c98a7dbaae9135d76[m[33m ([m[1;31morigin/v2[m[33m)[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 2 22:44:12 2024 -0500
+
+    Added the footer
+
+[33mcommit b514e5dda218150e3f4d70008f253f6d87acdc1d[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 2 22:43:48 2024 -0500
+
+    Added fontawesome
+
+[33mcommit cb322254d66a486be691d6fddddd07d903e8182a[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 2 22:30:43 2024 -0500
+
+    Show the new component
+
+[33mcommit fbf63ee719253a3f3f5483452973df7d7c4907e2[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 2 22:30:11 2024 -0500
+
+    Added the NavMenu component
+
+[33mcommit 4a30b97966adcc4068f9f80b287f223189e9b5bc[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 2 22:29:40 2024 -0500
+
+    Added icons and resources
+
+[33mcommit f708cb7e6154e898b6e79f0f089ba53875c4d733[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Sat Nov 2 07:23:24 2024 -0500
+
+    Add logo component
+
+[33mcommit be14a37159640a2b96b7b997d1b917149e4c1d12[m
+Author: dev1d123 <dhuamanio@unsa.edu.pe>
+Date:   Fri Nov 1 20:34:59 2024 -0500
+
+    Start the proyect
+
+[33mcommit a9c74a36ac6c10d8f4da2e586532f21ef96b2cae[m
+Author: dev1d123 <139636102+dev1d123@users.noreply.github.com>
+Date:   Fri Nov 1 16:33:35 2024 -0500
+
+    Initial commit

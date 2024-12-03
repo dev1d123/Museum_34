@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "aframe": "^1.6.0"
+  }
+}
