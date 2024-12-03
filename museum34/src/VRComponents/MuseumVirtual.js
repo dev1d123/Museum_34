@@ -38,10 +38,13 @@ const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado del modal
   const [contentDisplay, setContentDisplay] = useState("none");
-  
+  const [buttonText, setButtonText] = useState("Abrir Modal"); // Texto inicial
+
   //RECONOCER EL MOVIMIENTO DEL JUGADOR
   const playerRef = useRef(null);
-  const inModel = useRef(false);
+  const [inModel, setInModel] = useState(false);
+
+
   useEffect(() => {
     const waitForPlayerRef = async () => {
       while (!playerRef.current) {
@@ -56,10 +59,13 @@ const MuseumVirtual = () => {
 
         if (x >= -5 && x <= -3 && z >= -14 && z <= -12) {
           console.log('Colca picture area!');
-          inModel.current = true;
+          setButtonText("Abrir modal: Imagen del Cañon del Colca")
+          setInModel(true);
         } else if (x >= -2.4 && x <= -0.7 && z >= -14 && z <= -12) {
           console.log('Plaza picture area!');
-          inModel.current = true;
+          setButtonText("Abrir modal: Imagen de la plaza de armas")
+
+          setInModel(true);
         } else if (x >= -0.2 && x <= 1.7 && z >= -14 && z <= -12) {
           console.log('CampiñaMist picture area!');
           inModel.current = true;
@@ -117,6 +123,8 @@ const MuseumVirtual = () => {
         } else if (x >= -8.8 && x <= -7.8 && z >= -13 && z <= -11) {
           console.log('MistiModel picture area!');
           inModel.current = true;
+        }else {
+          setInModel(false); 
         }
         
         
@@ -319,8 +327,9 @@ const MuseumVirtual = () => {
           <button onClick={closeAllSections}>Cerrar</button>
         </ModalContainer>
       )}
-{isLoaded && (
+{isLoaded && inModel && (
         <div
+        
           style={{
             position: "absolute",
             top: "10px",
@@ -344,7 +353,7 @@ const MuseumVirtual = () => {
               cursor: "pointer",
             }}
           >
-            {isModalOpen ? "Cerrar Modal" : "Abrir Modal"}
+            {isModalOpen ? "Cerrar Modal" : buttonText}
           </button>
         </div>
       )}
