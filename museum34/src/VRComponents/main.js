@@ -78,7 +78,6 @@ AFRAME.registerComponent('log-position', {
       };
       //console.log("Informacion: ", positionData);
       this.el.emit('position-updated', positionData);
-      console.log('Event emitted:', positionData);
     }
   });
   

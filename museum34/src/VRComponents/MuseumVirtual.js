@@ -53,6 +53,18 @@ const MuseumVirtual = () => {
       const handlePositionUpdate = (event) => {
         const { x, y, z } = event.detail; 
         console.log(`MuseumVirtual received position: X=${x}, Y=${y}, Z=${z}`);
+
+        if (x >= -5 && x <= -3 && z >= -14 && z <= -12) {
+          console.log('Colca picture area!');
+        }else if(x >= -2.4 && x <= -0.7 && z >= -14 && z <= -12){
+          console.log('Plaza picture area!');
+        }else if(x >= -0.2 && x <= 1.7 && z >= -14 && z <= -12){
+          console.log('CampiñaMist picture area!');
+        }else if(x >= 1.8 && x <= 3.9 && z >= -14 && z <= -12){
+          console.log('Plaza 2 picture area!');
+        }
+        
+
       };
   
       const handlePlayerLoaded = () => {
