@@ -95,13 +95,13 @@ const MuseumVirtual = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLoadScene = () => {
-    setIsLoading(true); // Inicia la transición
+    setIsLoading(true); 
 
     setTimeout(() => {
       setIsLoading(false); 
-      setIsLoaded(true); // Marca la experiencia como cargada
+      setIsLoaded(true); 
 
-      setContentDisplay("block"); // Cambia el display a visible
+      setContentDisplay("block"); 
     }, 3500);
   };
   
@@ -127,7 +127,7 @@ const MuseumVirtual = () => {
       {isLoaded && (
         <BottomMenu
           setActiveSection={(section) => {
-            closeAllSections(); // Cierra todas las secciones antes de abrir otra
+            closeAllSections(); 
             if (section === "perfil") setIsPerfilOpen(true);
             if (section === "config") setIsConfigOpen(true);
             if (section === "info") setIsInfoOpen(true);
