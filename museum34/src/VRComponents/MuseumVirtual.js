@@ -180,7 +180,7 @@ const MuseumVirtual = () => {
 
 
   const toggleModal = () => {
-    // Reproducir el sonido de clic
+    console.log("Testing");
     const clickAudio = new Audio(clickSound);
     clickAudio.volume = 0.5;
     clickAudio.play().catch((error) => console.error("Error playing click sound:", error));
