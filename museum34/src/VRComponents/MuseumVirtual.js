@@ -455,7 +455,7 @@ const MuseumVirtual = () => {
 
           <a-sky src="#sky_sphere-texture"></a-sky>
 
-          <Entity gltf-model="#furina" position="-10 0.7 -9" rotation="0 90 0" scale="1.3 1.3 1.3" static-body></Entity>
+          {/* <Entity gltf-model="#furina" position="-10 0.7 -9" rotation="0 90 0" scale="1.3 1.3 1.3" static-body></Entity> */}
           <Entity gltf-model="#volcan" position="-10.2 0.6 -12" rotation="0 0 0" scale="0.015 0.015 0.015" static-body></Entity>
           <Entity gltf-model="#catedral" position="10 1.8 -5" rotation="0 180 0" scale="3 3 3"static-body></Entity>
           <Entity gltf-model="#donkey_sillar_polycam" position="9.2 0.99 7" rotation="0 0 0" scale="2 2 2" static-body></Entity>
@@ -468,6 +468,18 @@ const MuseumVirtual = () => {
           <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="10 0 12.1" rotation="0 0 0" static-body></Entity>
           <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="-13 0 12.1" rotation="0 0 0" static-body></Entity>
           <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="-10 0 12.1" rotation="0 0 0" static-body></Entity>
+{/* 
+          <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="-5 0 2" rotation="0 0 0" static-body></Entity> */}
+          <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="-5 0 6" rotation="0 0 0" static-body></Entity>
+          <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="-5 0 10" rotation="0 0 0" static-body></Entity>
+
+          {/* <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="0 0 2" rotation="0 0 0" static-body></Entity> */}
+          <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="0 0 6" rotation="0 0 0" static-body></Entity>
+          <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="0 0 10" rotation="0 0 0" static-body></Entity>
+
+          {/* <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="5 0 2" rotation="0 0 0" static-body></Entity> */}
+          <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="5 0 6" rotation="0 0 0" static-body></Entity>
+          <Entity obj-model="obj: #podiums-obj" material="src: #podiums-texture" position="5 0 10" rotation="0 0 0" static-body></Entity>
 
 
           {/* lamparas */}
@@ -486,7 +498,7 @@ const MuseumVirtual = () => {
           <Entity obj-model="obj: #recuadro-obj" material="src: #volcanPhoto" position="7.9 0 12" rotation="0 0 0" scale="1 1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #miradorPhoto" position="10.2 0 12" rotation="0 0 0" scale="1 1 1" static-body></Entity>
 
-          <Entity obj-model="obj: #recuadro-obj" material="src: #plazaPhoto2" position="-7.2 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
+          <Entity obj-model="obj: #recuadro-obj" material="src: #moonlight-texture" position="-7.2 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #vallePhoto" position="-4.9 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #vallePhoto2" position="-9.5 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
           <Entity obj-model="obj: #recuadro-obj" material="src: #plazaPhoto2" position="-2.6 0 -12" rotation="0 180 0" scale="1 1 1" static-body></Entity>
