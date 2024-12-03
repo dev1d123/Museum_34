@@ -74,6 +74,12 @@ const MuseumVirtual = () => {
           console.log('Campiña picture area!');
         }else if(x >= -5.8 && x <= -3.5 && z >= 12.4 && z <= 14){
           console.log('Sillar picture area!');
+        }else if(x >= 10.6 && x <= 13.4 && z >= 0.5 && z <= 1.75){
+          console.log('Rocoto picture area');
+        }else if(x >= -10.87 && x <= -9.2 && z >= 0.5 && z <= 1.75){
+          console.log('Sillar side picture area');
+        }else if(x >= -14 && x <= -12 && z >= 0.5 && z <= 1.75){
+          console.log('Cantera picture area');
         }
         
 
