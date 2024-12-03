@@ -41,6 +41,7 @@ const MuseumVirtual = () => {
   
   //RECONOCER EL MOVIMIENTO DEL JUGADOR
   const playerRef = useRef(null);
+  const inModel = useRef(false);
   useEffect(() => {
     const waitForPlayerRef = async () => {
       while (!playerRef.current) {
@@ -52,48 +53,70 @@ const MuseumVirtual = () => {
   
       const handlePositionUpdate = (event) => {
         const { x, y, z } = event.detail; 
-        console.log(`MuseumVirtual received position: X=${x}, Y=${y}, Z=${z}`);
 
         if (x >= -5 && x <= -3 && z >= -14 && z <= -12) {
           console.log('Colca picture area!');
-        }else if(x >= -2.4 && x <= -0.7 && z >= -14 && z <= -12){
+          inModel.current = true;
+        } else if (x >= -2.4 && x <= -0.7 && z >= -14 && z <= -12) {
           console.log('Plaza picture area!');
-        }else if(x >= -0.2 && x <= 1.7 && z >= -14 && z <= -12){
+          inModel.current = true;
+        } else if (x >= -0.2 && x <= 1.7 && z >= -14 && z <= -12) {
           console.log('CampiñaMist picture area!');
-        }else if(x >= 1.8 && x <= 3.9 && z >= -14 && z <= -12){
+          inModel.current = true;
+        } else if (x >= 1.8 && x <= 3.9 && z >= -14 && z <= -12) {
           console.log('Plaza 2 picture area!');
-        }else if(x >= -2.4 && x <= 0.7 && z >= -14 && z <= -12){
+          inModel.current = true;
+        } else if (x >= -2.4 && x <= 0.7 && z >= -14 && z <= -12) {
           console.log('Plaza picture area!');
-        }else if(x >= 3.6 && x <= 5.5 && z >= 12.4 && z <= 14){
+          inModel.current = true;
+        } else if (x >= 3.6 && x <= 5.5 && z >= 12.4 && z <= 14) {
           console.log('Portada picture area!');
-        }else if(x >= 1.5 && x <= 3.3 && z >= 12.4 && z <= 14){
+          inModel.current = true;
+        } else if (x >= 1.5 && x <= 3.3 && z >= 12.4 && z <= 14) {
           console.log('Misti picture area!');
-        }else if(x >= -0.7 && x <= 1.0 && z >= 12.4 && z <= 14){
+          inModel.current = true;
+        } else if (x >= -0.7 && x <= 1.0 && z >= 12.4 && z <= 14) {
           console.log('Catedral picture area!');
-        }else if(x >= -3.18 && x <= 0.1 && z >= 12.4 && z <= 14){
+          inModel.current = true;
+        } else if (x >= -3.18 && x <= 0.1 && z >= 12.4 && z <= 14) {
           console.log('Campiña picture area!');
-        }else if(x >= -5.8 && x <= -3.5 && z >= 12.4 && z <= 14){
+          inModel.current = true;
+        } else if (x >= -5.8 && x <= -3.5 && z >= 12.4 && z <= 14) {
           console.log('Sillar picture area!');
-        }else if(x >= 10.6 && x <= 13.4 && z >= 0.5 && z <= 1.75){
-          console.log('Rocoto picture area');
-        }else if(x >= -10.87 && x <= -9.2 && z >= 0.5 && z <= 1.75){
-          console.log('Sillar side picture area');
-        }else if(x >= 7 && x <= 8 && z >= -6.5 && z <= -3){
-          console.log('CatedralModel picture area');
-        }else if(x >= 7 && x <= 8 && z >= 2.5 && z <= 5){
-          console.log('EagleModel picture area');
-        }else if(x >= 7 && x <= 8 && z >= 6 && z <= 8){
-          console.log('DonkeyModel picture area');
-        }else if(x >= 7 && x <= 8 && z >= 8.1 && z <= 10.1){
-          console.log('WomanModel picture area');
-        }else if(x >= 7 && x <= 8 && z >= 10.5 && z <= 13){
-          console.log('ManModel picture area');
-        }else if(x >= -8.8 && x <= -7.8 && z >= 9 && z <= 12){
-          console.log('PortalModel picture area');
-        }else if(x >= -8.8 && x <= -7.8 && z >= -10 && z <= -8){
-          console.log('FurinaModel picture area');
-        }else if(x >= -8.8 && x <= -7.8 && z >= -13 && z <= -11){
-          console.log('MistiModel picture area');
+          inModel.current = true;
+        } else if (x >= 10.6 && x <= 13.4 && z >= 0.5 && z <= 1.75) {
+          console.log('Rocoto picture area!');
+          inModel.current = true;
+        } else if (x >= -10.87 && x <= -9.2 && z >= 0.5 && z <= 1.75) {
+          console.log('Sillar side picture area!');
+          inModel.current = true;
+        } else if (x >= -12 && x <= -14 && z >= 0.5 && z <= 1.75) {
+          console.log('Cantera side picture area!');
+          inModel.current = true;
+        } else if (x >= 7 && x <= 8 && z >= -6.5 && z <= -3) {
+          console.log('CatedralModel picture area!');
+          inModel.current = true;
+        } else if (x >= 7 && x <= 8 && z >= 2.5 && z <= 5) {
+          console.log('EagleModel picture area!');
+          inModel.current = true;
+        } else if (x >= 7 && x <= 8 && z >= 6 && z <= 8) {
+          console.log('DonkeyModel picture area!');
+          inModel.current = true;
+        } else if (x >= 7 && x <= 8 && z >= 8.1 && z <= 10.1) {
+          console.log('WomanModel picture area!');
+          inModel.current = true;
+        } else if (x >= 7 && x <= 8 && z >= 10.5 && z <= 13) {
+          console.log('ManModel picture area!');
+          inModel.current = true;
+        } else if (x >= -8.8 && x <= -7.8 && z >= 9 && z <= 12) {
+          console.log('PortalModel picture area!');
+          inModel.current = true;
+        } else if (x >= -8.8 && x <= -7.8 && z >= -10 && z <= -8) {
+          console.log('FurinaModel picture area!');
+          inModel.current = true;
+        } else if (x >= -8.8 && x <= -7.8 && z >= -13 && z <= -11) {
+          console.log('MistiModel picture area!');
+          inModel.current = true;
         }
         
         
