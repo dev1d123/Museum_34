@@ -321,6 +321,22 @@ const MuseumVirtual = () => {
       // Aquí puedes realizar cualquier acción, como actualizar la UI o guardar datos
     });
   });
+
+  
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (inModel && (event.key === 'e' || event.key === 'E')) {
+        toggleModal();
+      } 
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [inModel]);
+
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
 
