@@ -10,6 +10,9 @@ import ViewerModel  from './components/modalViewer/ViewerModel.js';
 
 import Hands from './VRecComponents/HandsRec.js';
 
+
+import Prueba from './VRComponents/TransitionAnimation.js';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // test para ver el modal
@@ -48,7 +51,10 @@ function App() {
           element={<ViewerModel></ViewerModel>}
         />
 
-
+        <Route
+          path="/pr"
+          element = {<Prueba></Prueba>}
+        ></Route>
       </Routes>
     </Router>
       

@@ -89,6 +89,7 @@ const MuseumVirtual = () => {
   
 
   const handleLoadScene = () => {
+    //aqui!!
     setIsLoaded(true);
   };
 
