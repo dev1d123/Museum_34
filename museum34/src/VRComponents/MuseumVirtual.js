@@ -78,9 +78,24 @@ const MuseumVirtual = () => {
           console.log('Rocoto picture area');
         }else if(x >= -10.87 && x <= -9.2 && z >= 0.5 && z <= 1.75){
           console.log('Sillar side picture area');
-        }else if(x >= -14 && x <= -12 && z >= 0.5 && z <= 1.75){
-          console.log('Cantera picture area');
+        }else if(x >= 7 && x <= 8 && z >= -6.5 && z <= -3){
+          console.log('CatedralModel picture area');
+        }else if(x >= 7 && x <= 8 && z >= 2.5 && z <= 5){
+          console.log('EagleModel picture area');
+        }else if(x >= 7 && x <= 8 && z >= 6 && z <= 8){
+          console.log('DonkeyModel picture area');
+        }else if(x >= 7 && x <= 8 && z >= 8.1 && z <= 10.1){
+          console.log('WomanModel picture area');
+        }else if(x >= 7 && x <= 8 && z >= 10.5 && z <= 13){
+          console.log('ManModel picture area');
+        }else if(x >= -8.8 && x <= -7.8 && z >= 9 && z <= 12){
+          console.log('PortalModel picture area');
+        }else if(x >= -8.8 && x <= -7.8 && z >= -10 && z <= -8){
+          console.log('FurinaModel picture area');
+        }else if(x >= -8.8 && x <= -7.8 && z >= -13 && z <= -11){
+          console.log('MistiModel picture area');
         }
+        
         
 
       };
