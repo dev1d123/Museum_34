@@ -11,9 +11,13 @@ import Informacion from "./Informacion.js";
 import models from 'museum34/public/models/';
 import styled from "styled-components";
 
+
+
 import main from "./main.js";
 import "aframe";
 import ModalInformation from "../components/DataModels/ModalInformation.jsx";
+
+import TransitionAnimation from "./TransitionAnimation.js";
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -32,6 +36,7 @@ const ModalContainer = styled.div`
 const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado del modal
+  const [contentDisplay, setContentDisplay] = useState("none");
 
   useEffect(() => {
     let isMoving = false; // Controla si se está moviendo
@@ -87,11 +92,20 @@ const MuseumVirtual = () => {
     };
   }, []);
   
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLoadScene = () => {
-    //aqui!!
-    setIsLoaded(true);
+    setIsLoading(true); // Inicia la transición
+
+    setTimeout(() => {
+      setIsLoading(false); 
+      setIsLoaded(true); // Marca la experiencia como cargada
+
+      setContentDisplay("block"); // Cambia el display a visible
+    }, 3500);
   };
+  
+
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
 
@@ -109,6 +123,7 @@ const MuseumVirtual = () => {
 
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
+
       {isLoaded && (
         <BottomMenu
           setActiveSection={(section) => {
@@ -178,7 +193,7 @@ const MuseumVirtual = () => {
           </button>
         </div>
       )}
-      {!isLoaded ? (
+      {!isLoaded && !isLoading && (
         <div
           style={{
             display: "flex",
@@ -206,8 +221,13 @@ const MuseumVirtual = () => {
             Iniciar Experiencia
           </button>
         </div>
-      ) : (
-        <Scene>
+      )}
+      {isLoading && (
+        <TransitionAnimation></TransitionAnimation>
+      )}
+      {isLoaded && (
+        <Scene style={{ display: contentDisplay }}>
+
           <a-assets>
             <a-mixin id="checkpoint"></a-mixin>
             <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
