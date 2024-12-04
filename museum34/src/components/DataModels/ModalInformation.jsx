@@ -6,8 +6,20 @@ import HandsRec from "../../VRecComponents/HandsRec";
 import IASpeak from "./IASpeak";
 
 const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
+
   const [isHandsOpen, setIsHandsOpen] = useState(false);
   const handsRecRef = useRef(null); // Referencia para HandsRec
+  const [scale_, setScale] = useState({ x: 2, y: 2, z: 2 }); //escala predeterminada
+
+  // como el misiti es el unico modelo desbalanceado se opta por esta solucion simple 
+  useEffect(() => {
+    if (id === 0) {
+      setScale({ x: 0.05, y: 0.05, z: 0.05 });
+    } else {
+      setScale({ x: 4, y: 4, z: 4 });
+    }
+    console.log(scale_)
+  }, [scale_]);
 
   const toggleHands = () => {
     if (isHandsOpen && handsRecRef.current) {
@@ -106,7 +118,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
         <div className="modal-content">
           {/* Modelo 3D en el lado izquierdo */}
           <div className="model-viewer">
-            <ThreeViewer path={modelData.path} handData={handData}/>
+            <ThreeViewer model={modelData} path={modelData.path} handData={handData} scale_={scale_}/>
           </div>
           <div className="model-description">
             <div>

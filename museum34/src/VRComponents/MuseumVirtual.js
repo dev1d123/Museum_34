@@ -355,7 +355,7 @@ const MuseumVirtual = () => {
       {isModalOpen && (
           <ModalInformation
             isOpen={isModalOpen}
-            id={idModal}
+            id={20}
             onClose={() => setIsModalOpen(false)}
           />
         )}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const ThreeViewer = ({ path, handData }) => {
+const ThreeViewer = ({ path, handData, scale_ }) => {
   const viewerRef = useRef(null);
   const cameraRef = useRef(null);
   const modelRef = useRef(null);
@@ -14,6 +14,7 @@ const ThreeViewer = ({ path, handData }) => {
   const [isDraggingRight, setIsDraggingRight] = useState(false);
 
   useEffect(() => {
+    console.log(scale, "gmaaaaaaaaaaaaaa")
     if (!viewerRef.current) return;
 
     const scene = new THREE.Scene();
@@ -43,7 +44,7 @@ const ThreeViewer = ({ path, handData }) => {
       path,
       (gltf) => {
         model = gltf.scene;
-        model.scale.set(2, 2, 2);
+        model.scale.set(scale_.x, scale_.y, scale_.z);
         scene.add(model);
 
         // Centrar el modelo
