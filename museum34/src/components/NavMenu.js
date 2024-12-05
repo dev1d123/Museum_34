@@ -11,14 +11,9 @@ import './NavMenu.css';
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleDarkMode = () => setDarkMode(!darkMode);
 
-  useEffect(() => {
-    document.body.className = darkMode ? 'dark' : 'light';
-  }, [darkMode]);
 
   useEffect(() => {
     const handleResize = () => {

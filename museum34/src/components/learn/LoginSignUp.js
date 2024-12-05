@@ -7,7 +7,7 @@ import tt2Img from './images/icon/tt2.png';
 import user from './images/icon/user.png';
 import password from "./images/icon/password.png";
 import google from "./images/icon/google.png";
-
+import Logo from '../Logo.js';
 import backgroundWallpaper from './images/extra/backwallpaper.jpg';
 
 const LoginSignUp = () => {
@@ -24,6 +24,7 @@ const LoginSignUp = () => {
 
   return (
     <Container>
+      <Logo></Logo>
       <FormBox>
         <ButtonBox>
           <ToggleBtn onClick={() => setIsLogin(true)} active={isLogin}>
@@ -62,7 +63,7 @@ const LoginSignUp = () => {
         {!isLogin && (
           <Form onSubmit={handleSubmit}>
             <Input type="text" placeholder="Nombre completo" required />
-            <Input type="email" placeholder="Direccion" required />
+            <Input type="email" placeholder="Correo electronico" required />
             <Input type="password" placeholder="Crear contraseña" required />
             <Input type="password" placeholder="Confirmar contraseña" required />
             <InlineDiv>
@@ -88,6 +89,7 @@ const LoginSignUp = () => {
 export default LoginSignUp;
 
 // Styled components
+
 const InlineDiv = styled.div`
   display: flex; 
   justify-content: center;
@@ -132,7 +134,7 @@ const ToggleBtn = styled.button`
   border: none;
   background: transparent;
   color: ${({ active }) => (active ? '#fff' : '#000')};
-  border-radius:30px;
+  border-radius: 30px;
   z-index: 1;
 `;
 
@@ -140,7 +142,7 @@ const BtnBackground = styled.div`
   position: absolute;
   width: 50%;
   height: 100%;
-  background: linear-gradient(to right, #FA4B37, #DF2771);
+  background: linear-gradient(to right, #43A047, #2E7D32);
   left: ${({ active }) => (active ? '0' : '50%')};
   transition: 0.5s;
 `;
@@ -202,7 +204,7 @@ const SubmitButton = styled.button`
   margin: auto;
   padding: 10px 30px;
   cursor: pointer;
-  background: linear-gradient(to right, #FA4B37, #DF2771);
+  background: linear-gradient(to right, #43A047, #2E7D32);
   color: #fff;
   border: none;
   outline: none;
@@ -250,4 +252,3 @@ const ConnectButton = styled.button`
     font-size: 15px;
   }
 `;
-
