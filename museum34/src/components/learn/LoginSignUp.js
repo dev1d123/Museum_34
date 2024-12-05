@@ -11,11 +11,65 @@ import Logo from '../Logo.js';
 import backgroundWallpaper from './images/extra/backwallpaper.jpg';
 import api from '../../api/axios.js';
 
+// Otros imports
+const Popup = ({ message, onClose }) => {
+  return (
+    <PopupContainer>
+      <PopupContent>
+        <p>{message}</p>
+        <button onClick={onClose}>Cerrar</button>
+      </PopupContent>
+    </PopupContainer>
+  );
+};
+
+const PopupContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const PopupContent = styled.div`
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+
+  button {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #43A047, #2E7D32);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+`;
+
 const LoginSignUp = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [popupMessage, setPopupMessage] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
   };
 
   const handleSubmit = async (e) => {
@@ -25,25 +79,46 @@ const LoginSignUp = () => {
     const email = formData.get('email'); 
     const clave = formData.get('password');
     const clave2 = formData.get('confirm_password');
-    if(clave != clave2){
-      alert("Las contraseñas son distintas!"); 
-    }else{
-      try{
-        const response = await api.post('/usuarios/',{
+
+    if (!isLogin) {
+      if (clave !== clave2) {
+        setPopupMessage('Las contraseñas son distintas.');
+        setShowPopup(true);
+        return;
+      }
+      try {
+        const response = await api.post('/usuarios/', {
           nombre: nombre,
           email: email,
           clave: clave,
-        })
-        alert(`Usuario creado con éxito: ${response.data.nombre}`);
-      }catch(error){
-        alert('Error al registrar el usuario. Por favor, inténtalo de nuevo.');
+        });
+        setPopupMessage(`Usuario creado con éxito: ${response.data.nombre}`);
+        setShowPopup(true);
+      } catch (error) {
+        setPopupMessage('Error al registrar el usuario. Por favor, inténtalo de nuevo.');
+        setShowPopup(true);
       }
-    };
+    } else {
+      // Lógica para iniciar sesión
+      const loginEmail = formData.get('email');
+      const loginClave = formData.get('password');
+      try {
+        const response = await api.post('/usuarios/login/', {
+          email: loginEmail,
+          clave: loginClave,
+        });
+        setPopupMessage(`¡Bienvenido, ${response.data.nombre}!`);
+        setShowPopup(true);
+      } catch (error) {
+        setPopupMessage('Error al iniciar sesión. Verifica tus credenciales.');
+        setShowPopup(true);
+      }
+    }
   };
 
   return (
     <Container>
-      <Logo></Logo>
+      <Logo />
       <FormBox>
         <ButtonBox>
           <ToggleBtn onClick={() => setIsLogin(true)} active={isLogin}>
@@ -59,26 +134,18 @@ const LoginSignUp = () => {
           <img src={InsImg} alt="Instagram" />
           <img src={tt2Img} alt="Twitter" />
         </SocialIcons>
-        
-        {/* Login Form */}
+
         {isLogin && (
           <Form onSubmit={handleSubmit}>
-            <InputWrapper>
-              <img src={user} alt="user icon" />
-              <Input type="text" placeholder="Nombre de usuario" required />
-            </InputWrapper>
-            <InputWrapper>
-              <img src={password} alt="password icon" />
-              <Input type="password" placeholder="Contraseña" required />
-            </InputWrapper>
+            <Input name="email" type="email" placeholder="Correo electrónico" required />
+            <Input name="password" type="password" placeholder="Contraseña" required />
             <InlineDiv>
               <CheckBox type="checkbox" /> Recordar contraseña
             </InlineDiv>
-            <SubmitButton type="submit">Iniciar sesion</SubmitButton>
+            <SubmitButton type="submit">Iniciar sesión</SubmitButton>
           </Form>
         )}
 
-        {/* Registration Form */}
         {!isLogin && (
           <Form onSubmit={handleSubmit}>
             <Input name="nombre" type="text" placeholder="Nombre completo" required />
@@ -89,17 +156,10 @@ const LoginSignUp = () => {
               <CheckBox name="terms" type="checkbox" required /> Acepto los términos y condiciones
             </InlineDiv>
             <SubmitButton type="submit">Registrarse</SubmitButton>
-
           </Form>
         )}
 
-        <Other>
-          <Separator>Tambien</Separator>
-          <ConnectButton onClick={() => alert('Sign in with Google')}>
-            <img src={google} alt="google icon" />
-            <span>Utiliza tu cuenta de Google</span>
-          </ConnectButton>
-        </Other>
+        {showPopup && <Popup message={popupMessage} onClose={handlePopupClose} />}
       </FormBox>
     </Container>
   );
