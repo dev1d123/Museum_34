@@ -9,6 +9,7 @@ import password from "./images/icon/password.png";
 import google from "./images/icon/google.png";
 import Logo from '../Logo.js';
 import backgroundWallpaper from './images/extra/backwallpaper.jpg';
+import api from '../../api/axios.js';
 
 const LoginSignUp = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,9 +18,27 @@ const LoginSignUp = () => {
     setIsLogin(!isLogin);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Great Job!");
+    const formData = new FormData(e.target);
+    const nombre = formData.get('nombre');
+    const email = formData.get('email'); 
+    const clave = formData.get('password');
+    const clave2 = formData.get('confirm_password');
+    if(clave != clave2){
+      alert("Las contraseñas son distintas!"); 
+    }else{
+      try{
+        const response = await api.post('/usuarios/',{
+          nombre: nombre,
+          email: email,
+          clave: clave,
+        })
+        alert(`Usuario creado con éxito: ${response.data.nombre}`);
+      }catch(error){
+        alert('Error al registrar el usuario. Por favor, inténtalo de nuevo.');
+      }
+    };
   };
 
   return (
@@ -62,12 +81,12 @@ const LoginSignUp = () => {
         {/* Registration Form */}
         {!isLogin && (
           <Form onSubmit={handleSubmit}>
-            <Input type="text" placeholder="Nombre completo" required />
-            <Input type="email" placeholder="Correo electronico" required />
-            <Input type="password" placeholder="Crear contraseña" required />
-            <Input type="password" placeholder="Confirmar contraseña" required />
+            <Input name="nombre" type="text" placeholder="Nombre completo" required />
+            <Input name="email" type="email" placeholder="Correo electrónico" required />
+            <Input name="password" type="password" placeholder="Crear contraseña" required />
+            <Input name="confirm_password" type="password" placeholder="Confirmar contraseña" required />
             <InlineDiv>
-              <CheckBox type="checkbox" /> Acepto los terminos y condiciones
+              <CheckBox name="terms" type="checkbox" required /> Acepto los términos y condiciones
             </InlineDiv>
             <SubmitButton type="submit">Registrarse</SubmitButton>
 
