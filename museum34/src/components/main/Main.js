@@ -6,9 +6,30 @@ import ImgCar from './ImgCar';
 import FooterPage from '../FooterPage';
 import MainVoice from '../MainVoice';
 import { Link, useNavigate } from 'react-router-dom';
+import api from '../../api/axios';
+import React, { useState, useRef, useEffect } from "react";
 
 function Main() {
   const navigate = useNavigate();
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      try {
+        const response = await api.get('/usuarios/');
+        console.log(response);
+        setUsuarios(response.data); 
+      } catch (error) {
+        console.error("Error al obtener usuarios: ", error);
+      }
+    };
+
+    fetchUsuarios();
+  }, []); 
+
+
+
+
   const handleNavigate = () =>{
     navigate('/colecciones/museo');
   };
