@@ -94,6 +94,9 @@ const LoginSignUp = () => {
         });
         setPopupMessage(`Usuario creado con éxito: ${response.data.nombre}`);
         setShowPopup(true);
+
+        //redirigir a la pagina principal logueado!
+        
       } catch (error) {
         setPopupMessage('Error al registrar el usuario. Por favor, inténtalo de nuevo.');
         setShowPopup(true);
@@ -103,12 +106,19 @@ const LoginSignUp = () => {
       const loginEmail = formData.get('email');
       const loginClave = formData.get('password');
       try {
-        const response = await api.post('/usuarios/login/', {
-          email: loginEmail,
-          clave: loginClave,
-        });
-        setPopupMessage(`¡Bienvenido, ${response.data.nombre}!`);
+        const response = await api.get('/usuarios');
+        const usuario = response.data.find(
+          (user) => user.email === loginEmail && user.clave === loginClave
+        );
+      
+        if (usuario) {
+          setPopupMessage(`¡Bienvenido, ${usuario.nombre}!`);
+        } else {
+          setPopupMessage('Usuario no encontrado. Verifica tus credenciales.');
+        }
         setShowPopup(true);
+
+        //redirigir a la pagina principal logeado
       } catch (error) {
         setPopupMessage('Error al iniciar sesión. Verifica tus credenciales.');
         setShowPopup(true);
