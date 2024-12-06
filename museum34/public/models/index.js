@@ -43,7 +43,6 @@ const models = {
   floorNormalTexture,
   floorTexture,
   floor,
-
   sky_sphere,
   main_museum,
   furina,

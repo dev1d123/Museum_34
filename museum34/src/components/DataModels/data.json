@@ -13,21 +13,21 @@
   },
   {
     "id": 2,
-    "title": "Plaza de Armas de Arequipa",
-    "description": "",
+    "title": "Plaza de Armas de Arequipa 1",
+    "description": "La Plaza de Armas de Arequipa, considerada una de las más bellas de Sudamérica, es el corazón de la Ciudad Blanca. Este modelo 3D captura la arquitectura icónica de la plaza, rodeada por el majestuoso Portal de Flores, el Portal de San Agustín, y la impresionante Catedral. Este espacio histórico ha sido testigo de importantes eventos culturales y sociales a lo largo de los siglos.",
     "path": "/models/cuadros/plaza.glb"
   },
   {
     "id": 3,
-    "title": "Escultura del Burro - Arequipa",
-    "description": "El burro es una representación de los animales de carga que han acompañado a los habitantes de Arequipa a lo largo de su historia. Esta escultura, hecha de sillar, captura con detalle al noble animal que ha sido un símbolo de trabajo arduo y resistencia en los Andes. Fue tallada por artesanos en el distrito de Cerro Colorado, conocido por sus canteras de sillar.",
-    "path": "/models/donkey_sillar_polycam.glb"
+    "title": "Campiña de Arequipa 1",
+    "description": "La Campiña de Arequipa es un paisaje emblemático que combina naturaleza, tradición y cultura. Con sus verdes campos, terrazas agrícolas y caminos serpenteantes, este modelo captura la esencia de un lugar donde el tiempo parece detenerse. Los volcanes Misti, Chachani y Pichu Pichu enmarcan este paisaje idílico, mientras los antiguos sistemas de irrigación y los canales de piedra hablan de la armoniosa convivencia entre los habitantes y la tierra.",
+    "path": "/models/cuadros/valle.glb"
   },
   {
     "id": 4,
-    "title": "Friso Colonial Tallado en Sillar",
-    "description": "Este friso es una representación del estilo barroco mestizo que caracteriza muchas iglesias y construcciones coloniales de Arequipa. Tallado en sillar con intrincados diseños que incluyen motivos religiosos y heráldicos, este tipo de ornamentación es típico de iglesias como la Compañía de Jesús o Santa Catalina. Esta pieza refleja la habilidad y dedicación de los artesanos arequipeños durante la época colonial.",
-    "path": "/models/barroco_andino.glb"
+    "title": "Plaza de Armas de Arequipa 2",
+    "description": "",
+    "path": "/models/plaza_2.glb"
   },
   {
     "id": 5,
