@@ -54,6 +54,18 @@
     "path": "/models/cuadros/catedral.glb"
   },
   {
+    "id": 8,
+    "title": "Campiña de Arequipa con el Misti",
+    "description": "Esta imagen captura la serenidad de la campiña de Arequipa con el imponente Volcán Misti como telón de fondo. Los campos verdes, las terrazas agrícolas y los canales de irrigación tradicionales contrastan con la majestuosidad del volcán, creando una escena que combina la riqueza natural y cultural de la región. Es una representación que evoca la armonía entre el trabajo del hombre y la grandeza de la naturaleza, destacando la importancia de este paisaje en la identidad arequipeña.",
+    "path": "/models/cuadros/volcan_2.glb"
+  },
+  {
+    "id": 9,
+    "title": "Canteras del Sillar Imagen",
+    "description": "La imagen de las canteras del sillar muestra el lugar donde se extrae el icónico material volcánico que ha dado a Arequipa el nombre de 'Ciudad Blanca'. Estas canteras, situadas en las afueras de la ciudad, destacan por sus impresionantes paredes talladas a mano por generaciones de artesanos. En la fotografía, se aprecian los contrastes entre las texturas del sillar y el cielo despejado, resaltando la importancia histórica y cultural de este recurso en la arquitectura local.",
+    "path": "/models/cuadros/sillar.glb"
+  },  
+  {
     "id": 19,
     "title": "Furina - Genshin Impact",
     "description": "Arconte hydro",
