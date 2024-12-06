@@ -10,6 +10,7 @@ import google from "./images/icon/google.png";
 import Logo from '../Logo.js';
 import backgroundWallpaper from './images/extra/backwallpaper.jpg';
 import api from '../../api/axios.js';
+import { useNavigate } from 'react-router-dom';
 
 // Otros imports
 const Popup = ({ message, onClose }) => {
@@ -60,6 +61,8 @@ const PopupContent = styled.div`
 `;
 
 const LoginSignUp = () => {
+  const navigate = useNavigate();
+
   const [isLogin, setIsLogin] = useState(true);
   const [popupMessage, setPopupMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
@@ -94,6 +97,11 @@ const LoginSignUp = () => {
         });
         setPopupMessage(`Usuario creado con éxito: ${response.data.nombre}`);
         setShowPopup(true);
+        
+        localStorage.setItem('loggedIn', response.data.id);
+        localStorage.setItem('userName', response.data.nombre);
+        localStorage.setItem('userEmail', response.data.email);
+        navigate('/');
 
         //redirigir a la pagina principal logueado!
         
@@ -119,6 +127,12 @@ const LoginSignUp = () => {
         setShowPopup(true);
 
         //redirigir a la pagina principal logeado
+        localStorage.setItem('loggedIn', true);
+        localStorage.setItem('userID', usuario.id);
+        localStorage.setItem('userName', usuario.nombre);
+        localStorage.setItem('userEmail', usuario.email);
+        navigate('/');
+
       } catch (error) {
         setPopupMessage('Error al iniciar sesión. Verifica tus credenciales.');
         setShowPopup(true);

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import donations from '../images/icons/donations.png'
 import education from '../images/icons/education.png'
@@ -11,11 +10,15 @@ import './NavMenu.css';
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [userName, setUserName] = useState(null);
+  const navigate = useNavigate();
   const toggleMenu = () => setIsOpen(!isOpen);
 
-
   useEffect(() => {
+    // Obtener datos del usuario desde localStorage
+    const name = localStorage.getItem('userName');
+    setUserName(name);
+
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setIsOpen(false);
@@ -24,6 +27,20 @@ const NavMenu = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+
+  const handleLogout = () => {
+    // Limpiar datos del usuario de localStorage
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    setUserName(null);
+
+    // Redirigir a la página principal u otra página
+    navigate('/');
+  };
+
+
 
   return (
     <nav className="nav-menu">
@@ -60,15 +77,32 @@ const NavMenu = () => {
                 Donaciones
             </a>
         </li>
-        {/*
-        <li>
-          <button onClick={toggleDarkMode}>
-            {darkMode ? 'Modo Claro' : 'Modo Oscuro'}
-          </button>
-        </li>
-        */}
-        <li><a href="#iniciar-sesion" className="login-link">Iniciar sesión</a></li>
-        <li><a href="#registrarse" className="register-link">Registrarse</a></li>
+
+        {userName ? (
+          <>
+            <li>
+              <span className="user-name">¡Hola, {userName}!</span>
+            </li>
+            <li>
+              <button className="logout-button" onClick={handleLogout} >
+                Cerrar sesión
+              </button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/iniciar-sesion" className="login-link">
+                Iniciar sesión
+              </Link>
+            </li>
+            <li>
+              <Link to="/registrarse" className="register-link">
+                Registrarse
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

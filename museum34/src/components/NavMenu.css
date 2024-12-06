@@ -4,6 +4,32 @@ body.dark {
     color: #fff;
 }
 
+.user-name {
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #a1f2a4; 
+    margin-right: 10px; 
+    display: inline-block; 
+  }
+  
+  .logout-button {
+    font-size: 1rem; 
+    color: #ffffff; 
+    background-color: #f44336;
+    border: none; 
+    border-radius: 5px; 
+    padding: 8px 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #e45e5e; 
+  }
+  
+  .logout-button:active {
+    background-color: #e82020; 
+  }
 .nav-menu {
     font-family: "Be Vietnam Pro", sans-serif;
     font-style: normal;
@@ -102,6 +128,8 @@ body.dark {
     background-color: #e5533c;
 }
   
+
+
 @media (max-width: 768px) {
     .menu-toggle {
         display: block; 
