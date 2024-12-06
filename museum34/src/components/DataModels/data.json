@@ -78,6 +78,13 @@
     "path": "/models/cuadros/sillar_2.glb"
   },
   {
+    "id": 12,
+    "title": "Canteras del Sillar Paisaje",
+    "description": "El paisaje de las canteras de sillar en Arequipa, Perú, ofrece una vista impresionante de formaciones de piedra volcánica blanca, talladas tanto por la naturaleza como por la mano del hombre. Estas canteras son una fuente histórica del sillar utilizado en la construcción de la ciudad, reflejando su rica tradición arquitectónica y cultural. El entorno combina belleza natural con la historia viva de la región.",
+    "path": "/models/cuadros/sillar_3.glb"
+  },
+
+  {
     "id": 19,
     "title": "Furina - Genshin Impact",
     "description": "Arconte hydro",

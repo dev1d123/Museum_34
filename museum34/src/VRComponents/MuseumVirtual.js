@@ -67,7 +67,6 @@ const MuseumVirtual = () => {
   
       const handlePositionUpdate = (event) => {
         const { x, y, z } = event.detail; 
-
         if (x >= -5 && x <= -3 && z >= -14 && z <= -12) {
           console.log('Colca picture area!');
           setButtonText("Abrir modal: Imagen del Cañon del Colca");
@@ -123,7 +122,7 @@ const MuseumVirtual = () => {
           setButtonText("Abrir modal: Imagen lateral de las canteras de sillar");
           setIdModal(11);
           setInModel(true);
-        } else if (x >= -12 && x <= -14 && z >= 0.5 && z <= 1.75) {
+        } else if (x >= -14 && x <= -11.5 && z >= 0.5 && z <= 1.75) {
           console.log('Cantera side picture area!');
           setButtonText("Abrir modal: Imagen lateral de la cantera");
           setIdModal(12);
