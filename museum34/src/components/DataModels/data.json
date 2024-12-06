@@ -72,6 +72,12 @@
     "path": "/models/cuadros/rocoto.glb"
   },
   {
+    "id": 11,
+    "title": "Escultura de sillar en la cantera",
+    "description": "Esta escultura de sillar es una representación artística elaborada en las canteras de Arequipa, Perú. El sillar, una piedra volcánica blanca característica de la región, es un material emblemático en la arquitectura y el arte arequipeño. Estas esculturas destacan por su detallado trabajo artesanal y su conexión con la rica herencia cultural de la ciudad, conocida como la 'Ciudad Blanca'.",
+    "path": "/models/cuadros/sillar_2.glb"
+  },
+  {
     "id": 19,
     "title": "Furina - Genshin Impact",
     "description": "Arconte hydro",
