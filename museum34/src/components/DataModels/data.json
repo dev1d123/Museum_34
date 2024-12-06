@@ -31,9 +31,9 @@
   },
   {
     "id": 5,
-    "title": "Catedral de Arequipa - Miniatura",
-    "description": "Esta representación en miniatura de la Catedral de Arequipa está tallada en sillar, el material que caracteriza a esta icónica construcción. La catedral, ubicada en la Plaza de Armas de Arequipa, es un símbolo de la fe y la historia de la ciudad. La miniatura refleja los detalles arquitectónicos de esta joya neoclásica, que data del siglo XVII.",
-    "path": "/models/catedral.glb"
+    "title": "Mirador de Yanahuara",
+    "description": "El Mirador de Yanahuara es uno de los lugares más icónicos de Arequipa, conocido por sus arcos de sillar tallados con frases de célebres personajes y vistas panorámicas de la ciudad. Desde este punto, se puede admirar el imponente volcán Misti y la belleza de la campiña arequipeña. Este modelo 3D captura los detalles arquitectónicos de los arcos y la tranquilidad del entorno, que invitan a la reflexión y al disfrute del paisaje. Es un espacio que combina historia, cultura y naturaleza, siendo un destino favorito para locales y turistas.",
+    "path": "/models/cuadros/mirador.glb"
   },
   {
     "id": 20,

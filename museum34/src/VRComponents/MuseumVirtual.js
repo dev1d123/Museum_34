@@ -90,7 +90,7 @@ const MuseumVirtual = () => {
           setIdModal(4);
         } else if (x >= 3.6 && x <= 5.5 && z >= 12.4 && z <= 14) {
           console.log('Portada picture area!');
-          setButtonText("Abrir modal: Imagen de la portada");
+          setButtonText("Abrir modal: Imagen del mirador");
           setIdModal(5);
           setInModel(true);
         } else if (x >= 1.5 && x <= 3.3 && z >= 12.4 && z <= 14) {
