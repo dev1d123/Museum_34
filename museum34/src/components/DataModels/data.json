@@ -66,6 +66,12 @@
     "path": "/models/cuadros/sillar.glb"
   },  
   {
+    "id": 10,
+    "title": "Rocoto Relleno",
+    "description": "El Rocoto Relleno es un plato típico de la gastronomía peruana, especialmente popular en la región de Arequipa. Consiste en un rocoto (un tipo de pimiento picante) relleno de carne molida, cebolla, aceitunas, pasas y especias, coronado con queso y gratinado al horno. Se sirve tradicionalmente acompañado de pastel de papa.",
+    "path": "/models/cuadros/rocoto.glb"
+  },
+  {
     "id": 19,
     "title": "Furina - Genshin Impact",
     "description": "Arconte hydro",
