@@ -71,6 +71,7 @@ const MuseumVirtual = () => {
         if (x >= -5 && x <= -3 && z >= -14 && z <= -12) {
           console.log('Colca picture area!');
           setButtonText("Abrir modal: Imagen del Cañon del Colca");
+          console.log("El id: ", 1);
           setIdModal(1);
           setInModel(true);
         } else if (x >= -2.4 && x <= -0.7 && z >= -14 && z <= -12) {
@@ -365,7 +366,7 @@ const MuseumVirtual = () => {
       {isModalOpen && (
           <ModalInformation
             isOpen={isModalOpen}
-            id={20}
+            id={idModal}
             onClose={() => setIsModalOpen(false)}
           />
         )}

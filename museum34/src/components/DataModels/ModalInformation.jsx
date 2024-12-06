@@ -16,7 +16,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     if (id === 0) {
       setScale({ x: 0.05, y: 0.05, z: 0.05 });
     } else {
-      setScale({ x: 4, y: 4, z: 4 });
+      setScale({ x: 0.1, y: 0.1, z: 0.1 });
     }
     console.log(scale_)
   }, [scale_]);

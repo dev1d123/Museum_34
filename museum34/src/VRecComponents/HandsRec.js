@@ -211,7 +211,7 @@ const HandsRec = forwardRef(({onData}, ref) => {
   //retorna 2 arreglos (uno por la mano izquierda y otro por la mano derecha, ademas
   //retorna handSide y leftGrabbing y rightGrabbing)
   const processHandGestures = (results, landmarks) => {
-    const threshold = 0.4; // Umbral de distancia para determinar si la mano está cerrada
+    const threshold = 0.3; // Umbral de distancia para determinar si la mano está cerrada
     const calculateDistance = (x1, y1, x2, y2) => Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
   
     // Función para calcular si una mano está cerrada y obtener los dedos

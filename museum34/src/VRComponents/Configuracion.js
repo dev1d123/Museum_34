@@ -159,9 +159,12 @@ const Configuracion = ({ onClose }) => {
   const handleSave = () => {
     setSaved(true);
     setTimeout(() => setSaved(false), 3000); // El mensaje desaparece después de 3 segundos
+    
+  
   };
 
   return (
+
     <ConfigContainer>
       <CloseButton onClick={onClose}>✖</CloseButton>
 

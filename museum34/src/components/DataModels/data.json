@@ -7,24 +7,30 @@
   },
   {
     "id": 1,
+    "title": "Cañón del Colca - Arequipa",
+    "description": "El Cañón del Colca, uno de los más profundos del mundo, es un impresionante destino natural ubicado en la región de Arequipa. Este lugar combina paisajes espectaculares, terrazas agrícolas milenarias y la majestuosidad del vuelo del cóndor andino. Con una profundidad que supera los 4,000 metros, el cañón es un testimonio de la belleza y la fuerza de la naturaleza. Es un destino ideal para los amantes del ecoturismo y la aventura, ofreciendo actividades como trekking, avistamiento de aves y la exploración de comunidades ancestrales que preservan sus tradiciones.",
+    "path": "/models/cuadros/colca.glb"
+  },
+  {
+    "id": 2,
     "title": "Escultura del Águila - Arequipa",
     "description": "Esta escultura representa un majestuoso águila tallada en sillar, una piedra volcánica característica de Arequipa. El águila simboliza la fortaleza y la libertad, y es una muestra del arte detallado que se puede encontrar en las manos de los artesanos arequipeños. Fue creada en los talleres tradicionales de Yanahuara, un distrito famoso por su habilidad en el tallado de sillar.",
     "path": "/models/eagle_sillar_polycam.glb"
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "Escultura del Burro - Arequipa",
     "description": "El burro es una representación de los animales de carga que han acompañado a los habitantes de Arequipa a lo largo de su historia. Esta escultura, hecha de sillar, captura con detalle al noble animal que ha sido un símbolo de trabajo arduo y resistencia en los Andes. Fue tallada por artesanos en el distrito de Cerro Colorado, conocido por sus canteras de sillar.",
     "path": "/models/donkey_sillar_polycam.glb"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Friso Colonial Tallado en Sillar",
     "description": "Este friso es una representación del estilo barroco mestizo que caracteriza muchas iglesias y construcciones coloniales de Arequipa. Tallado en sillar con intrincados diseños que incluyen motivos religiosos y heráldicos, este tipo de ornamentación es típico de iglesias como la Compañía de Jesús o Santa Catalina. Esta pieza refleja la habilidad y dedicación de los artesanos arequipeños durante la época colonial.",
     "path": "/models/barroco_andino.glb"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Catedral de Arequipa - Miniatura",
     "description": "Esta representación en miniatura de la Catedral de Arequipa está tallada en sillar, el material que caracteriza a esta icónica construcción. La catedral, ubicada en la Plaza de Armas de Arequipa, es un símbolo de la fe y la historia de la ciudad. La miniatura refleja los detalles arquitectónicos de esta joya neoclásica, que data del siglo XVII.",
     "path": "/models/catedral.glb"
