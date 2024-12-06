@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main></Main>}></Route>
         <Route path="/iniciar-sesion" element={<LoginSignUp isLogin={true} />} />
-        <Route path="/iniciar" element={<LoginSignUp isLogin={false} />} />
+        <Route path="/registrarse" element={<LoginSignUp isLogin={false} />} />
 
         <Route path='/colecciones' element={<Colecciones></Colecciones>}></Route>
         <Route path='/colecciones/museo' element={<MuseumVirtual></MuseumVirtual>}></Route>
