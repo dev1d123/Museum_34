@@ -127,7 +127,6 @@ const Perfil = ({ onClose, museumTime }) => {
   const handleLoginRedirect = () => {
     navigate("/iniciar-sesion");
     window.location.reload(); 
-
   };
 
   return (

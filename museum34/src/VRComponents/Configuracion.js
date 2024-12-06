@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const ConfigContainer = styled.div`
-  padding: 30px;
+  padding: 1px;
   color: #fff;
   background-color: #1e1f29;
   height: 100%;
@@ -29,7 +29,7 @@ const CloseButton = styled.button`
 
 const SaveButtonContainer = styled.div`
   position: absolute;
-  bottom: 15px;
+  bottom: 2px;
   left: 15px;
   display: flex;
   align-items: center;
@@ -60,13 +60,21 @@ const SaveMessage = styled.span`
 const ControlGroup = styled.div`
   margin: 20px 0;
 `;
+const EspecialGroup = styled.div`
+  margin-left: 500px;
+`;
 
 const Label = styled.label`
   display: block;
-  margin-bottom: 10px;
   font-size: 18px;
   font-weight: 600;
   color: #ddd;
+`;
+
+const SliderValue = styled.div`
+  font-size: 16px;
+  color: #00cc66;
+  text-align: center;
 `;
 
 const Slider = styled.input`
@@ -117,12 +125,35 @@ const Title = styled.h2`
   margin-bottom: 20px;
   color: #00cc66;
 `;
+const Checklist = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+`;
+
+const ChecklistItem = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #ddd;
+
+  input {
+    accent-color: #00cc66;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+`;
 
 const Configuracion = ({ onClose }) => {
   const [brillo, setBrillo] = useState(70);
   const [volumen, setVolumen] = useState(80);
   const [velocidad, setVelocidad] = useState(80);
   const [sensibilidad, setSensibilidad] = useState(60);
+  const [mostrarRutas, setMostrarRutas] = useState(false);
+
   const [saved, setSaved] = useState(false);
 
   const handleSave = () => {
@@ -138,6 +169,7 @@ const Configuracion = ({ onClose }) => {
 
       <ControlGroup>
         <Label>Brillo</Label>
+        <SliderValue>{brillo}</SliderValue>
         <Slider
           type="range"
           min="0"
@@ -149,6 +181,7 @@ const Configuracion = ({ onClose }) => {
 
       <ControlGroup>
         <Label>Volumen</Label>
+        <SliderValue>{volumen}</SliderValue>
         <Slider
           type="range"
           min="0"
@@ -160,6 +193,7 @@ const Configuracion = ({ onClose }) => {
 
       <ControlGroup>
         <Label>Velocidad de movimiento</Label>
+        <SliderValue>{velocidad}</SliderValue>
         <Slider
           type="range"
           min="1"
@@ -171,6 +205,7 @@ const Configuracion = ({ onClose }) => {
 
       <ControlGroup>
         <Label>Sensibilidad del mouse</Label>
+        <SliderValue>{sensibilidad}</SliderValue>
         <Slider
           type="range"
           min="1"
@@ -180,11 +215,19 @@ const Configuracion = ({ onClose }) => {
         />
       </ControlGroup>
 
-      <ButtonGroup>
-        <Label>Mostrar rutas</Label>
-        <Button>Sí</Button>
-        <Button>No</Button>
-      </ButtonGroup>
+      <EspecialGroup>
+        <Checklist>
+          <ChecklistItem>
+            <input
+              type="checkbox"
+              checked={mostrarRutas}
+              onChange={(e) => setMostrarRutas(e.target.checked)}
+            />
+            Mostrar rutas
+          </ChecklistItem>
+        </Checklist>
+      </EspecialGroup>
+
 
       <SaveButtonContainer>
         <SaveButton onClick={handleSave}>Guardar</SaveButton>
