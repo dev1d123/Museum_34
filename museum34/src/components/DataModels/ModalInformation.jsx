@@ -15,7 +15,9 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   useEffect(() => {
     if (id === 0) {
       setScale({ x: 0.05, y: 0.05, z: 0.05 });
-    } else {
+    } else if(id === 13) {
+      setScale({ x: 5, y: 5, z: 5});
+    }else{
       setScale({ x: 0.1, y: 0.1, z: 0.1 });
     }
     console.log(scale_)
