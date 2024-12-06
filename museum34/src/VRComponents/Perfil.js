@@ -1,5 +1,5 @@
-import React from "react";
 import styled from "styled-components";
+import React, { useState, useRef, useEffect } from "react";
 
 const PerfilContainer = styled.div`
   position: relative;
@@ -92,7 +92,13 @@ const Title = styled.h2`
   color: #00cc66;
 `;
 
-const Perfil = ({ onClose }) => {
+const Perfil = ({ onClose, museumTime }) => {
+  const hours = Math.floor(museumTime / 3600);
+  const minutes = Math.floor((museumTime % 3600) / 60);
+  const seconds = museumTime % 60;
+
+  
+
   return (
     <PerfilContainer>
       {/* Botón de cerrar */}
@@ -117,7 +123,7 @@ const Perfil = ({ onClose }) => {
         </InfoItem>
         <InfoItem>
           <label>Tiempo en el museo:</label>
-          <span>20 minutos</span>
+          <span>{hours} horas, {minutes} minutos, {seconds} segundos</span>
         </InfoItem>
 
         {/* Botón Aprender */}

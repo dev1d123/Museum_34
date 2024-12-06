@@ -40,10 +40,20 @@ const MuseumVirtual = () => {
   const [contentDisplay, setContentDisplay] = useState("none");
   const [buttonText, setButtonText] = useState("Abrir Modal"); // Texto inicial
   const [idModal, setIdModal] = useState(0); // Texto inicial
+  const [museumTime, setMuseumTime] = useState(0);
 
   //RECONOCER EL MOVIMIENTO DEL JUGADOR
   const playerRef = useRef(null);
   const [inModel, setInModel] = useState(false);
+
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMuseumTime((prevTime) => prevTime + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
 
   useEffect(() => {
@@ -362,7 +372,7 @@ const MuseumVirtual = () => {
           {/* Modal dinámico para cada sección */}
       {isPerfilOpen && (
         <ModalContainer>
-          <Perfil />
+          <Perfil museumTime={museumTime} onClose={closeAllSections} />
           <button onClick={closeAllSections}>Cerrar</button>
         </ModalContainer>
       )}
