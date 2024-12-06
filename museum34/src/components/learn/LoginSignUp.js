@@ -60,10 +60,10 @@ const PopupContent = styled.div`
   }
 `;
 
-const LoginSignUp = () => {
+const LoginSignUp = ({ isLogin: initialIsLogin }) => {
   const navigate = useNavigate();
 
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(initialIsLogin);
   const [popupMessage, setPopupMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
 
