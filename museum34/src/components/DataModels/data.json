@@ -13,9 +13,9 @@
   },
   {
     "id": 2,
-    "title": "Escultura del Águila - Arequipa",
-    "description": "Esta escultura representa un majestuoso águila tallada en sillar, una piedra volcánica característica de Arequipa. El águila simboliza la fortaleza y la libertad, y es una muestra del arte detallado que se puede encontrar en las manos de los artesanos arequipeños. Fue creada en los talleres tradicionales de Yanahuara, un distrito famoso por su habilidad en el tallado de sillar.",
-    "path": "/models/eagle_sillar_polycam.glb"
+    "title": "Plaza de Armas de Arequipa",
+    "description": "",
+    "path": "/models/cuadros/plaza.glb"
   },
   {
     "id": 3,
