@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState, useRef, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
 const PerfilContainer = styled.div`
   position: relative;
   display: flex;
@@ -93,11 +94,41 @@ const Title = styled.h2`
 `;
 
 const Perfil = ({ onClose, museumTime }) => {
+  const [isLogin, setIsLogin] = useState(false);
+  const [userID, setUserID] = useState(null);
+  const [userInfo, setUserInfo] = useState({});
   const hours = Math.floor(museumTime / 3600);
   const minutes = Math.floor((museumTime % 3600) / 60);
   const seconds = museumTime % 60;
+  const navigate = useNavigate(); 
 
-  
+  useEffect(() => {
+    const storedLogin = localStorage.getItem("loggedIn");
+    console.log("El usuario es: ", storedLogin);
+    setIsLogin(!!storedLogin);
+
+    if(storedLogin){
+      const fetchUserInfo = async() =>{
+        try{
+          const response = await api.get(`/usuarios/${storedLogin}`);
+          setUserID(storedLogin);
+          setUserInfo(response.data);
+        }catch(error){
+          console.error("Error al obtener la información del usuario:", error);
+        }
+        
+      };
+      fetchUserInfo();
+    }else{
+      console.log("Por favor, inicie sesión para ver su perfil.");
+    }
+    
+  }, []);
+  const handleLoginRedirect = () => {
+    navigate("/iniciar-sesion");
+    window.location.reload(); 
+
+  };
 
   return (
     <PerfilContainer>
@@ -108,18 +139,39 @@ const Perfil = ({ onClose, museumTime }) => {
 
       {/* Sección izquierda */}
       <LeftSection>
+      {isLogin ? (
         <Label>Modelos favoritos</Label>
+        ) : (
+          <div style={{ textAlign: "center", color: "#ff6666" }}>
+            <p>Debes iniciar sesión para ver esta área.</p>
+            <button
+              onClick={handleLoginRedirect}
+              style={{
+                backgroundColor: "#ff6666",
+                color: "#fff",
+                padding: "10px 20px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                fontSize: "16px",
+                marginTop: "10px",
+              }}
+            >
+              Iniciar Sesión
+            </button>
+          </div>
+        )}
       </LeftSection>
 
       {/* Sección derecha */}
       <RightSection>
         <InfoItem>
-          <label>Nickname:</label>
-          <span>Usuario123</span>
+          <label>Usuario:</label>
+          <span>{userInfo.nombre || "No disponible"}</span>
         </InfoItem>
         <InfoItem>
           <label>Email:</label>
-          <span>usuario123@example.com</span>
+          <span>{userInfo.email || "No disponible"}</span>
         </InfoItem>
         <InfoItem>
           <label>Tiempo en el museo:</label>

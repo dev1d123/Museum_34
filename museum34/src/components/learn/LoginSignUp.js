@@ -127,8 +127,7 @@ const LoginSignUp = ({ isLogin: initialIsLogin }) => {
         setShowPopup(true);
 
         //redirigir a la pagina principal logeado
-        localStorage.setItem('loggedIn', true);
-        localStorage.setItem('userID', usuario.id);
+        localStorage.setItem('loggedIn', usuario.id);
         localStorage.setItem('userName', usuario.nombre);
         localStorage.setItem('userEmail', usuario.email);
         navigate('/');

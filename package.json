@@ -2,6 +2,7 @@
   "dependencies": {
     "@mediapipe/drawing_utils": "^0.3.1675466124",
     "aframe": "^1.6.0",
-    "axios": "^1.7.9"
+    "axios": "^1.7.9",
+    "react-router-dom": "^7.0.2"
   }
 }
