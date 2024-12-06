@@ -89,13 +89,53 @@
     "description": "Este modelo 3D representa la majestuosa Catedral de Arequipa, uno de los principales símbolos de la ciudad y un ejemplo destacado de la arquitectura neoclásica en el Perú. Construida principalmente con sillar, piedra volcánica característica de la región, la catedral se encuentra ubicada en la Plaza de Armas de Arequipa. Su diseño detallado captura la grandeza y la historia de este monumento, declarado Patrimonio de la Humanidad por la UNESCO.",
     "path": "/models/catedral.glb"
   },
-
-
+  {
+    "id": 14,
+    "title": "Modelo 3D del águila",
+    "description": "Un impresionante modelo 3D que representa un águila tallada en sillar, el material volcánico característico de la región. El modelo destaca por la precisión en los detalles, como las texturas realistas de las plumas, las garras afiladas y la expresión majestuosa del ave, reflejando el arte tradicional andino en su máxima expresión.",
+    "path": "/models/eagle_sillar_polycam.glb"
+  },
+  {
+    "id": 15,
+    "title": "Modelo 3D del burro",
+    "description": "Este modelo 3D recrea un burro esculpido en sillar, capturando con fidelidad los rasgos anatómicos del animal y el estilo artístico típico de la región. Los detalles en las orejas, la postura y el pelaje reflejan el uso cultural y simbólico del burro en las comunidades locales, destacando la habilidad del escultor.",
+    "path": "/models/donkey_sillar_polycam.glb"
+  },
+  {
+    "id": 16,
+    "title": "Modelo 3D sillar de la mujer",
+    "description": "Una figura femenina tallada en sillar y representada en un modelo 3D de alta calidad. Este modelo pone énfasis en los rasgos expresivos del rostro, los pliegues del vestuario tradicional y los adornos, destacando la habilidad artesanal y el contexto cultural que rodea esta obra.",
+    "path": "/models/sillar_plycam_1.glb"
+  },
+  {
+    "id": 17,
+    "title": "Modelo 3D sillar del hombre",
+    "description": "Modelo 3D que captura la esencia de una figura masculina esculpida en sillar. Los detalles en el rostro, la postura y los elementos del atuendo revelan la destreza artística y la importancia histórica de esta representación dentro del contexto cultural andino.",
+    "path": "/models/sillar_plycam_1.glb"
+  },
+  {
+    "id": 18,
+    "title": "Modelo 3D sillar del portal",
+    "description": "Una majestuosa representación tridimensional de un portal esculpido en sillar, exhibiendo los complejos detalles del estilo barroco andino. Este modelo resalta la intrincada ornamentación, incluyendo motivos florales, geométricos y simbólicos, mostrando la influencia colonial y la adaptación indígena en la arquitectura.",
+    "path": "/models/barroco_andino.glb"
+  },
   {
     "id": 19,
-    "title": "Furina - Genshin Impact",
-    "description": "Arconte hydro",
+    "title": "Modelo 3D de Furina",
+    "description": "Un modelo 3D detallado de Furina, un personaje icónico del juego Genshin Impact. Este modelo captura con precisión sus características únicas, desde los delicados detalles en su vestimenta y cabello, hasta su expresión facial distintiva, ofreciendo una representación fiel que destaca la estética visual del juego.",
     "path": "/models/genshin_impact_-_furina.glb"
-    
+  },
+  {
+    "id": 20,
+    "title": "Modelo 3D del Misti",
+    "description": "Una recreación 3D fiel del imponente volcán Misti, símbolo de Arequipa. Este modelo muestra la silueta distintiva del volcán, incluyendo sus pendientes suaves y su cumbre ligeramente nevada, destacando su relevancia geográfica y cultural como uno de los principales íconos de la región.",
+    "path": "/models/volcan_misti.glb"
+  },  
+  {
+    "id": 0,
+    "title": "No deberias de estar aqui!",
+    "description": "Acercate a un modelo :) (ya pe julio)",
+    "path": "/models/catedral.glb"
   }
+
 ]
