@@ -132,7 +132,24 @@ const FavoriteList = styled.ul`
   justify-content: center;
 `;
 
+const DeleteButton = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #ff6666;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ff3333;
+  }
+`;
+
 const FavoriteItem = styled.li`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,17 +162,15 @@ const FavoriteItem = styled.li`
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 
   &:hover {
-    transform: scale(1.1);
     background: linear-gradient(145deg, #32333d, #252631);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   }
 `;
 
-const FavoriteItemImage = styled.img`
+const ModelImage = styled.img`
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border-radius: 50%;
   margin-bottom: 10px;
   border: 3px solid #00cc66;
   box-shadow: 0 4px 10px rgba(0, 204, 102, 0.3);
@@ -167,7 +182,7 @@ const FavoriteItemImage = styled.img`
   }
 `;
 
-const FavoriteItemName = styled.span`
+const ModelName = styled.span`
   font-size: 16px;
   color: #ddd;
   font-weight: 600;
@@ -181,18 +196,6 @@ const FavoriteItemName = styled.span`
 `;
 
 
-const ModelImage = styled.img`
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 10px;
-`;
-
-const ModelName = styled.span`
-  font-size: 14px;
-  color: #fff;
-`;
 const Perfil = ({ onClose, museumTime }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [userID, setUserID] = useState(null);
@@ -274,6 +277,15 @@ const Perfil = ({ onClose, museumTime }) => {
           <FavoriteList>
             {favoriteModels.map((model) => (
               <FavoriteItem key={model.id}>
+                
+                <DeleteButton
+                  
+                  title="Eliminar de favoritos"
+                >
+                  ✖
+                </DeleteButton>
+
+
                 <ModelImage src={modelsFavorite[`img${model.id}`]} alt={model.nombre}></ModelImage>
                 <ModelName>{model.nombre}</ModelName>
 
