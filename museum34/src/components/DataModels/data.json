@@ -36,12 +36,6 @@
     "path": "/models/cuadros/volcanPlaza.glb"
   },
   {
-    "id": 6,
-    "title": "Volcán Misti Imagen",
-    "description": "El Volcán Misti es el símbolo más reconocido de Arequipa, con su forma cónica perfecta y su imponente presencia. El volcán, aún considerado activo, ha sido parte fundamental de la historia y cultura de la región, siendo fuente de inspiración para mitos, leyendas y obras artísticas. Esta representación captura su majestuosidad y su conexión íntima con el paisaje arequipeño.",
-    "path": "/models/cuadros/volcanPlaza.glb"
-  },
-  {
     "id": 7,
     "title": "Catedral de Arequipa en la Tarde",
     "description": "La Catedral de Arequipa, iluminada por la cálida luz del atardecer, revela la belleza de su arquitectura neoclásica construida en sillar blanco. Este modelo 3D destaca los detalles de sus altas torres, su imponente fachada y los matices dorados que adquiere bajo la luz vespertina. Ubicada en la Plaza de Armas, esta catedral es un símbolo de la rica historia religiosa y cultural de la ciudad. La escena captura un momento de tranquilidad y esplendor, ideal para apreciar la conexión entre la arquitectura y el entorno natural de la Ciudad Blanca.",
@@ -61,7 +55,7 @@
   },  
   {
     "id": 10,
-    "title": "Rocoto Relleno",
+    "title": "Rocoto Relleno Imagen",
     "description": "El Rocoto Relleno es un plato típico de la gastronomía peruana, especialmente popular en la región de Arequipa. Consiste en un rocoto (un tipo de pimiento picante) relleno de carne molida, cebolla, aceitunas, pasas y especias, coronado con queso y gratinado al horno. Se sirve tradicionalmente acompañado de pastel de papa.",
     "path": "/models/cuadros/rocoto.glb"
   },

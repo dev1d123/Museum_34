@@ -11,6 +11,21 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const handsRecRef = useRef(null); // Referencia para HandsRec
   const [scale_, setScale] = useState({ x: 2, y: 2, z: 2 }); //escala predeterminada
 
+  const [comments, setComments] = useState([
+    { userName: "DemoUser", text: "¡Este modelo está increíble!" },
+  ]); 
+  const [newComment, setNewComment] = useState(""); 
+  const isLogin = localStorage.getItem("loggedIn"); 
+  const userName = localStorage.getItem("userName"); 
+
+  const handleAddComment = () => {
+    if (newComment.trim()) {
+      setComments([...comments, { userName, text: newComment }]);
+      setNewComment(""); 
+    }
+  };
+
+
   useEffect(() => {
     if (id === 0) {
       setScale({ x: 0.05, y: 0.05, z: 0.05 });
@@ -129,14 +144,45 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
             <IASpeak className="btn-leer" title={modelData.title} description={modelData.description}/>
 
             <div className="camera-space">
-
               {isHandsOpen && <HandsRec onData={handleFingerData} />}
-              
             </div>
+            
 
             <button onClick={toggleHands}>
               {isHandsOpen ? "Desactivar cámara" : "Activar cámara"}
             </button>
+            
+            {/* Sección de Comentarios */}
+            <div className="comment-section">
+              <h3>Comentarios</h3>
+              {isLogin ? (
+                <div className="comment-form">
+                  <textarea
+                    placeholder="Escribe tu comentario..."
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                  />
+                  <button onClick={handleAddComment} disabled={!newComment.trim()}>
+                    Comentar
+                  </button>
+                </div>
+              ) : (
+                <p className="login-prompt">
+                  Debes estar registrado para comentar. <a href="/login">Inicia sesión aquí</a>.
+                </p>
+              )}
+              <div className="comment-list">
+                {comments.map((comment, index) => (
+                  <div key={index} className="comment-item">
+                    <strong>{comment.userName}</strong>
+                    <p>{comment.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+
+
           </div>
         </div>
       </div>
