@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: auto; /* Evita desbordes */
+    overflow: hidden; /* Evita desbordes */
     z-index: 9999;
 
   }
@@ -31,6 +31,8 @@
   .modal-content {
     display: flex;
     flex: 1;
+    overflow: hidden; /* Evita desbordamientos en el eje principal */
+
   }
   
   .model-viewer {
@@ -44,10 +46,13 @@
   }
   .model-description {
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    overflow-y: auto; 
+    max-height: 100%; 
+    height: 100%; 
+    box-sizing: border-box;
   }
   
   
@@ -136,7 +141,89 @@
     background-color: #0056b3;
 }
 .camera-space{
-  width: 100%;
-  height: 100%;
+  min-width: 300px;
+  min-height: 200px;
   overflow: hidden;
+}
+
+
+.comment-section {
+  margin-top: 20px;
+  background-color: #78ade6;
+  height: 400px;
+  overflow: auto;
+}
+.comment-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none;
+}
+
+.comment-form button {
+  align-self: flex-start;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comment-form button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.comment-form button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.login-prompt {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-prompt a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.comment-list {
+  margin-top: 10px;
+}
+
+.comment-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.comment-item strong {
+  font-size: 1rem;
+  color: #333;
+}
+
+.comment-item p {
+  font-size: 0.9rem;
+  color: #555;
 }
