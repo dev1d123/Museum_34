@@ -100,6 +100,9 @@ const Perfil = ({ onClose, museumTime }) => {
   const hours = Math.floor(museumTime / 3600);
   const minutes = Math.floor((museumTime % 3600) / 60);
   const seconds = museumTime % 60;
+
+  const [favoriteModels, setFavoriteModels] = useState([]);
+
   const navigate = useNavigate(); 
 
   useEffect(() => {
@@ -124,10 +127,27 @@ const Perfil = ({ onClose, museumTime }) => {
     }
     
   }, []);
+
   const handleLoginRedirect = () => {
     navigate("/iniciar-sesion");
     window.location.reload(); 
   };
+  
+  useEffect(() => {
+    const storedLogin = localStorage.getItem("loggedIn");
+
+    const fetchFavoriteModels = async (userId) => {
+      try {
+        const response = await api.get("/favoritos/"); 
+        const userFavorites = response.data.filter((fav) => fav.usuario === parseInt(userId));
+        console.log("Modelos favoritos del usuario:", userFavorites);
+        setFavoriteModels(userFavorites); 
+      } catch (error) {
+        console.error("Error al obtener los modelos favoritos del usuario:", error);
+      }
+    };
+    fetchFavoriteModels(storedLogin);
+  }, [])
 
   return (
     <PerfilContainer>
@@ -140,6 +160,11 @@ const Perfil = ({ onClose, museumTime }) => {
       <LeftSection>
       {isLogin ? (
         <Label>Modelos favoritos</Label>
+        
+
+
+
+
         ) : (
           <div style={{ textAlign: "center", color: "#ff6666" }}>
             <p>Debes iniciar sesión para ver esta área.</p>
