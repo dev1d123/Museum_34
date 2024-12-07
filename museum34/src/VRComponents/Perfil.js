@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import modelsFavorite from 'museum34/public/textures/favorite/modelsFavorite';
+
 import api from "../api/axios";
 const PerfilContainer = styled.div`
   position: relative;
@@ -92,7 +94,105 @@ const Title = styled.h2`
   margin-bottom: 20px;
   color: #00cc66;
 `;
+const FavoriteSection = styled.div`
+  height: 370px;
+  overflow: auto;
+  padding: 15px;
+  background-color: #1c1d27;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin; /* Para navegadores modernos */
+  scrollbar-color: #5a5b66 transparent;
 
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #5a5b66;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #787a86;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+`;
+
+const FavoriteList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+`;
+
+const FavoriteItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(145deg, #292a34, #1e1f29);
+  border: 1px solid #2f303a;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    background: linear-gradient(145deg, #32333d, #252631);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+`;
+
+const FavoriteItemImage = styled.img`
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid #00cc66;
+  box-shadow: 0 4px 10px rgba(0, 204, 102, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 204, 102, 0.5);
+  }
+`;
+
+const FavoriteItemName = styled.span`
+  font-size: 16px;
+  color: #ddd;
+  font-weight: 600;
+  margin-top: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #00cc66;
+  }
+`;
+
+
+const ModelImage = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+`;
+
+const ModelName = styled.span`
+  font-size: 14px;
+  color: #fff;
+`;
 const Perfil = ({ onClose, museumTime }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [userID, setUserID] = useState(null);
@@ -140,8 +240,16 @@ const Perfil = ({ onClose, museumTime }) => {
       try {
         const response = await api.get("/favoritos/"); 
         const userFavorites = response.data.filter((fav) => fav.usuario === parseInt(userId));
-        console.log("Modelos favoritos del usuario:", userFavorites);
-        setFavoriteModels(userFavorites); 
+        const favoriteModelIds = userFavorites.map((fav) => fav.modelo);
+
+        const modelResponse = await api.get("/modelos/");
+        const favoriteModelDetails = modelResponse.data.filter((model) =>
+          favoriteModelIds.includes(model.id)
+        );
+
+
+        console.log("Modelos favoritos del usuario:", favoriteModelDetails);
+        setFavoriteModels(favoriteModelDetails); 
       } catch (error) {
         console.error("Error al obtener los modelos favoritos del usuario:", error);
       }
@@ -159,7 +267,24 @@ const Perfil = ({ onClose, museumTime }) => {
       {/* Sección izquierda */}
       <LeftSection>
       {isLogin ? (
-        <Label>Modelos favoritos</Label>
+        <FavoriteSection>
+          <Label>Modelos favoritos</Label>
+          {/* Atencion, esto es un poco dificil...segun el modelsFavorite hay imagenes para cada id de los modelos...
+          muestra esas imagenes aqui, en el li!, has los estilos tmb*/}
+          <FavoriteList>
+            {favoriteModels.map((model) => (
+              <FavoriteItem key={model.id}>
+                <ModelImage src={modelsFavorite[`img${model.id}`]} alt={model.nombre}></ModelImage>
+                <ModelName>{model.nombre}</ModelName>
+
+              </FavoriteItem>
+                
+            ))}
+             
+          </FavoriteList>
+          
+        </FavoriteSection>
+        
         
 
 
