@@ -63,7 +63,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
             })
         );
 
-        setComments((prevComments) => [...prevComments, ...filteredComments]);
+        setComments(filteredComments);
       } catch (error) {
         console.error("Error al cargar comentarios desde la base de datos:", error);
       }
@@ -72,13 +72,37 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     fetchComentarios();
   }, [id, uID]); 
 
-  const handleAddComment = () => {
+  const handleAddComment = async () => {
     if (newComment.trim()) {
-      setComments([...comments, { userName, text: newComment }]);
-      setNewComment(""); 
+      const commentPayload = {
+        modelo: id, // ID del modelo relacionado con el comentario
+        texto: newComment, // Texto del comentario
+        usuario: uID, // ID del usuario que comentó
+        fecha: new Date().toISOString(), // Fecha actual en formato ISO
+      };
+  
+      try {
+        // Enviar el comentario al servidor
+        const response = await api.post("/comentarios/", commentPayload);
+  
+        // Si la solicitud fue exitosa, agregar el comentario al estado
+        const addedComment = {
+          commentID: response.data.id, // ID generado por el servidor
+          userName, // Nombre del usuario
+          text: newComment, // Texto del comentario
+          userID: parseInt(uID), // ID del usuario como número
+          fecha: new Date().toLocaleString(), // Fecha formateada para mostrar
+          deleteable: true, // Solo el usuario actual puede eliminar su comentario
+        };
+  
+        setComments((prevComments) => [...prevComments, addedComment]); // Actualizar comentarios
+        setNewComment(""); // Limpiar el campo de entrada
+      } catch (error) {
+        console.error("Error al agregar el comentario:", error);
+        alert("Hubo un problema al agregar tu comentario. Inténtalo de nuevo.");
+      }
     }
   };
-
 
   useEffect(() => {
     if (id === 0) {
@@ -229,6 +253,11 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
                     <div key={index} className="comment-item">
                       <strong>{comment.userName}</strong>
                       <p>{comment.text}</p>
+                      <small className="comment-date">
+                        {comment.fecha
+                          ? new Date(comment.fecha).toLocaleString() 
+                          : "Fecha no disponible"}
+                      </small>
                       {comment.deleteable && (
                         <button
                           className="delete-btn"
