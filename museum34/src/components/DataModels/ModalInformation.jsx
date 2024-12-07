@@ -11,7 +11,6 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const handsRecRef = useRef(null); // Referencia para HandsRec
   const [scale_, setScale] = useState({ x: 2, y: 2, z: 2 }); //escala predeterminada
 
-  // como el misiti es el unico modelo desbalanceado se opta por esta solucion simple 
   useEffect(() => {
     if (id === 0) {
       setScale({ x: 0.05, y: 0.05, z: 0.05 });

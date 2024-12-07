@@ -1,11 +1,5 @@
 [
   {
-    "id": 0,
-    "title": "Volcán Misti - Arequipa",
-    "description": "El Volcán Misti, conocido como el 'Señor Misti', es un imponente volcán ubicado en la ciudad de Arequipa, Perú. Este volcán de forma cónica tiene una altura de 5,825 metros sobre el nivel del mar. Es considerado un símbolo de la ciudad y ofrece vistas espectaculares de la región. A lo largo de la historia, el Misti ha sido un lugar de gran importancia cultural y religiosa para los antiguos habitantes de la zona. Aunque su última erupción registrada ocurrió en el siglo XV, sigue siendo un volcán activo, monitoreado constantemente por los expertos. Además, es un destino popular para el montañismo, atrayendo a aventureros de todo el mundo que buscan alcanzar su cima y disfrutar de las vistas panorámicas de Arequipa y el Valle del Chili.",
-    "path": "/models/volcan_misti.glb"
-  },
-  {
     "id": 1,
     "title": "Cañón del Colca - Arequipa",
     "description": "El Cañón del Colca, uno de los más profundos del mundo, es un impresionante destino natural ubicado en la región de Arequipa. Este lugar combina paisajes espectaculares, terrazas agrícolas milenarias y la majestuosidad del vuelo del cóndor andino. Con una profundidad que supera los 4,000 metros, el cañón es un testimonio de la belleza y la fuerza de la naturaleza. Es un destino ideal para los amantes del ecoturismo y la aventura, ofreciendo actividades como trekking, avistamiento de aves y la exploración de comunidades ancestrales que preservan sus tradiciones.",
