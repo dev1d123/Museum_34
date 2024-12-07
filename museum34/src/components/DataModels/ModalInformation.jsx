@@ -12,11 +12,26 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const [scale_, setScale] = useState({ x: 2, y: 2, z: 2 }); //escala predeterminada
 
   const [comments, setComments] = useState([
-    { userName: "DemoUser", text: "¡Este modelo está increíble!", userID: 0, fecha: null },
+    { commentID: 1, userName: "DemoUser", text: "¡Este modelo está increíble!", userID: 0, fecha: null, deleteable: false },
   ]); 
   const [newComment, setNewComment] = useState(""); 
   const isLogin = localStorage.getItem("loggedIn"); 
   const userName = localStorage.getItem("userName"); 
+  const uID = localStorage.getItem("loggedIn"); 
+
+  const handleDeleteComment = async (commentID) => {
+    if (window.confirm("¿Estás seguro de que deseas eliminar este comentario?")) {
+      try {
+        await api.delete(`/comentarios/${commentID}/`);
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.commentID !== commentID)
+        );
+        } catch (error) {
+          alert("Error al eliminar el comentario:", commentID);
+        }
+    }
+  };
+  
 
 
   const fetchUserName = async (userID) => {
@@ -42,6 +57,8 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
                 text: comment.texto,
                 userID: comment.usuario,
                 fecha: comment.fecha,
+                deleteable: parseInt(uID) === comment.usuario, // Compara como número
+                commentID: comment.id,
               };
             })
         );
@@ -53,7 +70,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     };
 
     fetchComentarios();
-  }, [id]); 
+  }, [id, uID]); 
 
   const handleAddComment = () => {
     if (newComment.trim()) {
@@ -207,14 +224,22 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
                   Debes estar registrado para comentar. <a href="/login">Inicia sesión aquí</a>.
                 </p>
               )}
-              <div className="comment-list">
-                {comments.map((comment, index) => (
-                  <div key={index} className="comment-item">
-                    <strong>{comment.userName}</strong>
-                    <p>{comment.text}</p>
-                  </div>
-                ))}
-              </div>
+                <div className="comment-list">
+                  {comments.map((comment, index) => (
+                    <div key={index} className="comment-item">
+                      <strong>{comment.userName}</strong>
+                      <p>{comment.text}</p>
+                      {comment.deleteable && (
+                        <button
+                          className="delete-btn"
+                          onClick={() => handleDeleteComment(comment.commentID)}
+                        >
+                          Eliminar, {comment.commentID}
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
             </div>
 
 
