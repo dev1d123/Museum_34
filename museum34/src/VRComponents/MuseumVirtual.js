@@ -68,102 +68,82 @@ const MuseumVirtual = () => {
       const handlePositionUpdate = (event) => {
         const { x, y, z } = event.detail; 
         if (x >= -5 && x <= -3 && z >= -14 && z <= -12) {
-          console.log('Colca picture area!');
           setButtonText("Abrir modal: Imagen del Cañon del Colca");
           setIdModal(1);
           setInModel(true);
         } else if (x >= -2.4 && x <= -0.7 && z >= -14 && z <= -12) {
-          console.log('Plaza picture area!');
           setButtonText("Abrir modal: Imagen de la plaza de armas");
           setIdModal(2);
           setInModel(true);
         } else if (x >= -0.2 && x <= 1.7 && z >= -14 && z <= -12) {
-          console.log('CampiñaMist picture area!');
           setButtonText("Abrir modal: Imagen de la campiña y Misti");
           setIdModal(3);
           setInModel(true);
         } else if (x >= 1.8 && x <= 3.9 && z >= -14 && z <= -12) {
-          console.log('Plaza 2 picture area!');
           setButtonText("Abrir modal: Imagen alternativa de la plaza");
           setInModel(true);
           setIdModal(4);
         } else if (x >= 3.6 && x <= 5.5 && z >= 12.4 && z <= 14) {
-          console.log('Portada picture area!');
           setButtonText("Abrir modal: Imagen del mirador");
           setIdModal(5);
           setInModel(true);
         } else if (x >= 1.5 && x <= 3.3 && z >= 12.4 && z <= 14) {
-          console.log('Misti picture area!');
           setButtonText("Abrir modal: Imagen del volcán Misti");
           setIdModal(6);
           setInModel(true);
         } else if (x >= -0.7 && x <= 1.0 && z >= 12.4 && z <= 14) {
-          console.log('Catedral picture area!');
           setButtonText("Abrir modal: Imagen de la catedral");
           setIdModal(7);
           setInModel(true);
         } else if (x >= -3.18 && x <= 0.1 && z >= 12.4 && z <= 14) {
-          console.log('Campiña picture area!');
           setButtonText("Abrir modal: Imagen de la campiña");
           setIdModal(8);
           setInModel(true);
         } else if (x >= -5.8 && x <= -3.5 && z >= 12.4 && z <= 14) {
-          console.log('Sillar picture area!');
           setButtonText("Abrir modal: Imagen de las canteras de sillar");
           setIdModal(9);
           setInModel(true);
         } else if (x >= 10.6 && x <= 13.4 && z >= 0.5 && z <= 1.75) {
-          console.log('Rocoto picture area!');
           setButtonText("Abrir modal: Imagen del rocoto relleno");
           setIdModal(10);
           setInModel(true);
         } else if (x >= -10.87 && x <= -9.2 && z >= 0.5 && z <= 1.75) {
-          console.log('Sillar side picture area!');
           setButtonText("Abrir modal: Imagen lateral de las canteras de sillar");
           setIdModal(11);
           setInModel(true);
         } else if (x >= -14 && x <= -11.5 && z >= 0.5 && z <= 1.75) {
-          console.log('Cantera side picture area!');
           setButtonText("Abrir modal: Imagen lateral de la cantera");
           setIdModal(12);
           setInModel(true);
         } else if (x >= 7 && x <= 8 && z >= -6.5 && z <= -3) {
-          console.log('CatedralModel picture area!');
           setButtonText("Abrir modal: Modelo 3D de la catedral");
           setIdModal(13);
           setInModel(true);
         } else if (x >= 7 && x <= 8 && z >= 2.5 && z <= 5) {
-          console.log('EagleModel picture area!');
           setButtonText("Abrir modal: Modelo 3D del águila");
           setIdModal(14);
           setInModel(true);
         } else if (x >= 7 && x <= 8 && z >= 6 && z <= 8) {
-          console.log('DonkeyModel picture area!');
           setButtonText("Abrir modal: Modelo 3D del burro");
           setIdModal(15);
           setInModel(true);
         } else if (x >= 7 && x <= 8 && z >= 8.1 && z <= 10.1) {
-          console.log('WomanModel picture area!');
           setButtonText("Abrir modal: Modelo 3D de la mujer");
           setIdModal(16);
           setInModel(true);
         } else if (x >= 7 && x <= 8 && z >= 10.5 && z <= 13) {
-          console.log('ManModel picture area!');
           setButtonText("Abrir modal: Modelo 3D del hombre");
           setIdModal(17);
           setInModel(true);
         } else if (x >= -8.8 && x <= -7.8 && z >= 9 && z <= 12) {
-          console.log('PortalModel picture area!');
           setButtonText("Abrir modal: Modelo 3D del portal");
           setIdModal(18);
           setInModel(true);
         } else if (x >= -8.8 && x <= -7.8 && z >= -10 && z <= -8) {
-          console.log('FurinaModel picture area!');
           setButtonText("Abrir modal: Modelo 3D de Furina");
           setIdModal(19);
           setInModel(true);
         } else if (x >= -8.8 && x <= -7.8 && z >= -13 && z <= -11) {
-          console.log('MistiModel picture area!');
           setButtonText("Abrir modal: Modelo 3D del Misti");
           setIdModal(20);
           setInModel(true);

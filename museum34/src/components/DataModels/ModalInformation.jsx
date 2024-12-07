@@ -4,7 +4,7 @@ import data from "./data.json";
 import ThreeViewer from "./ThreeViewer";
 import HandsRec from "../../VRecComponents/HandsRec";
 import IASpeak from "./IASpeak";
-
+import api from "../../api/axios";
 const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
 
   const [isHandsOpen, setIsHandsOpen] = useState(false);
@@ -12,11 +12,48 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const [scale_, setScale] = useState({ x: 2, y: 2, z: 2 }); //escala predeterminada
 
   const [comments, setComments] = useState([
-    { userName: "DemoUser", text: "¡Este modelo está increíble!" },
+    { userName: "DemoUser", text: "¡Este modelo está increíble!", userID: 0, fecha: null },
   ]); 
   const [newComment, setNewComment] = useState(""); 
   const isLogin = localStorage.getItem("loggedIn"); 
   const userName = localStorage.getItem("userName"); 
+
+
+  const fetchUserName = async (userID) => {
+    try {
+      const response = await api.get(`/usuarios/${userID}`); 
+      return response.data.nombre; 
+    } catch (error) {
+      console.error(`Error al obtener el nombre del usuario con ID ${userID}:`, error);
+      return "Usuario desconocido"; 
+    }
+  };
+  useEffect(() => {
+    const fetchComentarios = async () => {
+      try {
+        const response = await api.get("/comentarios/");
+        const filteredComments = await Promise.all(
+          response.data
+            .filter((comment) => comment.modelo === id)
+            .map(async (comment) => {
+              const userName = await fetchUserName(comment.usuario);
+              return {
+                userName, 
+                text: comment.texto,
+                userID: comment.usuario,
+                fecha: comment.fecha,
+              };
+            })
+        );
+
+        setComments((prevComments) => [...prevComments, ...filteredComments]);
+      } catch (error) {
+        console.error("Error al cargar comentarios desde la base de datos:", error);
+      }
+    };
+
+    fetchComentarios();
+  }, [id]); 
 
   const handleAddComment = () => {
     if (newComment.trim()) {
@@ -34,7 +71,6 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     }else{
       setScale({ x: 5, y: 5, z: 5 });
     }
-    console.log(scale_)
   }, [scale_]);
 
   const toggleHands = () => {
@@ -151,7 +187,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
             <button onClick={toggleHands}>
               {isHandsOpen ? "Desactivar cámara" : "Activar cámara"}
             </button>
-            
+
             {/* Sección de Comentarios */}
             <div className="comment-section">
               <h3>Comentarios</h3>
