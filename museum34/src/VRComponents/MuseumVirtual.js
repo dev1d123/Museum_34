@@ -335,8 +335,15 @@ const MuseumVirtual = () => {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (inModel && (event.key === 'e' || event.key === 'E')) {
-        toggleModal();
-      } 
+        if (!isModalOpen) { // Solo abre el modal si no está ya abierto
+          const clickAudio = new Audio(clickSound);
+          clickAudio.volume = 0.5;
+          clickAudio.play().catch((error) =>
+            console.error("Error playing click sound:", error)
+          );
+          setIsModalOpen(true); // Abre el modal
+        }
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
