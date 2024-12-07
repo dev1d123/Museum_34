@@ -7,6 +7,9 @@ import IASpeak from "./IASpeak";
 import api from "../../api/axios";
 const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
 
+  const [isFavorite, setIsFavorite] = useState(false); 
+  const [favoriteMessage, setFavoriteMessage] = useState("");
+    
   const [isHandsOpen, setIsHandsOpen] = useState(false);
   const handsRecRef = useRef(null); // Referencia para HandsRec
   const [scale_, setScale] = useState({ x: 2, y: 2, z: 2 }); //escala predeterminada
@@ -32,8 +35,6 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
     }
   };
   
-
-
   const fetchUserName = async (userID) => {
     try {
       const response = await api.get(`/usuarios/${userID}`); 
@@ -95,14 +96,67 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
           deleteable: true, // Solo el usuario actual puede eliminar su comentario
         };
   
-        setComments((prevComments) => [...prevComments, addedComment]); // Actualizar comentarios
-        setNewComment(""); // Limpiar el campo de entrada
+        setComments((prevComments) => [...prevComments, addedComment]); 
+        setNewComment(""); 
       } catch (error) {
         console.error("Error al agregar el comentario:", error);
         alert("Hubo un problema al agregar tu comentario. Inténtalo de nuevo.");
       }
     }
   };
+
+
+  const handleAddFavorite = async () => {
+    if (!isLogin) {
+      setFavoriteMessage("Debes iniciar sesión para agregar a favoritos.");
+      setTimeout(() => setFavoriteMessage(""), 3000); 
+      return;
+    }
+  
+    try {
+      const response = await api.get("/favoritos/");
+      const userFavorites = response.data.filter((fav) => fav.usuario === parseInt(uID));
+      const alreadyFavorite = userFavorites.some((fav) => fav.modelo === id);
+  
+      if (alreadyFavorite) {
+        setFavoriteMessage("Este modelo ya está en tus favoritos.");
+      } else {
+        const payload = {
+          usuario: parseInt(uID), 
+          modelo: id, 
+          fecha_agregado: new Date().toISOString(),
+        };
+        await api.post("/favoritos/", payload);
+        setFavoriteMessage("¡Modelo agregado a favoritos!");
+        setIsFavorite(true); 
+      }
+    } catch (error) {
+      console.error("Error al agregar a favoritos:", error);
+      setFavoriteMessage("Hubo un error al agregar a favoritos. Inténtalo de nuevo.");
+    }
+  
+    setTimeout(() => setFavoriteMessage(""), 3000); 
+  };
+  useEffect(() => {
+    const checkIfFavorite = async () => {
+      try {
+        const response = await api.get("/favoritos/");
+
+        const userFavorites = response.data.filter((fav) => fav.usuario === parseInt(uID));
+        const isFav = userFavorites.some((fav) => fav.modelo === id);
+        setIsFavorite(isFav); 
+
+      } catch (error) {
+        console.error("Error al verificar si el modelo es favorito:", error);
+      }
+    };
+  
+    if (isLogin) {
+      checkIfFavorite();
+    }
+  }, [id, uID, isLogin]);
+  
+
 
   useEffect(() => {
     if (id === 0) {
@@ -209,6 +263,19 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
           ×
         </button>
         <div className="modal-content">
+          
+        <div className="favorite-section">
+          {isLogin ? (
+            <button onClick={handleAddFavorite} disabled={isFavorite}>
+              {isFavorite ? "Ya está en tus favoritos" : "Agregar a favoritos"}
+            </button>
+          ) : (
+            <p className="login-prompt">
+              Debes estar registrado para agregar a favoritos. <a href="/login">Inicia sesión aquí</a>.
+            </p>
+          )}
+          {favoriteMessage && <p className="favorite-message">{favoriteMessage}</p>}
+        </div>
           {/* Modelo 3D en el lado izquierdo */}
           <div className="model-viewer">
             <ThreeViewer model={modelData} path={modelData.path} handData={handData} scale_={scale_}/>
