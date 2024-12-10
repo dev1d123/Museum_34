@@ -267,6 +267,17 @@ const Perfil = ({ onClose, museumTime }) => {
     fetchFavoriteModels(storedLogin);
   }, [])
 
+  const handleDeleteFavourite = async(favoriteId) =>{
+    try{
+      await api.delete(`/favoritos/${favoriteId}/`);
+      setFavoriteModels((prevModels) =>
+        prevModels.filter((model) => model.favoriteId !== favoriteId )
+      );
+      
+    }catch(error){
+      console.log("Error al eliminar: ", error);
+    }
+  }
   return (
     <PerfilContainer>
       {/* Botón de cerrar */}
@@ -286,7 +297,7 @@ const Perfil = ({ onClose, museumTime }) => {
               <FavoriteItem key={model.id}>
             <DeleteButton
               title="Eliminar de favoritos"
-              onClick={handleDeleteFavourite(model.favoriteId)} 
+              onClick={() => handleDeleteFavourite(model.favoriteId)} 
             >
               ✖
             </DeleteButton>
