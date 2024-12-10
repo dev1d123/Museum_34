@@ -281,7 +281,6 @@ const Perfil = ({ onClose, museumTime }) => {
   return (
     <PerfilContainer>
       {/* Botón de cerrar */}
-      <CloseButton onClick={onClose}>✖</CloseButton>
 
       <Title>Perfil</Title>
 

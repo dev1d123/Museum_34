@@ -33,7 +33,21 @@ const ModalContainer = styled.div`
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 `;
+const CloseButton = styled.button`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ff6666;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
 
+  &:hover {
+    color: #ff3333;
+  }
+`;
 const MuseumVirtual = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para controlar si se cargan los recursos
   const [isModalOpen, setIsModalOpen] = useState(false); // Estado del modal
@@ -359,21 +373,23 @@ const MuseumVirtual = () => {
       {isPerfilOpen && (
         <ModalContainer>
           <Perfil museumTime={museumTime} onClose={closeAllSections} />
-          <button onClick={closeAllSections}>Cerrar</button>
+
+          <CloseButton onClick={closeAllSections}>✖</CloseButton>
+        
         </ModalContainer>
       )}
 
       {isConfigOpen && (
         <ModalContainer>
           <Configuracion />
-          <button onClick={closeAllSections}>Cerrar</button>
+          <button onClick={closeAllSections}>Cerrar2</button>
         </ModalContainer>
       )}
 
       {isInfoOpen && (
         <ModalContainer>
           <Informacion />
-          <button onClick={closeAllSections}>Cerrar</button>
+          <button onClick={closeAllSections}>Cerrar3</button>
         </ModalContainer>
       )}
 {isLoaded && inModel && (
