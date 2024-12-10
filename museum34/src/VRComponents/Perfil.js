@@ -200,6 +200,7 @@ const Perfil = ({ onClose, museumTime }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [userID, setUserID] = useState(null);
   const [userInfo, setUserInfo] = useState({});
+
   const hours = Math.floor(museumTime / 3600);
   const minutes = Math.floor((museumTime % 3600) / 60);
   const seconds = museumTime % 60;
@@ -243,12 +244,18 @@ const Perfil = ({ onClose, museumTime }) => {
       try {
         const response = await api.get("/favoritos/"); 
         const userFavorites = response.data.filter((fav) => fav.usuario === parseInt(userId));
-        const favoriteModelIds = userFavorites.map((fav) => fav.modelo);
-
+        const favoriteModelIds = userFavorites.map((fav) => ({
+          modelId: fav.modelo,
+          favoriteId: fav.id, 
+        }));
         const modelResponse = await api.get("/modelos/");
-        const favoriteModelDetails = modelResponse.data.filter((model) =>
-          favoriteModelIds.includes(model.id)
-        );
+        const favoriteModelDetails = modelResponse.data
+          .filter((model) => favoriteModelIds.some((fav) => fav.modelId === model.id))
+          .map((model) => ({
+            ...model,
+            favoriteId: favoriteModelIds.find((fav) => fav.modelId === model.id).favoriteId,
+          }));
+    
 
 
         console.log("Modelos favoritos del usuario:", favoriteModelDetails);
@@ -277,19 +284,15 @@ const Perfil = ({ onClose, museumTime }) => {
           <FavoriteList>
             {favoriteModels.map((model) => (
               <FavoriteItem key={model.id}>
-                
-                <DeleteButton
-                  
-                  title="Eliminar de favoritos"
-                >
-                  ✖
-                </DeleteButton>
-
-
-                <ModelImage src={modelsFavorite[`img${model.id}`]} alt={model.nombre}></ModelImage>
-                <ModelName>{model.nombre}</ModelName>
-
-              </FavoriteItem>
+            <DeleteButton
+              title="Eliminar de favoritos"
+              onClick={handleDeleteFavourite(model.favoriteId)} 
+            >
+              ✖
+            </DeleteButton>
+            <ModelImage src={modelsFavorite[`img${model.id}`]} alt={model.nombre} />
+            <ModelName>{model.nombre}</ModelName>
+          </FavoriteItem>
                 
             ))}
              
