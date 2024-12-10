@@ -166,7 +166,6 @@ const Configuracion = ({ onClose }) => {
   return (
 
     <ConfigContainer>
-      <CloseButton onClick={onClose}>✖</CloseButton>
 
       <Title>Configuración</Title>
 

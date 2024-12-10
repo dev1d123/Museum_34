@@ -382,14 +382,14 @@ const MuseumVirtual = () => {
       {isConfigOpen && (
         <ModalContainer>
           <Configuracion />
-          <button onClick={closeAllSections}>Cerrar2</button>
+          <CloseButton onClick={closeAllSections}>✖</CloseButton>
         </ModalContainer>
       )}
 
       {isInfoOpen && (
         <ModalContainer>
           <Informacion />
-          <button onClick={closeAllSections}>Cerrar3</button>
+          <CloseButton onClick={closeAllSections}>✖</CloseButton>
         </ModalContainer>
       )}
 {isLoaded && inModel && (

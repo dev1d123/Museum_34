@@ -61,8 +61,7 @@ const Image = styled.img`
 const Informacion = ({ onClose }) => {
   return (
     <InfoContainer>
-      {/* Botón para cerrar */}
-      <CloseButton onClick={onClose}>✖</CloseButton>
+
 
       {/* Título */}
       <Title>Información</Title>
