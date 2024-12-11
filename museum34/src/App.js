@@ -7,6 +7,7 @@ import MuseumVirtual from './VRComponents/MuseumVirtual.js';
 import VoiceRecognition from './VRecComponents/VoiceRecognition.js';
 import LoginSignUp from './components/learn/LoginSignUp.js';
 import ViewerModel  from './components/modalViewer/ViewerModel.js';
+import Donacion from './components/donaciones/Donaciones.js';
 
 import Hands from './VRecComponents/HandsRec.js';
 
@@ -31,7 +32,7 @@ function App() {
 
         <Route path='/educacion' element={<Learn></Learn>}></Route>
         <Route path='/investigacion' element={<Investigacion></Investigacion>}></Route>
-        {/*<Route path='/donaciones' element={<Donacion></Donacion>}></Route>*/}
+        <Route path='/donaciones' element={<Donacion></Donacion>}></Route>
 
         <Route path='/test' element={<MuseumVirtual></MuseumVirtual>}></Route>
 

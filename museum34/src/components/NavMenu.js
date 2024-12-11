@@ -72,10 +72,11 @@ const NavMenu = () => {
 
 
         <li>
-            <a href="#donaciones">
-                <img className = "iconImg"  src={donations}></img>  <br></br>
+            <Link to="/donaciones">
+                <img className = "iconImg" src={donations}></img> <br></br>
                 Donaciones
-            </a>
+            </Link>
+
         </li>
 
         {userName ? (
