@@ -331,7 +331,9 @@ const MuseumVirtual = () => {
       if (inModel && (event.key === 'e' || event.key === 'E')) {
         if (!isModalOpen) { // Solo abre el modal si no está ya abierto
           const clickAudio = new Audio(clickSound);
+
           clickAudio.volume = 0.5;
+          
           clickAudio.play().catch((error) =>
             console.error("Error playing click sound:", error)
           );
@@ -348,7 +350,7 @@ const MuseumVirtual = () => {
   }, [inModel]);
 
   return (
-    <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
+    <div style={{ height: "100vh", width: "100vw", overflow: "hidden", filter: "brightness(1)"}}>
 
       {isLoaded && (
         <BottomMenu
@@ -520,7 +522,7 @@ const MuseumVirtual = () => {
 
           <a-sky src="#sky_sphere-texture"></a-sky>
 
-          {/* <Entity gltf-model="#furina" position="-10 0.7 -9" rotation="0 90 0" scale="1.3 1.3 1.3" static-body></Entity> */}
+          <Entity gltf-model="#furina" position="-10 0.7 -9" rotation="0 90 0" scale="1.3 1.3 1.3" static-body></Entity> 
           <Entity gltf-model="#volcan" position="-10.2 0.6 -12" rotation="0 0 0" scale="0.015 0.015 0.015" static-body></Entity>
           <Entity gltf-model="#catedral" position="10 1.8 -5" rotation="0 180 0" scale="3 3 3"static-body></Entity>
           <Entity gltf-model="#donkey_sillar_polycam" position="9.2 0.99 7" rotation="0 0 0" scale="2 2 2" static-body></Entity>
@@ -581,20 +583,21 @@ const MuseumVirtual = () => {
             color="#FFF"
             intensity="1"
           ></a-light>
+            
+            <a-entity
+              id="player"
+              ref={playerRef}
+              camera="fov: 100"
+              look-controls="pointerLockEnabled: true;"
 
-          <a-entity
-            id="player"
-            ref={playerRef}
-            camera
-            look-controls="pointerLockEnabled: true"
-            wasd-controls="acceleration: 35"
-            run-controls
-            jump-controls
-            position="0 1.6 0"
-            dynamic-body
-            step-sound
-            log-position
-          ></a-entity>
+              wasd-controls="acceleration: 35"
+              run-controls
+              jump-controls
+              position="0 1.6 0"
+              dynamic-body
+              step-sound
+              log-position
+            ></a-entity>
         </Scene>
       )}
     </div>

@@ -82,3 +82,18 @@ AFRAME.registerComponent('log-position', {
   });
   
   
+
+  AFRAME.registerComponent('custom-look-controls', {
+    init: function () {
+      this.lookControls = this.el.components['look-controls'];
+      this.mouseSensitivity = 1; // Ajusta este valor para más o menos sensibilidad
+      this.originalMouseMove = this.lookControls.onMouseMove.bind(this.lookControls);
+      this.lookControls.onMouseMove = this.onMouseMove.bind(this);
+    },
+    onMouseMove: function (event) {
+      event.movementX *= this.mouseSensitivity;
+      event.movementY *= this.mouseSensitivity;
+      this.originalMouseMove(event);
+    }
+  });
+  
