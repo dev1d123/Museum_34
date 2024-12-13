@@ -56,6 +56,8 @@ const MuseumVirtual = () => {
   const [idModal, setIdModal] = useState(0); // Texto inicial
   const [museumTime, setMuseumTime] = useState(0);
 
+  const [brillo, setBrillo] = useState(0);
+
   //RECONOCER EL MOVIMIENTO DEL JUGADOR
   const playerRef = useRef(null);
   const [inModel, setInModel] = useState(false);
@@ -348,9 +350,10 @@ const MuseumVirtual = () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [inModel]);
+  const brilloCSS = 0.5 + (brillo / 100);
 
   return (
-    <div style={{ height: "100vh", width: "100vw", overflow: "hidden", filter: "brightness(1)"}}>
+    <div style={{ height: "100vh", width: "100vw", overflow: "hidden", filter: `brightness(${brilloCSS})`}}>
 
       {isLoaded && (
         <BottomMenu
