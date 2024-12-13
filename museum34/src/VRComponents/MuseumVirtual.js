@@ -57,10 +57,22 @@ const MuseumVirtual = () => {
   const [museumTime, setMuseumTime] = useState(0);
 
   const [brillo, setBrillo] = useState(50);
-  const [volumen, setVolumen] = useState(0);
+  const [volumen, setVolumen] = useState(50);
   const [movimiento, setMovimiento] = useState(50);
+
   const [sensibilidad, setSensibilidad] = useState(50);
   const [showPaths, setShowPaths] = useState(false);
+
+  const aceleracion = 10 + (movimiento / 100) * 90;
+
+  useEffect(() => {
+    if (playerRef.current) {
+      // Actualizamos dinámicamente el atributo wasd-controls
+      playerRef.current.setAttribute("wasd-controls", `acceleration: ${aceleracion}`);
+    }
+  }, [aceleracion]); // Actualizamos el atributo cada vez que cambia el estado 'movimiento'
+
+
 
   //RECONOCER EL MOVIMIENTO DEL JUGADOR
   const playerRef = useRef(null);
@@ -599,7 +611,8 @@ const MuseumVirtual = () => {
               look-controls="pointerLockEnabled: true;"
 
               wasd-controls="acceleration: 35"
-              run-controls
+              run-controls={`normalSpeed: ${aceleracion}; runSpeed: ${aceleracion * 1.5}`}
+
               jump-controls
               position="0 1.6 0"
               dynamic-body
