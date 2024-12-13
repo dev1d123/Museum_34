@@ -56,7 +56,11 @@ const MuseumVirtual = () => {
   const [idModal, setIdModal] = useState(0); // Texto inicial
   const [museumTime, setMuseumTime] = useState(0);
 
-  const [brillo, setBrillo] = useState(0);
+  const [brillo, setBrillo] = useState(50);
+  const [volumen, setVolumen] = useState(0);
+  const [movimiento, setMovimiento] = useState(50);
+  const [sensibilidad, setSensibilidad] = useState(50);
+  const [showPaths, setShowPaths] = useState(false);
 
   //RECONOCER EL MOVIMIENTO DEL JUGADOR
   const playerRef = useRef(null);
@@ -186,13 +190,14 @@ const MuseumVirtual = () => {
   
     waitForPlayerRef(); // Iniciar la espera
   }, []);
+  const volumenNormalizado = volumen / 100;
 
 
 
   useEffect(() => {
     let isMoving = false; // Controla si se está moviendo
     const audio = new Audio(stepSound); // Cargar el sonido
-    audio.volume = 0.5;
+    audio.volume = volumenNormalizado/2;
     audio.loop = true; // El sonido se repetirá
     let keysPressed = new Set(); // Usaremos un Set para almacenar las teclas presionadas
     let jumpTimeout; // Controlará el tiempo en que se pausa el sonido tras un salto
@@ -283,7 +288,7 @@ const MuseumVirtual = () => {
   const handleLoadScene = () => {
     // Reproducir el sonido de clic
     const clickAudio = new Audio(clickSound);
-    clickAudio.volume = 0.5;
+    clickAudio.volume = volumenNormalizado/2;
     clickAudio.play().catch((error) => console.error("Error playing click sound:", error));
     setIsLoading(true); 
 
@@ -334,7 +339,7 @@ const MuseumVirtual = () => {
         if (!isModalOpen) { // Solo abre el modal si no está ya abierto
           const clickAudio = new Audio(clickSound);
 
-          clickAudio.volume = 0.5;
+          clickAudio.volume = volumenNormalizado/2;
           
           clickAudio.play().catch((error) =>
             console.error("Error playing click sound:", error)
@@ -504,7 +509,7 @@ const MuseumVirtual = () => {
               autoplay="true"
               loop="true"
               position="1 1 0"
-              volume="0.3"
+              volume={volumenNormalizado}
             ></a-sound>
 
             <a-asset-item id="floor-obj" src={models.floor}></a-asset-item>
