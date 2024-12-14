@@ -160,9 +160,35 @@ const Configuracion = ({ onClose, onConfigChange }) => {
     onConfigChange({brillo, volumen, velocidad, sensibilidad});
     setSaved(true);
     setTimeout(() => setSaved(false), 3000); // El mensaje desaparece después de 3 segundos
-    
-  
   };
+
+  const handleBrilloChange = (e) => {
+    const newValue = Number(e.target.value);
+    setBrillo(newValue);
+    onConfigChange({ brillo: newValue});
+  };
+
+  
+  const handleVolumenChange = (e) => {
+    const newValue = Number(e.target.value);
+    setVolumen(newValue);
+    onConfigChange({ volumen: newValue});
+  };
+
+  
+  const handleVelocidadChange = (e) => {
+    const newValue = Number(e.target.value);
+    setVelocidad(newValue);
+    onConfigChange({ velocidad: newValue});
+  };
+
+  
+  const handleSensibilidadChange = (e) => {
+    const newValue = Number(e.target.value);
+    setSensibilidad(newValue);
+    onConfigChange({ sensibilidad: newValue});
+  };
+
 
   return (
 
@@ -178,7 +204,7 @@ const Configuracion = ({ onClose, onConfigChange }) => {
           min="0"
           max="100"
           value={brillo}
-          onChange={(e) => setBrillo(e.target.value)}
+          onChange={handleBrilloChange}          
         />
       </ControlGroup>
 
@@ -190,7 +216,7 @@ const Configuracion = ({ onClose, onConfigChange }) => {
           min="0"
           max="100"
           value={volumen}
-          onChange={(e) => setVolumen(e.target.value)}
+          onChange={handleVolumenChange}
         />
       </ControlGroup>
 
@@ -202,7 +228,7 @@ const Configuracion = ({ onClose, onConfigChange }) => {
           min="1"
           max="100"
           value={velocidad}
-          onChange={(e) => setVelocidad(e.target.value)}
+          onChange={handleVelocidadChange}
         />
       </ControlGroup>
 
@@ -214,7 +240,7 @@ const Configuracion = ({ onClose, onConfigChange }) => {
           min="1"
           max="100"
           value={sensibilidad}
-          onChange={(e) => setSensibilidad(e.target.value)}
+          onChange={handleSensibilidadChange}
         />
       </ControlGroup>
 
