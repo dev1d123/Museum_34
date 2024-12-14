@@ -59,8 +59,9 @@ const MuseumVirtual = () => {
   const [brillo, setBrillo] = useState(50);
   const [volumen, setVolumen] = useState(50);
   const [movimiento, setMovimiento] = useState(50);
-
   const [sensibilidad, setSensibilidad] = useState(50);
+
+
   const [showPaths, setShowPaths] = useState(false);
 
   const aceleracion = 10 + (movimiento / 100) * 90;
@@ -369,6 +370,14 @@ const MuseumVirtual = () => {
   }, [inModel]);
   const brilloCSS = 0.5 + (brillo / 100);
 
+  const handleConfigChange = (newConfig) => {
+    if (newConfig.brillo !== undefined) setBrillo(newConfig.brillo);
+    if (newConfig.volumen !== undefined) setVolumen(newConfig.volumen);
+    if (newConfig.velocidad !== undefined) setMovimiento(newConfig.velocidad);
+    if (newConfig.sensibilidad !== undefined) setSensibilidad(newConfig.sensibilidad);
+  };
+
+
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden", filter: `brightness(${brilloCSS})`}}>
 
@@ -403,7 +412,7 @@ const MuseumVirtual = () => {
 
       {isConfigOpen && (
         <ModalContainer>
-          <Configuracion />
+          <Configuracion onConfigChange={handleConfigChange} />
           <CloseButton onClick={closeAllSections}>✖</CloseButton>
         </ModalContainer>
       )}
@@ -607,7 +616,8 @@ const MuseumVirtual = () => {
             <a-entity
               id="player"
               ref={playerRef}
-              camera="fov: 100"
+              
+              camera={`fov: ${sensibilidad}`}
               look-controls="pointerLockEnabled: true;"
 
               wasd-controls="acceleration: 35"

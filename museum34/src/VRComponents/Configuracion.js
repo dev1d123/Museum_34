@@ -147,7 +147,7 @@ const ChecklistItem = styled.label`
   }
 `;
 
-const Configuracion = ({ onClose }) => {
+const Configuracion = ({ onClose, onConfigChange }) => {
   const [brillo, setBrillo] = useState(70);
   const [volumen, setVolumen] = useState(80);
   const [velocidad, setVelocidad] = useState(80);
@@ -157,6 +157,7 @@ const Configuracion = ({ onClose }) => {
   const [saved, setSaved] = useState(false);
 
   const handleSave = () => {
+    onConfigChange({brillo, volumen, velocidad, sensibilidad});
     setSaved(true);
     setTimeout(() => setSaved(false), 3000); // El mensaje desaparece después de 3 segundos
     
