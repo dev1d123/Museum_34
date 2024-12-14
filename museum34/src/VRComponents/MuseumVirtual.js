@@ -412,7 +412,13 @@ const MuseumVirtual = () => {
 
       {isConfigOpen && (
         <ModalContainer>
-          <Configuracion onConfigChange={handleConfigChange} />
+        <Configuracion
+          brillo={brillo}
+          volumen={volumen}
+          velocidad={movimiento}
+          sensibilidad={sensibilidad}
+          onConfigChange={handleConfigChange}
+        />
           <CloseButton onClick={closeAllSections}>✖</CloseButton>
         </ModalContainer>
       )}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ConfigContainer = styled.div`
@@ -147,12 +147,26 @@ const ChecklistItem = styled.label`
   }
 `;
 
-const Configuracion = ({ onClose, onConfigChange }) => {
-  const [brillo, setBrillo] = useState(70);
-  const [volumen, setVolumen] = useState(80);
-  const [velocidad, setVelocidad] = useState(80);
-  const [sensibilidad, setSensibilidad] = useState(60);
-  const [mostrarRutas, setMostrarRutas] = useState(false);
+const Configuracion = ({
+  brillo: initialBrillo,
+  volumen: initialVolumen,
+  velocidad: initialVelocidad,
+  sensibilidad: initialSensibilidad,
+  onConfigChange,
+}) => {
+  const [brillo, setBrillo] = useState(initialBrillo);
+  const [volumen, setVolumen] = useState(initialVolumen);
+  const [velocidad, setVelocidad] = useState(initialVelocidad);
+  const [sensibilidad, setSensibilidad] = useState(initialSensibilidad);
+
+  useEffect(() => {
+    setBrillo(initialBrillo);
+    setVolumen(initialVolumen);
+    setVelocidad(initialVelocidad);
+    setSensibilidad(initialSensibilidad);
+  }, [initialBrillo, initialVolumen, initialVelocidad, initialSensibilidad]);
+
+
 
   const [saved, setSaved] = useState(false);
 
@@ -244,18 +258,7 @@ const Configuracion = ({ onClose, onConfigChange }) => {
         />
       </ControlGroup>
 
-      <EspecialGroup>
-        <Checklist>
-          <ChecklistItem>
-            <input
-              type="checkbox"
-              checked={mostrarRutas}
-              onChange={(e) => setMostrarRutas(e.target.checked)}
-            />
-            Mostrar rutas
-          </ChecklistItem>
-        </Checklist>
-      </EspecialGroup>
+
 
 
       <SaveButtonContainer>
