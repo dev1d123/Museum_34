@@ -19,6 +19,7 @@ import "aframe";
 import ModalInformation from "../components/DataModels/ModalInformation.jsx";
 
 import TransitionAnimation from "./TransitionAnimation.js";
+import api from "../api/axios.js";
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -61,8 +62,43 @@ const MuseumVirtual = () => {
   const [movimiento, setMovimiento] = useState(50);
   const [sensibilidad, setSensibilidad] = useState(50);
 
+  const [userID, setUserID] = useState(null);
+  const [conID, setConID] = useState(null);
 
-  const [showPaths, setShowPaths] = useState(false);
+  useEffect(() => {
+    const storedUserID = localStorage.getItem("loggedIn");
+    if (storedUserID) {
+      setUserID(storedUserID);
+      const fetchUsuario = async () => {
+        try {
+          const response = await api.get(`/usuarios/${storedUserID}`); 
+          console.log("la configuracion es: ", response.data.configuracion); 
+          const configID = response.data.configuracion;
+          setConID(configID);
+          if(configID === null){
+            setBrillo(50);
+            setVolumen(50);
+            setMovimiento(50);
+            setSensibilidad(50);
+          }else{
+            const configResponse = await api.get(`/configuraciones/${configID}`);
+            const { brillo, volumen, movimiento, sensibilidad } = configResponse.data;
+            setBrillo(brillo ?? 50); // Si el valor no está definido, usa 50 como predeterminado
+            setVolumen(volumen ?? 50);
+            setMovimiento(movimiento ?? 50);
+            setSensibilidad(sensibilidad ?? 50);
+          }
+
+
+        } catch (error) {
+          console.error("Error al obtener el usuario:", error);
+        }
+      };
+      fetchUsuario(); 
+    }
+  }, []);
+  
+
 
   const aceleracion = 10 + (movimiento / 100) * 90;
 
@@ -417,6 +453,8 @@ const MuseumVirtual = () => {
           volumen={volumen}
           velocidad={movimiento}
           sensibilidad={sensibilidad}
+          configID = {conID}
+          userID = {userID}
           onConfigChange={handleConfigChange}
         />
           <CloseButton onClick={closeAllSections}>✖</CloseButton>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import api from "../api/axios";
 import styled from "styled-components";
 
 const ConfigContainer = styled.div`
@@ -152,12 +153,15 @@ const Configuracion = ({
   volumen: initialVolumen,
   velocidad: initialVelocidad,
   sensibilidad: initialSensibilidad,
+  configID,
+  userID,
   onConfigChange,
 }) => {
   const [brillo, setBrillo] = useState(initialBrillo);
   const [volumen, setVolumen] = useState(initialVolumen);
   const [velocidad, setVelocidad] = useState(initialVelocidad);
   const [sensibilidad, setSensibilidad] = useState(initialSensibilidad);
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     setBrillo(initialBrillo);
@@ -168,13 +172,64 @@ const Configuracion = ({
 
 
 
-  const [saved, setSaved] = useState(false);
 
-  const handleSave = () => {
-    onConfigChange({brillo, volumen, velocidad, sensibilidad});
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000); // El mensaje desaparece después de 3 segundos
+  const handleSave = async () => {
+    try {
+      if (userID) {
+        let userResponse = await api.get(`/usuarios/${userID}`);
+        const userData = userResponse.data;  
+  
+        const updatedUserData = {
+          ...userData,          
+          configuracion: configID, 
+        };
+  
+        console.log("nuevos cambios: ", updatedUserData);
+        if (configID) {
+          console.log("Ya tiene una configuracion!");
+          // Realiza un PUT para actualizar la configuración existente
+          await api.put(`/configuraciones/${configID}/`, {
+            brillo,
+            volumen,
+            velocidad_movimiento: velocidad,
+            sensibilidad,
+            rutas: false,
+          });
+          console.log("Configuración actualizada correctamente.");
+
+        } else {
+          console.log("No tiene una configuracion!");
+          // Realiza un POST para crear una nueva configuración
+          const response = await api.post(`/configuraciones/`, {
+            brillo,
+            volumen,
+            velocidad_movimiento: velocidad,
+            sensibilidad,
+            rutas: false, 
+          });
+
+          console.log("Nueva configuración creada:", response.data);
+          const idConfig = response.data.id;
+          //actuazar el configID.
+          //hacer un put para actualizar el usuario solo el campo configuraciones-
+
+          onConfigChange(idConfig);
+          updatedUserData.configuracion = idConfig;
+        }
+        await api.put(`/usuarios/${userID}/`, updatedUserData);
+
+        console.log("Configuración del usuario actualizada.");
+
+        setSaved(true);
+        setTimeout(() => setSaved(false), 3000); // El mensaje desaparece después de 3 segundos
+      } else {
+        console.warn("No se puede guardar la configuración sin un usuario.");
+      }
+    } catch (error) {
+      console.error("Error al guardar la configuración:", error);
+    }
   };
+
 
   const handleBrilloChange = (e) => {
     const newValue = Number(e.target.value);
@@ -261,10 +316,12 @@ const Configuracion = ({
 
 
 
-      <SaveButtonContainer>
-        <SaveButton onClick={handleSave}>Guardar</SaveButton>
-        {saved && <SaveMessage>Configuraciones guardadas</SaveMessage>}
-      </SaveButtonContainer>
+      {userID && (
+        <SaveButtonContainer>
+          <SaveButton onClick={handleSave}>Guardar</SaveButton>
+          {saved && <SaveMessage>Configuraciones guardadas</SaveMessage>}
+        </SaveButtonContainer>
+      )}
     </ConfigContainer>
   );
 };
