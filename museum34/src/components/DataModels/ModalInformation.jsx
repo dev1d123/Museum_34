@@ -13,7 +13,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   const [isHandsOpen, setIsHandsOpen] = useState(false);
   const handsRecRef = useRef(null); // Referencia para HandsRec
   const [scale_, setScale] = useState({ x: 2, y: 2, z: 2 }); //escala predeterminada
-  const [bright, setbright] = useState(100); //escala predeterminada
+  const [bright, setBright] = useState(100); // Brillo predeterminado
 
   const [comments, setComments] = useState([
     { commentID: 1, userName: "DemoUser", text: "¡Este modelo está increíble!", userID: 0, fecha: null, deleteable: false },
@@ -162,20 +162,26 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
   useEffect(() => {
     if (id === 0) {
       setScale({ x: 0.05, y: 0.05, z: 0.05 });
-    } else if(id <= 12) {
-      setScale({ x: 0.1, y: 0.1, z: 0.1});
-    } else if(id === 13) {
-      setScale({ x: 5, y: 5, z: 5});
-    }else if(id === 18) {
-        setScale({ x: 2, y: 2, z: 2});
-    }else if(id === 19) {
-      setScale({ x: 2, y: 2, z: 2});
-  }else if(id === 20) {
-      setScale({ x: 0.05, y: 0.05, z: 0.05 });
-    }else{
+    } else if (id <= 12) {
+      setScale({ x: 0.1, y: 0.1, z: 0.1 });
+      setBright(300); // Más brillo para modelos con id <= 12
+    } else if (id === 13) {
       setScale({ x: 5, y: 5, z: 5 });
+      setBright(100); // Brillo normal
+    } else if (id === 18) {
+      setScale({ x: 2, y: 2, z: 2 });
+      setBright(100); // Brillo normal
+    } else if (id === 19) {
+      setScale({ x: 2, y: 2, z: 2 });
+      setBright(100); // Brillo normal
+    } else if (id === 20) {
+      setScale({ x: 0.05, y: 0.05, z: 0.05 });
+      setBright(100); // Brillo normal
+    } else {
+      setScale({ x: 5, y: 5, z: 5 });
+      setBright(100); // Brillo normal
     }
-  }, [scale_]);
+  }, [id]); // Se ejecuta cuando cambia 'id'
 
   const toggleHands = () => {
     if (isHandsOpen && handsRecRef.current) {

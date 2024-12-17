@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const ThreeViewer = ({ path, handData, scale_ }) => {
+const ThreeViewer = ({ path, handData, scale_, bright_ }) => {
   const viewerRef = useRef(null);
   const cameraRef = useRef(null);
   const modelRef = useRef(null);
+  const lightRef = useRef(null);
 
   const [initialLeftZ, setInitialLeftZ] = useState(null);
   const [initialRightX, setInitialRightX] = useState(null);
@@ -14,7 +15,6 @@ const ThreeViewer = ({ path, handData, scale_ }) => {
   const [isDraggingRight, setIsDraggingRight] = useState(false);
 
   useEffect(() => {
-    console.log(scale, "gmaaaaaaaaaaaaaa")
     if (!viewerRef.current) return;
 
     const scene = new THREE.Scene();
@@ -36,7 +36,7 @@ const ThreeViewer = ({ path, handData, scale_ }) => {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(1, 1, 1);
     scene.add(directionalLight);
-
+    lightRef.current = directionalLight;
     // Modelo 3D
     const loader = new GLTFLoader();
     let model;
@@ -47,18 +47,16 @@ const ThreeViewer = ({ path, handData, scale_ }) => {
         model.scale.set(scale_.x, scale_.y, scale_.z);
         scene.add(model);
 
-        // Centrar el modelo
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
         model.position.sub(center);
-        modelRef.current = model; // Guarda el modelo
+        modelRef.current = model; 
 
       },
       undefined,
       (error) => console.error("Error cargando modelo:", error)
     );
 
-    // Controles para rotación y zoom
     
     let isDragging = false;
     let previousMousePosition = { x: 0, y: 0 };
@@ -133,7 +131,14 @@ const ThreeViewer = ({ path, handData, scale_ }) => {
       }
       renderer.dispose();
     };
-  }, [path]);
+  }, [path, scale_]);
+  useEffect(() => {
+    if (lightRef.current) {
+      const normalizedBrightness = Math.max(0, Math.min(100, bright_)) / 100;
+      lightRef.current.intensity = normalizedBrightness * 1.5; // Ajusta el valor base a tu preferencia
+    }
+  }, [bright_]);
+
 
   function transformNumber(num) {
     const clampedNum = Math.max(-9, Math.min(-2, num));
