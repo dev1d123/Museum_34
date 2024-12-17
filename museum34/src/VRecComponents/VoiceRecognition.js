@@ -33,6 +33,7 @@ const VoiceRecognition = () => {
 
     const startListening = () => {
         if (recognitionRef.current && !isListening) {
+            alert("Empiece a hablar")
             recognitionRef.current.start();
             setIsListening(true);
         }

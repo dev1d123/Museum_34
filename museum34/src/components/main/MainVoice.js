@@ -47,15 +47,21 @@ const MainVoice = () => {
         }
     };
 
-    const toggleListening = () => {
-        setIsListening(!isListening);
+    const toggleListening = async () => {
+        setIsListening((prev) => !prev);
 
-        if (voiceRecRef.current) {
-            if (!isListening) {
-                voiceRecRef.current.startListening();
-            } else {
-                voiceRecRef.current.stopListening();
+        try {
+            if (voiceRecRef.current) {
+                if (!isListening) {
+                    // Empieza a escuchar
+                    await voiceRecRef.current.startListening();
+                } else {
+                    // Detiene la escucha
+                    await voiceRecRef.current.stopListening();
+                }
             }
+        } catch (error) {
+            console.error("Error al cambiar el estado de escucha:", error);
         }
     };
 
