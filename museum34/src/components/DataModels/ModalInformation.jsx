@@ -164,24 +164,24 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
       setScale({ x: 0.05, y: 0.05, z: 0.05 });
     } else if (id <= 12) {
       setScale({ x: 0.1, y: 0.1, z: 0.1 });
-      setBright(300); // Más brillo para modelos con id <= 12
+      setBright(300); 
     } else if (id === 13) {
       setScale({ x: 5, y: 5, z: 5 });
-      setBright(100); // Brillo normal
+      setBright(100); 
     } else if (id === 18) {
       setScale({ x: 2, y: 2, z: 2 });
-      setBright(100); // Brillo normal
+      setBright(100); 
     } else if (id === 19) {
       setScale({ x: 2, y: 2, z: 2 });
-      setBright(100); // Brillo normal
+      setBright(100);
     } else if (id === 20) {
       setScale({ x: 0.05, y: 0.05, z: 0.05 });
-      setBright(100); // Brillo normal
+      setBright(100);
     } else {
       setScale({ x: 5, y: 5, z: 5 });
-      setBright(100); // Brillo normal
+      setBright(100);
     }
-  }, [id]); // Se ejecuta cuando cambia 'id'
+  }, [id]); 
 
   const toggleHands = () => {
     if (isHandsOpen && handsRecRef.current) {
@@ -345,7 +345,7 @@ const ModalInformation = ({ isOpen = true, id = 0, onClose = () => {} }) => {
                           className="delete-btn"
                           onClick={() => handleDeleteComment(comment.commentID)}
                         >
-                          Eliminar, {comment.commentID}
+                          Eliminar comentario
                         </button>
                       )}
                     </div>

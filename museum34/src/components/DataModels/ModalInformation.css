@@ -149,10 +149,41 @@
 
 .comment-section {
   margin-top: 20px;
-  background-color: #78ade6;
+  padding: 15px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #78ade6, #a5d8ff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   height: 400px;
-  overflow: auto;
+  overflow-y: auto;
+  color: #333; 
+
+  transition: all 0.3s ease-in-out;
 }
+
+.comment-section:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.comment-section::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.comment-section::-webkit-scrollbar-track {
+  background: #e6f2ff; 
+  border-radius: 10px;
+}
+
+.comment-section::-webkit-scrollbar-thumb {
+  background-color: #4a90e2;
+  border-radius: 10px;
+  border: 2px solid #e6f2ff;
+}
+
+.comment-section::-webkit-scrollbar-thumb:hover {
+  background-color: #357ab8;
+}
+
 .comment-section h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
