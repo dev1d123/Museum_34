@@ -105,10 +105,8 @@ const BottomMenu = ({ setActiveSection  }) => {
       }
     };
 
-    // Añadir el listener para detectar la tecla presionada
     window.addEventListener('keydown', handleKeyDown);
 
-    // Limpiar el listener cuando el componente se desmonte
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };

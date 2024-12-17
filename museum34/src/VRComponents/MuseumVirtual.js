@@ -20,10 +20,11 @@ import ModalInformation from "../components/DataModels/ModalInformation.jsx";
 
 import TransitionAnimation from "./TransitionAnimation.js";
 import api from "../api/axios.js";
+import HelpBox from "./HelpBox.js";
 
 const ModalContainer = styled.div`
   position: absolute;
-  z-index: 99999;
+  z-index: 9999;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
@@ -237,7 +238,7 @@ const MuseumVirtual = () => {
       };
     };
   
-    waitForPlayerRef(); // Iniciar la espera
+    waitForPlayerRef(); 
   }, []);
   const volumenNormalizado = volumen / 100;
 
@@ -416,8 +417,10 @@ const MuseumVirtual = () => {
 
   return (
     <div style={{ height: "100vh", width: "100vw", overflow: "hidden", filter: `brightness(${brilloCSS})`}}>
-
+      <HelpBox/>
+      
       {isLoaded && (
+        <div>
         <BottomMenu
           setActiveSection={(section) => {
             closeAllSections(); 
@@ -426,6 +429,7 @@ const MuseumVirtual = () => {
             if (section === "info") setIsInfoOpen(true);
           }}
         />
+        </div>
       )}
 
       {/* Modal para mostrar información */}
@@ -530,6 +534,8 @@ const MuseumVirtual = () => {
         <TransitionAnimation></TransitionAnimation>
       )}
       {isLoaded && (
+        <div>
+
         <Scene style={{ display: contentDisplay }}>
 
           <a-assets>
@@ -674,6 +680,7 @@ const MuseumVirtual = () => {
               log-position
             ></a-entity>
         </Scene>
+        </div>
       )}
     </div>
   );
