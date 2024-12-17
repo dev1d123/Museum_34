@@ -26,7 +26,7 @@
   {
     "id": 5,
     "title": "Mirador de Yanahuara",
-    "description": "El Mirador de Yanahuara es uno de los lugares más icónicos de Arequipa, conocido por sus arcos de sillar tallados con frases de célebres personajes y vistas panorámicas de la ciudad. Desde este punto, se puede admirar el imponente volcán Misti y la belleza de la campiña arequipeña. Este modelo 3D captura los detalles arquitectónicos de los arcos y la tranquilidad del entorno, que invitan a la reflexión y al disfrute del paisaje. Es un espacio que combina historia, cultura y naturaleza, siendo un destino favorito para locales y turistas.",
+    "description": "El Mirador de Yanahuara es uno de los lugares más icónicos de Arequipa, conocido por sus arcos de sillar tallados con frases de célebres personajes y vistas panorámicas de la ciudad. Desde este punto, se puede admirar el imponente volcán Misti y la belleza de la campiña arequipeña. Este modelo 3D captura los detalles arquitectónicos de los arcos y la tranquilidad del entorno, que invitan a la reflexión y al disfrute del paisaje.",
     "path": "/models/cuadros/mirador.glb"
   },
   {
@@ -38,19 +38,19 @@
   {
     "id": 7,
     "title": "Catedral de Arequipa en la Tarde",
-    "description": "La Catedral de Arequipa, iluminada por la cálida luz del atardecer, revela la belleza de su arquitectura neoclásica construida en sillar blanco. Este modelo 3D destaca los detalles de sus altas torres, su imponente fachada y los matices dorados que adquiere bajo la luz vespertina. Ubicada en la Plaza de Armas, esta catedral es un símbolo de la rica historia religiosa y cultural de la ciudad. La escena captura un momento de tranquilidad y esplendor, ideal para apreciar la conexión entre la arquitectura y el entorno natural de la Ciudad Blanca.",
+    "description": "La Catedral de Arequipa, iluminada por la cálida luz del atardecer, revela la belleza de su arquitectura neoclásica construida en sillar blanco. Este modelo 3D destaca los detalles de sus altas torres, su imponente fachada y los matices dorados que adquiere bajo la luz vespertina. Ubicada en la Plaza de Armas, esta catedral es un símbolo de la rica historia religiosa y cultural de la ciudad.",
     "path": "/models/cuadros/catedral.glb"
   },
   {
     "id": 8,
     "title": "Campiña de Arequipa con el Misti",
-    "description": "Esta imagen captura la serenidad de la campiña de Arequipa con el imponente Volcán Misti como telón de fondo. Los campos verdes, las terrazas agrícolas y los canales de irrigación tradicionales contrastan con la majestuosidad del volcán, creando una escena que combina la riqueza natural y cultural de la región. Es una representación que evoca la armonía entre el trabajo del hombre y la grandeza de la naturaleza, destacando la importancia de este paisaje en la identidad arequipeña.",
+    "description": "Esta imagen captura la serenidad de la campiña de Arequipa con el imponente Volcán Misti como telón de fondo. Los campos verdes, las terrazas agrícolas y los canales de irrigación tradicionales contrastan con la majestuosidad del volcán, creando una escena que combina la riqueza natural y cultural de la región. Es una representación que evoca la armonía entre el trabajo del hombre y la naturaleza.",
     "path": "/models/cuadros/volcan_2.glb"
   },
   {
     "id": 9,
     "title": "Canteras del Sillar Imagen",
-    "description": "La imagen de las canteras del sillar muestra el lugar donde se extrae el icónico material volcánico que ha dado a Arequipa el nombre de 'Ciudad Blanca'. Estas canteras, situadas en las afueras de la ciudad, destacan por sus impresionantes paredes talladas a mano por generaciones de artesanos. En la fotografía, se aprecian los contrastes entre las texturas del sillar y el cielo despejado, resaltando la importancia histórica y cultural de este recurso en la arquitectura local.",
+    "description": "La imagen de las canteras del sillar muestra el lugar donde se extrae el icónico material volcánico que ha dado a Arequipa el nombre de 'Ciudad Blanca'. Estas canteras, situadas en las afueras de la ciudad, destacan por sus impresionantes paredes talladas a mano por generaciones de artesanos. En la fotografía, se aprecian los contrastes entre las texturas del sillar y el cielo despejado",
     "path": "/models/cuadros/sillar.glb"
   },  
   {
