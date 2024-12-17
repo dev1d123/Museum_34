@@ -302,7 +302,7 @@ const Configuracion = ({
       </ControlGroup>
 
       <ControlGroup>
-        <Label>Sensibilidad del mouse</Label>
+        <Label>Distancia FOV</Label>
         <SliderValue>{sensibilidad}</SliderValue>
         <Slider
           type="range"
