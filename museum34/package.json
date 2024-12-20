@@ -27,6 +27,7 @@
     "aframe": "^1.6.0",
     "aframe-physics-system": "^4.0.2",
     "aframe-react": "^4.4.0",
+    "axios": "^1.7.9",
     "fingerpose": "^0.1.0",
     "markdown-to-jsx": "^7.5.0",
     "museum34": "file:",
