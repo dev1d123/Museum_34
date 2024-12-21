@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import logo from "./images/icon/logo.png";
 import search from "./images/icon/search.png";
 import menu from "./images/icon/menu.png";
 import close from "./images/icon/close.png";
