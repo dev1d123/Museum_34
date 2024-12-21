@@ -22,7 +22,6 @@
     "@tensorflow/tfjs": "^4.22.0",
     "@tensorflow/tfjs-backend-webgl": "^4.22.0",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aframe": "^1.6.0",
     "aframe-physics-system": "^4.0.2",
