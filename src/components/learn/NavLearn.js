@@ -5,7 +5,6 @@ import logo from "./images/icon/logo.png";
 import search from "./images/icon/search.png";
 import menu from "./images/icon/menu.png";
 import close from "./images/icon/close.png";
-import roshan from "./images/creator/roshan1.jpeg";
 
 const Header = styled.header`
     border: 2px solid rgba(0, 0, 0, 0.5);
@@ -23,7 +22,7 @@ const Nav = styled.nav`
     position: fixed;
     display: flex;
     width: 100%;
-    z-index: 1000;
+    z-index: 100000;
     background: #fff;
     justify-content: space-around;
     transition: 1.5s;
@@ -197,14 +196,6 @@ const GetStartedLink = styled.a`
 `;
 
 
-const ResponsiveWrapper = styled.div`
-  display: none;
-
-  @media (max-width: 960px) {
-    display: block;
-  }
-`;
-
 function NavLearn() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -226,7 +217,7 @@ function NavLearn() {
     <Header>
       <Nav>
         <Logo>
-          <img src={logo} alt="logo" />
+        <GetStartedLink href="#">LEARN34!</GetStartedLink>
         </Logo>
         <MenuList>
           <li><a className="active" href="/">Home</a></li>
@@ -241,7 +232,6 @@ function NavLearn() {
           <img src={search} alt="search" onClick={toggleSearch} style={{ cursor: 'pointer' }} />
         </SearchContainer>
 
-        <GetStartedLink href="login.html">Empezar</GetStartedLink>
         <MenuIcon src={menu} onClick={openSideMenu} alt="menu" />
       </Nav>
       {/* Menú Lateral */}
@@ -250,7 +240,6 @@ function NavLearn() {
           <img src={close} alt="close" style={{ cursor: 'pointer' }} />
         </SideMenuClose>    
         <SideMenuUser>
-          <img src={roshan} alt="Username" />
           <p>roshank9419</p>
         </SideMenuUser>
         <ul>

@@ -105,7 +105,7 @@ const ContactUs = () => {
       <SkewBackground />
       <ContactWrapper>
         <ContactCard>
-          <Form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+          <Form action="mailto:alfredohuamani750@gmail.com" method="post" enctype="text/plain">
             <div>
               <Label>
                 Nombres <Required>*</Required>
