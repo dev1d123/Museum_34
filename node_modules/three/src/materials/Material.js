@@ -7,6 +7,20 @@ let _materialId = 0;
 
 class Material extends EventDispatcher {
 
+	static get type() {
+
+		return 'Material';
+
+	}
+
+	get type() {
+
+		return this.constructor.type;
+
+	}
+
+	set type( _value ) { /* */ }
+
 	constructor() {
 
 		super();
@@ -18,7 +32,6 @@ class Material extends EventDispatcher {
 		this.uuid = MathUtils.generateUUID();
 
 		this.name = '';
-		this.type = 'Material';
 
 		this.blending = NormalBlending;
 		this.side = FrontSide;
@@ -100,7 +113,7 @@ class Material extends EventDispatcher {
 
 	}
 
-	onBuild( /* shaderobject, renderer */ ) {}
+	// onBeforeRender and onBeforeCompile only supported in WebGLRenderer
 
 	onBeforeRender( /* renderer, scene, camera, geometry, object, group */ ) {}
 
@@ -517,6 +530,12 @@ class Material extends EventDispatcher {
 	set needsUpdate( value ) {
 
 		if ( value === true ) this.version ++;
+
+	}
+
+	onBuild( /* shaderobject, renderer */ ) {
+
+		console.warn( 'Material: onBuild() has been removed.' ); // @deprecated, r166
 
 	}
 
