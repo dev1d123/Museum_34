@@ -15,23 +15,6 @@ const InfoContainer = styled.div`
   margin: auto; /* Centrar en la pantalla */
 `;
 
-// Botón para cerrar
-const CloseButton = styled.button`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  color: #ff6666;
-  font-size: 24px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #ff3333;
-  }
-`;
-
 // Título de la sección
 const Title = styled.h2`
   font-size: 24px;

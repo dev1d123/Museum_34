@@ -12,22 +12,6 @@ const ConfigContainer = styled.div`
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  color: #ff6666;
-  font-size: 24px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #ff3333;
-  }
-`;
-
 const SaveButtonContainer = styled.div`
   position: absolute;
   bottom: 2px;
@@ -60,9 +44,6 @@ const SaveMessage = styled.span`
 
 const ControlGroup = styled.div`
   margin: 20px 0;
-`;
-const EspecialGroup = styled.div`
-  margin-left: 500px;
 `;
 
 const Label = styled.label`
@@ -100,53 +81,13 @@ const Slider = styled.input`
   }
 `;
 
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-`;
-
-const Button = styled.button`
-  background-color: #3a3b46;
-  color: #00cc66;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #50515f;
-  }
-`;
 
 const Title = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
   color: #00cc66;
 `;
-const Checklist = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-`;
 
-const ChecklistItem = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  color: #ddd;
-
-  input {
-    accent-color: #00cc66;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-  }
-`;
 
 const Configuracion = ({
   brillo: initialBrillo,

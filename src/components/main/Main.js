@@ -5,9 +5,9 @@ import NavMenu from '../NavMenu'
 import ImgCar from './ImgCar';
 import FooterPage from '../FooterPage';
 import MainVoice from '../MainVoice';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../../api/axios';
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function Main() {
   const navigate = useNavigate();
