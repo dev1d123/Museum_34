@@ -15,6 +15,7 @@ import lampsTexture from '../textures/lamps.jpg';
 
 import recuadroModel from './recuadro.obj';
 import moonlightTexture from '../textures/moonlight.jpg';
+
 import catedralPhoto from '../textures/catedral.jpg'
 import volcanPhoto from '../textures/volcan.jpg'
 import miradorPhoto from '../textures/mirador.jpg'
@@ -27,6 +28,20 @@ import sillarPhoto3 from '../textures/sillar_3.jpg'
 import vallePhoto from '../textures/valle.jpg'
 import vallePhoto2 from '../textures/valle_2.jpg'
 import plazaPhoto2 from '../textures/plaza_2.jpg'
+
+import catedralR from './cuadros/catedral.glb';
+import colcaR from './cuadros/colca.glb';
+import miradorR from './cuadros/mirador.glb';
+import plaza2R from './cuadros/plaza_2.glb';
+import plazaR from './cuadros/plaza.glb';
+import rocotoR from './cuadros/rocoto.glb';
+import sillar2R from './cuadros/sillar_2.glb';
+import sillar3R from './cuadros/sillar_3.glb';
+import sillarR from './cuadros/sillar.glb';
+import valleR from './cuadros/valle.glb';
+import volcan2R from './cuadros/volcan_2.glb';
+import volcanR from './cuadros/volcan.glb';
+import volcanPlazaR from './cuadros/volcanPlaza.glb';
 
 
 import donkey_sillar_polycam from './donkey_sillar_polycam.glb';
@@ -64,6 +79,23 @@ const models = {
   vallePhoto,
   vallePhoto2,
   plazaPhoto2,
+
+  //Fotos cuadros glb
+  catedralR,
+  colcaR,
+  miradorR,
+  plaza2R,
+  plazaR,
+  rocotoR,
+  sillar2R,
+  sillar3R,
+  sillarR,
+  valleR,
+  volcan2R,
+  volcanR,
+  volcanPlazaR,
+
+
 
   donkey_sillar_polycam,
   eagle_sillar_polycam,
