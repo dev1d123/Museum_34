@@ -54,7 +54,10 @@ const ThreeViewer = ({ path, handData, scale_, bright_ }) => {
 
       },
       undefined,
-      (error) => console.error("Error cargando modelo:", error)
+      (error) => {
+        console.error(`Error cargando modelo desde la ruta: ${path}`, error);
+      }
+    
     );
 
     

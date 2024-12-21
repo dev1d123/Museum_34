@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import modelsFavorite from 'museum34/public/textures/favorite/modelsFavorite';
+
+import modelsFavorite from '../textures/favorite/modelsFavorite';
 
 import api from "../api/axios";
 const PerfilContainer = styled.div`

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef} from "react";
 import "./ModalInformation.css";
-import data from "./data.json";
+import data from "./data.js";
 import ThreeViewer from "./ThreeViewer";
 import HandsRec from "../../VRecComponents/HandsRec";
 import IASpeak from "./IASpeak";

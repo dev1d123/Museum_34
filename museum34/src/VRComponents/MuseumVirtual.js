@@ -9,7 +9,8 @@ import Perfil from "./Perfil.js";
 import Configuracion  from "./Configuracion.js";
 import Informacion from "./Informacion.js";
 
-import models from 'museum34/public/models/';
+import models from '../models/index.js';
+
 import styled from "styled-components";
 
 
