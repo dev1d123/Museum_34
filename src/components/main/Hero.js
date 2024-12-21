@@ -24,22 +24,22 @@ const Hero = () => {
             </div>            
             <ImgCar/>
 
-            <h1 className="slogan" style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '30px' }}>
-                "Discover the Wonders of Art and History"
+            <h1 className="slogan" style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '30px', color:'purple' }}>
+                "Descubre las maravillas de la ciudad de Arequipa"
             </h1>
 
             <div className="stats-container" style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
                 <button className="stat-button" style={buttonStyle}>
-                    <strong>50+</strong>
-                    <p>Exhibitions</p>
+                    <strong>20+</strong>
+                    <p>Exhibiciones</p>
                 </button>
                 <button className="stat-button" style={buttonStyle}>
-                    <strong>1M+</strong>
-                    <p>Visitors</p>
+                    <strong>100k</strong>
+                    <p>Visitantes</p>
                 </button>
                 <button className="stat-button" style={buttonStyle}>
-                    <strong>500+</strong>
-                    <p>Art Pieces</p>
+                    <strong>10+</strong>
+                    <p>Piezas de arte</p>
                 </button>
             </div>
 

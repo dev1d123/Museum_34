@@ -126,9 +126,7 @@ const TeamSection = () => {
           <CardTitle>Alfredo Huamaní</CardTitle>
           <CardDetail>
             <p>
-              “ You can teach a student a lesson for a day; but if you can teach
-              him to learn by creating curiosity, he will continue the learning
-              process as long as he lives “
+              "La educación no es llenar un vaso, sino encender una llama."
             </p>
             <a
               href="#"
@@ -144,9 +142,7 @@ const TeamSection = () => {
           <CardTitle>Marco Quispe</CardTitle>
           <CardDetail>
             <p>
-              “ Real education should consist of drawing the goodness and the
-              best out of our own students. What better books can there be than
-              the book of humanity “
+              "La verdadera educación no consiste en enseñar respuestas, sino en enseñar a hacer las preguntas correctas."
             </p>
             <a
               href="#"
@@ -162,9 +158,7 @@ const TeamSection = () => {
           <CardTitle>William Choquehuanca</CardTitle>
           <CardDetail>
             <p>
-              “ You can teach a student a lesson for a day; but if you can teach
-              him to learn by creating curiosity, he will continue the learning
-              process as long as he lives “
+            "La curiosidad es la chispa que enciende el fuego del aprendizaje y el crecimiento." 
             </p>
             <a
               href="#"
@@ -180,9 +174,9 @@ const TeamSection = () => {
           <CardTitle>Wilson Carlos</CardTitle>
           <CardDetail>
             <p>
-              “ You can teach a student a lesson for a day; but if you can teach
-              him to learn by creating curiosity, he will continue the learning
-              process as long as he lives “
+            "No hay límites para lo que puedes lograr, solo los que te pongas tú mismo."
+
+
             </p>
             <a
               href="#"
@@ -198,7 +192,7 @@ const TeamSection = () => {
           <CardTitle>Julio Chura</CardTitle>
           <CardDetail>
             <p>
-              “ Ya p Julio! “
+            "Cada día es una nueva oportunidad para crecer y superar tus propios límites."
             </p>
             <a
               href="#"
