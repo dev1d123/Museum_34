@@ -3,6 +3,8 @@ import Logo from '../Logo'
 import './Main.css';
 import NavMenu from '../NavMenu'
 import ImgCar from './ImgCar';
+import Hero from './Hero';
+
 import FooterPage from '../FooterPage';
 import MainVoice from '../MainVoice';
 import { Link, useNavigate } from 'react-router-dom';
@@ -48,7 +50,7 @@ function Main() {
       <div className="buttonVoice" style={{ position: 'sticky', top: '10px', margin: '10px' }}>
         <MainVoice />
       </div>
-      <ImgCar></ImgCar>
+      <Hero/>
 
       <div className='buttonAcc'>
         <button className="button" onClick={handleNavigate}>
