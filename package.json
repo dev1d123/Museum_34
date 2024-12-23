@@ -2,6 +2,7 @@
   "name": "museum34",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dev1d123.github.io/museum34",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -45,7 +46,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +69,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.2.0",
     "worker-plugin": "^5.0.1"
   }
 }
