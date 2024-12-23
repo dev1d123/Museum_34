@@ -86,6 +86,8 @@ class MMDLoader extends Loader {
 		this.meshBuilder = new MeshBuilder( this.manager );
 		this.animationBuilder = new AnimationBuilder();
 
+		console.warn( 'THREE.MMDLoader: The module has been deprecated and will be removed with r172. Please migrate to https://github.com/takahirox/three-mmd-loader instead.' );
+
 	}
 
 	/**
@@ -131,22 +133,40 @@ class MMDLoader extends Loader {
 
 		}
 
-		const modelExtension = this._extractExtension( url ).toLowerCase();
+		const parser = this._getParser();
+		const extractModelExtension = this._extractModelExtension;
 
-		// Should I detect by seeing header?
-		if ( modelExtension !== 'pmd' && modelExtension !== 'pmx' ) {
+		this.loader
+			.setMimeType( undefined )
+			.setPath( this.path )
+			.setResponseType( 'arraybuffer' )
+			.setRequestHeader( this.requestHeader )
+			.setWithCredentials( this.withCredentials )
+			.load( url, function ( buffer ) {
 
-			if ( onError ) onError( new Error( 'THREE.MMDLoader: Unknown model file extension .' + modelExtension + '.' ) );
+				try {
 
-			return;
+					const modelExtension = extractModelExtension( buffer );
 
-		}
+					if ( modelExtension !== 'pmd' && modelExtension !== 'pmx' ) {
 
-		this[ modelExtension === 'pmd' ? 'loadPMD' : 'loadPMX' ]( url, function ( data ) {
+						if ( onError ) onError( new Error( 'THREE.MMDLoader: Unknown model file extension .' + modelExtension + '.' ) );
 
-			onLoad(	builder.build( data, resourcePath, onProgress, onError )	);
+						return;
 
-		}, onProgress, onError );
+					}
+
+					const data = modelExtension === 'pmd' ? parser.parsePmd( buffer, true ) : parser.parsePmx( buffer, true );
+
+					onLoad( builder.build( data, resourcePath, onProgress, onError ) );
+
+				} catch ( e ) {
+
+					if ( onError ) onError( e );
+
+				}
+
+			}, onProgress, onError );
 
 	}
 
@@ -358,10 +378,11 @@ class MMDLoader extends Loader {
 
 	// private methods
 
-	_extractExtension( url ) {
+	_extractModelExtension( buffer ) {
 
-		const index = url.lastIndexOf( '.' );
-		return index < 0 ? '' : url.slice( index + 1 );
+		const decoder = new TextDecoder( 'utf-8' );
+		const bytes = new Uint8Array( buffer, 0, 3 );
+		return decoder.decode( bytes ).toLowerCase();
 
 	}
 
@@ -1448,6 +1469,7 @@ class MaterialBuilder {
 
 				t.magFilter = NearestFilter;
 				t.minFilter = NearestFilter;
+				t.generateMipmaps = false;
 
 			}
 
@@ -2109,13 +2131,17 @@ class CubicBezierInterpolation extends Interpolant {
 
 class MMDToonMaterial extends ShaderMaterial {
 
+	static get type() {
+
+		return 'MMDToonMaterial';
+
+	}
+
 	constructor( parameters ) {
 
 		super();
 
 		this.isMMDToonMaterial = true;
-
-		this.type = 'MMDToonMaterial';
 
 		this._matcapCombine = AddOperation;
 		this.emissiveIntensity = 1.0;
