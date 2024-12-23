@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main></Main>}></Route>
+        <Route path="/museum34" element={<Main></Main>}></Route>
         <Route path="/iniciar-sesion" element={<LoginSignUp isLogin={true} />} />
         <Route path="/registrarse" element={<LoginSignUp isLogin={false} />} />
 
