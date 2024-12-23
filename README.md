@@ -60,7 +60,7 @@ Museum34 combina herramientas de modelado 3D, desarrollo web y bases de datos pa
 
 ### 🗃️ **Base de Datos**  
 - **Django** se utilizó para gestionar la información de los modelos y las configuraciones del museo virtual.  
-- Enlace al backend: [Repositorio Django](#).  
+- Enlace al backend: [Repositorio Django](https://github.com/dev1d123/Museum_34_Backend).  
 
 ---
 
@@ -75,6 +75,7 @@ Museum34 se construyó con una combinación de herramientas de vanguardia:
 - 🖼️ **[Convert your JPG file to GLB](https://imagetostl.com/):** Convertidor de imágenes 2D a formatos 3D interactivos.  
 - ✋ **[MediaPipe](https://mediapipe.dev/):** Para implementar control por gestos en tiempo real.  
 - 🎙️ **WebSpeech API:** Habilita comandos de voz para navegación interactiva.  
+- 🗃️ **[Django](https://www.djangoproject.com/):** Framework de backend utilizado para la gestión de la base de datos y la API del proyecto.  
 
 ---
 
@@ -82,7 +83,17 @@ Museum34 se construyó con una combinación de herramientas de vanguardia:
 
 Incluye aquí más capturas de pantalla y GIFs para mostrar tu proyecto en acción. Ejemplo:  
 
-![Exploración virtual](ruta/a/otraImagen.png)  
+![museum34](/readmeImages/screen1.png)  
+![museum34](/readmeImages/img1.png)  
+![museum34](/readmeImages/img2.png)  
+![museum34](/readmeImages/img3.png)  
+![museum34](/readmeImages/img4.png)  
+![museum34](/readmeImages/img5.png)  
+![museum34](/readmeImages/img6.png)  
+![museum34](/readmeImages/img7.png)  
+![museum34](/readmeImages/img8.png)  
+![museum34](/readmeImages/img9.png)  
+
 *Explora galerías virtuales con modelos detallados y navegación interactiva.*  
 
 ---
@@ -117,6 +128,11 @@ Abre `http://localhost:3000` en tu navegador.
 - 📧 **Correo:** museum34@contacto.com  
 - 🐙 **GitHub Issues:** [Reportar un problema](https://github.com/dev1d123/museum34/issues)  
 
+---
+
+## Live Demo
+
+En desarrollo
 ---
 
 ¡Espero que te guste este README mejorado! 🚀 Si necesitas más ideas o cambios, dime. 😊
