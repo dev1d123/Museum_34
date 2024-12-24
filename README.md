@@ -118,7 +118,7 @@ npm start
 
 4️⃣ **Accede al proyecto:**  
 Abre `http://localhost:3000` en tu navegador.  
-(Este proyecto fue hecho con react18, si no funciona, por favor reemplaza la carpeta node_modules por esta [Solución]([https://github.com/dev1d123/museum34/issues](https://drive.google.com/file/d/1BWMse1_bAN88u5sD2VdiRgiYf8XAVjfb/view?usp=drive_link))  )
+Este proyecto fue hecho con React 18. Si no funciona, por favor reemplaza la carpeta `node_modules` con esta [solución](https://drive.google.com/file/d/1BWMse1_bAN88u5sD2VdiRgiYf8XAVjfb/view?usp=drive_link).
 
 ---
 
