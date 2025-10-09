@@ -1,0 +1,73 @@
+{
+  "name": "museum34-vite",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://dev1d123.github.io/museum34",
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mediapipe/camera_utils": "^0.3.1675466862",
+    "@mediapipe/control_utils": "^0.6.1675466023",
+    "@mediapipe/control_utils_3d": "^0.3.1675466062",
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "@mediapipe/hands": "^0.4.1675469240",
+    "@mui/icons-material": "^6.1.6",
+    "@mui/material": "^6.1.6",
+    "@react-three/drei": "^9.117.3",
+    "@react-three/fiber": "^8.17.10",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "aframe": "^1.6.0",
+    "aframe-physics-system": "^4.0.2",
+    "aframe-react": "^4.4.0",
+    "axios": "^1.7.9",
+    "fingerpose": "^0.1.0",
+    "markdown-to-jsx": "^7.5.0",
+    "museum34": "file:",
+    "react": "^18.3.1",
+    "react-alice-carousel": "^2.9.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "react-webcam": "^7.2.0",
+    "styled-components": "^6.1.13",
+    "three": "^0.170.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "gh-pages": "^6.2.0",
+    "react-scripts": "^5.0.1",
+    "vite": "^7.1.9",
+    "webpack-cli": "^6.0.1",
+    "worker-plugin": "^5.0.1"
+  }
+}
